@@ -1,0 +1,132 @@
+.Register {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 100%;
+}
+.register-header {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+}
+.register-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 80%;
+  justify-content: center;
+}
+.register-legend {
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 34%;
+}
+.register-avatar{
+  background-color: #c7c7c7;
+  height: 20%;
+
+}
+.register-fontawesome{
+  background-color: #c7c7c7;
+}
+#user-icon{
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid #5b5b5b;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #c7c7c7;
+color: #3e3e3e;
+}
+.register-name-div{
+display: flex;
+height: 12%;
+
+}
+.register-first-label{
+width: 50%;
+background-color: #c7c7c7;
+
+}
+.register-first{
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 60%;
+  align-items: center;
+  height: 95%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid #5b5b5b;
+
+}
+.register-last-label{
+width: 50%;
+background-color: #c7c7c7;
+
+}
+.register-last{
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 60%;
+  align-items: center;
+  height: 95%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid #5b5b5b;
+
+}
+.register-user-label {
+  height: 11%;
+  background-color: #c7c7c7;
+}
+.register-user {
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 80%;
+  align-items: center;
+  height: 95%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid #5b5b5b;
+}
+.register-password-label {
+  height: 11%;
+  background-color: #c7c7c7;
+}
+.register-password {
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 80%;
+  align-items: center;
+  align-content: center;
+  height: 95%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid #5b5b5b;
+}
+.register-button {
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+  height: 10%;
+}

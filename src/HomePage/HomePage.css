@@ -1,0 +1,43 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 100%;
+}
+
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 45%;
+}
+.home-carousel {
+  display: flex;
+  flex-direction: column;
+  background-color: #767676;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 40%;
+}
+.home-buttons{
+  display: flex;
+  flex-direction: column;
+  height: 15%;
+  justify-content: space-around;
+}
+.home-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #919191;
+
+}
+.home-login {
+  width: 100%;
+  text-align: center;
+}

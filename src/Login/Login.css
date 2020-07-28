@@ -1,0 +1,73 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 100%;
+}
+.login-header {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 24%;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 76%;
+  justify-content: center;
+}
+.login-legend {
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 38%;
+}
+.login-user-label {
+  height: 11%;
+  background-color: #c7c7c7;
+}
+.login-user {
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 80%;
+  align-items: center;
+  height: 95%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid #5b5b5b;
+}
+.login-password-label {
+  height: 11%;
+  background-color: #c7c7c7;
+}
+.login-password {
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 80%;
+  align-items: center;
+  align-content: center;
+  height: 95%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid #5b5b5b;
+}
+.login-button {
+  display: flex;
+  flex-direction: column;
+  background-color: #c7c7c7;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+  height: 40%;
+}
