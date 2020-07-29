@@ -52,8 +52,8 @@
   flex-direction: column;
   /* align-content: center;
   align-items: center; */
-  height: 55%;
-  overflow: scroll;
+  /* height: 65%; */
+  overflow: auto;
 }
 .dash-home-prayer-request {
   display: flex;

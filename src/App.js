@@ -13,7 +13,18 @@ class App extends Component {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/dashboard" component={Dashboard} />
+        {[
+          "/dashboard",
+          "/groups",
+          "/events",
+          "/chat",
+          "/invite",
+          "/add-group",
+          "/add-event",
+          "/add-prayer",
+          "/settings",
+        ].map((path) => (
+          <Route key={path} path={path} component={Dashboard} />))}
       </main>
     );
   }
