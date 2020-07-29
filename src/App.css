@@ -1,8 +1,65 @@
+/* *{
+  font-size: 62.5%;
+} */
+.App {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  height:  450px;
+}
+@media screen and (min-height: 566px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    height:  568px;
+  }
+}
+@media screen and (min-height: 638px) {
 .App {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   height:  640px;
-  max-height: none;
 }
-
+}
+@media screen and (min-height: 665px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    height:  667px;
+  }
+}
+@media screen and (min-height: 729px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    height:  736px;
+  }
+}
+@media screen and (min-height: 810px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    height:  812px;
+  }
+}
+@media screen and (min-height: 1022px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    height:  1024px;
+  }
+}
+@media screen and (min-height: 1364px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    height:  1366px;
+  }
+}

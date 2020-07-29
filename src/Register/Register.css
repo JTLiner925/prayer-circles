@@ -28,17 +28,16 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  height: 34%;
+  height: 38%;
 }
-.register-avatar{
+.register-avatar {
   background-color: #c7c7c7;
   height: 20%;
-
 }
-.register-fontawesome{
+.register-fontawesome {
   background-color: #c7c7c7;
 }
-#user-icon{
+#user-icon {
   display: flex;
   flex-direction: column;
   width: 100px;
@@ -48,19 +47,17 @@
   overflow: hidden;
   margin: 0 auto;
   background-color: #c7c7c7;
-color: #3e3e3e;
+  color: #3e3e3e;
 }
-.register-name-div{
-display: flex;
-height: 12%;
-
+.register-name-div {
+  display: flex;
+  height: 12%;
 }
-.register-first-label{
-width: 50%;
-background-color: #c7c7c7;
-
+.register-first-label {
+  width: 50%;
+  background-color: #c7c7c7;
 }
-.register-first{
+.register-first {
   display: flex;
   flex-direction: column;
   background-color: #c7c7c7;
@@ -70,14 +67,12 @@ background-color: #c7c7c7;
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
-
 }
-.register-last-label{
-width: 50%;
-background-color: #c7c7c7;
-
+.register-last-label {
+  width: 50%;
+  background-color: #c7c7c7;
 }
-.register-last{
+.register-last {
   display: flex;
   flex-direction: column;
   background-color: #c7c7c7;
@@ -87,7 +82,6 @@ background-color: #c7c7c7;
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
-
 }
 .register-user-label {
   height: 11%;

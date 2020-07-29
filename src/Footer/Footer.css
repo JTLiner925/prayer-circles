@@ -1,0 +1,30 @@
+.Footer {
+  border-top: 1px solid #cecece61;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  height: 10%;
+  z-index: 1;
+}
+.footer-home-icon,
+.footer-group-icon,
+.footer-plus-icon,
+.footer-invite-icon,
+.footer-chat-icon {
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+#home-icon,
+#group-icon,
+#plus-icon,
+#invite-icon,
+#chat-icon {
+  height: 50%;
+  width: 100%;
+  color: rgb(169, 169, 169);
+}
