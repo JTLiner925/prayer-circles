@@ -28,3 +28,10 @@
   width: 100%;
   color: rgb(169, 169, 169);
 }
+#home-icon:hover,
+#group-icon:hover,
+#plus-icon:hover,
+#invite-icon:hover,
+#chat-icon:hover{
+  color: rgb(128, 128, 128);
+}

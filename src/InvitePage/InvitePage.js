@@ -7,6 +7,21 @@ export default class InvitePage extends Component {
   render() {
     return (
       <div className="InvitePage">
+         <h2>Select Group</h2>
+        <div className="invite-groups-slide">
+          <div className="invite-group">
+            <div>Group #1</div>
+          </div>
+          <div className="invite-group">
+            <div>Group #2</div>
+          </div>
+          <div className="invite-group">
+            <div>Group #3</div>
+          </div>
+          <div className="invite-group">
+            <div>Group #4</div>
+          </div>
+        </div>
         <div className='invite-icons'>
           <div className='invite-user'><FontAwesomeIcon 
           id="invite-user-icon"

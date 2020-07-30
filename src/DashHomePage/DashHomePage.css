@@ -26,6 +26,9 @@
   background-color: rgb(223, 223, 223);
   border-radius: 10px;
 }
+.dash-home-group:hover{
+  background-color: rgb(189, 189, 189);
+}
 .dash-home-event-banner {
   display: flex;
   align-items: center;
@@ -46,6 +49,9 @@
   justify-content: center;
   background-color: rgb(223, 223, 223);
   border-radius: 10px;
+}
+.dash-home-event:hover{
+  background-color: rgb(189, 189, 189);
 }
 .dash-home-prayer-wall {
   display: flex;

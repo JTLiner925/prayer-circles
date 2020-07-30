@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./DashHomePage.css";
 
 export default class DashHomePage extends Component {
@@ -16,12 +17,13 @@ export default class DashHomePage extends Component {
             <div>Group #3</div>
           </div>
           <div className="dash-home-group">
-            <div>Group #4</div>
+            <Link className='dash-home-add-group' to='/add-group'>Add Group</Link>
           </div>
         </div>
         <div className="dash-home-event-banner">
-          <div className='dash-home-event'>View Events</div>
-          <div className='dash-home-event'>Create Event</div>
+        <Link className='dash-home-event' to='/events'>View Events</Link>
+          <Link className='dash-home-event' to='/add-event'>Add Event</Link>
+
         </div>
         <div className="dash-home-prayer-wall">
           <div className="dash-home-prayer-request">

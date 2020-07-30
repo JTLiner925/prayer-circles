@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import Header from "../Header/Header";
 import DashHomePage from "../DashHomePage/DashHomePage";
-import GroupsPage from "../GroupsPage/GroupsPage";
 import EventListPage from "../EventListPage/EventListPage";
 import ChatPage from "../ChatPage/ChatPage";
 import InvitePage from "../InvitePage/InvitePage";
@@ -19,7 +18,6 @@ export default class Dashboard extends Component {
       <main className="Dashboard">
         {[
           "/dashboard",
-          "/groups",
           "/events",
           "/chat",
           "/invite",
@@ -31,7 +29,6 @@ export default class Dashboard extends Component {
           <Route key={path} path={path} component={Header} />
         ))}
         <Route path="/dashboard" component={DashHomePage} />
-        <Route path="/groups" component={GroupsPage} />
         <Route path="/events" component={EventListPage} />
         <Route path="/chat" component={ChatPage} />
         <Route path="/invite" component={InvitePage} />
@@ -41,7 +38,6 @@ export default class Dashboard extends Component {
         <Route path="/settings" component={SettingsPage} />
         {[
           "/dashboard",
-          "/groups",
           "/events",
           "/chat",
           "/invite",

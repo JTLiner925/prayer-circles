@@ -26,6 +26,9 @@
   background-color: rgb(223, 223, 223);
   border-radius: 10px;
 }
+.chat-group:hover{
+  background-color: rgb(189, 189, 189);
+}
 .chat-wall {
   display: flex;
   flex-direction: column;

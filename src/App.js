@@ -15,7 +15,6 @@ class App extends Component {
         <Route path="/register" component={Register} />
         {[
           "/dashboard",
-          "/groups",
           "/events",
           "/chat",
           "/invite",

@@ -1,0 +1,57 @@
+.AddGroupPage {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 100%;
+}
+.AddGroupPage h2{
+  margin: 10px auto;
+}
+.add-group-groups-slide {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  /* justify-content: space-evenly; */
+  height: 30%;
+  overflow: scroll;
+}
+.add-group-group {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 80%;
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  background-color: rgb(223, 223, 223);
+  border-radius: 10px;
+}
+.add-group-group:hover{
+  background-color: rgb(189, 189, 189);
+}
+.add-group-form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center; 
+  height: 70%;
+  overflow: auto;
+}
+.add-group-request {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  
+  padding: 10px;
+  height: 100%;
+  width: 80%;
+  margin: 10px auto;
+  margin-top: 10px;
+  text-align: center;
+  justify-content: center;
+  background-color: rgb(223, 223, 223);
+  border-radius: 10px;
+}

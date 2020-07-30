@@ -7,8 +7,7 @@
   height: 8%;
   z-index: 1;
 }
-.header-user-icon,
-.header-settings-icon {
+.header-user-icon {
   height: 8%;
   padding: 0;
   height: 100%;
@@ -17,17 +16,39 @@
   /* justify-content: left; */
   /* width: 100%; */
 }
+.header-settings-icon,
+.header-sign-out-icon {
+  height: 8%;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+}
 #head-user-icon {
-  
-margin: 0 auto 0 0;
+  margin: 0 auto 0 0;
   height: 50%;
   width: 50%;
   color: rgb(169, 169, 169);
 }
-#head-settings-icon {
-  margin: 0 0 0 auto;
+.header-nav-icons {
+  margin-left: 50%;
+  height: 100%;
+width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+#head-settings-icon,
+#head-sign-out-icon {
+  margin: 0 auto;
 
   height: 50%;
   width: 50%;
   color: rgb(169, 169, 169);
+}
+#head-settings-icon:hover,
+#head-sign-out-icon:hover {
+  color: rgb(128, 128, 128);
 }

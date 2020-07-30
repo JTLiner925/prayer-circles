@@ -18,7 +18,7 @@ export default class Footer extends Component {
           <FontAwesomeIcon id="home-icon" icon={faHome} />
         </Link>
 
-        <Link to="/groups" className="footer-group-icon">
+        <Link to="/add-group" className="footer-group-icon">
           <FontAwesomeIcon id="group-icon" icon={faClone} />
         </Link>
 
