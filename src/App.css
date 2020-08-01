@@ -2,10 +2,15 @@
   font-size: 62.5%;
 } */
 .App {
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   height:  450px;
+}
+a {
+  text-decoration: none;
 }
 @media screen and (min-height: 566px) {
   .App {

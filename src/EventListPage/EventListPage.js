@@ -6,21 +6,6 @@ export default class EventListPage extends Component {
   render() {
     return (
       <div className="EventListPage">
-        <h2>Select Group</h2>
-        <div className="event-list-group-slide">
-          <div className="event-list-group">
-            <div>Group #1</div>
-          </div>
-          <div className="event-list-group">
-            <div>Group #2</div>
-          </div>
-          <div className="event-list-group">
-            <div>Group #3</div>
-          </div>
-          <div className="event-list-group">
-            <div>Group #4</div>
-          </div>
-        </div>
         <div className="event-list-event-banner">
           <Link className='event-list-event' to='/events'>View Events</Link>
           <h2>Or</h2>

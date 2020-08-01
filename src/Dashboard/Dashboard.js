@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import Header from "../Header/Header";
+import GroupListComponent from '../GroupListComponent/GroupListComponent'
 import DashHomePage from "../DashHomePage/DashHomePage";
 import EventListPage from "../EventListPage/EventListPage";
 import ChatPage from "../ChatPage/ChatPage";
@@ -27,6 +28,17 @@ export default class Dashboard extends Component {
           "/settings",
         ].map((path) => (
           <Route key={path} path={path} component={Header} />
+        ))}
+        {[
+          "/dashboard",
+          "/events",
+          "/chat",
+          "/invite",
+          "/add-group",
+          "/add-event",
+          "/add-prayer",
+        ].map((path) => (
+          <Route key={path} path={path} component={GroupListComponent} />
         ))}
         <Route path="/dashboard" component={DashHomePage} />
         <Route path="/events" component={EventListPage} />

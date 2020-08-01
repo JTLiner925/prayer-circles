@@ -1,0 +1,24 @@
+.Event-Select-Component{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 15%;
+}
+.event-select-view, .event-select-add {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 80%;
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  background-color: rgb(223, 223, 223);
+  border-radius: 10px;
+}
+.event-select-view:hover, .event-select-add:hover {
+  background-color: rgb(189, 189, 189);
+}

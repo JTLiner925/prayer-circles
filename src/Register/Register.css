@@ -4,38 +4,57 @@
   background-color: #ffffff;
   height: 100%;
 }
+
 .register-header {
-  margin: 0;
+  position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #c7c7c7;
   width: 100%;
   align-items: center;
   justify-content: center;
-  height: 20%;
+  height: 30%;
+  overflow: hidden;
+}
+
+.register-header-content {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  max-width: 900px;
+  text-align: center;
+}
+.register-header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #03ffc4, #013af5);
+  border-radius: 0 0 50% 50%/0 0 100% 100%;
+  transform: scaleX(1.5);
+}
+.register-header h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  color: #ffffff;
 }
 .register-form {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   background-color: #ffffff;
   height: 80%;
   justify-content: center;
 }
-.register-legend {
-  display: flex;
-  flex-direction: column;
-  background-color: #c7c7c7;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  height: 38%;
-}
 .register-avatar {
-  background-color: #c7c7c7;
-  height: 20%;
+  background-color: #ffffff;
+  height: 35%;
+  margin-bottom: 20px;
 }
 .register-fontawesome {
-  background-color: #c7c7c7;
+  background-color: #ffffff;
 }
 #user-icon {
   display: flex;
@@ -51,16 +70,19 @@
 }
 .register-name-div {
   display: flex;
-  height: 12%;
+  height: 11%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
 }
 .register-first-label {
   width: 50%;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
 }
 .register-first {
   display: flex;
   flex-direction: column;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
   width: 60%;
   align-items: center;
   height: 95%;
@@ -70,12 +92,12 @@
 }
 .register-last-label {
   width: 50%;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
 }
 .register-last {
   display: flex;
   flex-direction: column;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
   width: 60%;
   align-items: center;
   height: 95%;
@@ -85,12 +107,14 @@
 }
 .register-user-label {
   height: 11%;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+
 }
 .register-user {
   display: flex;
   flex-direction: column;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
   width: 80%;
   align-items: center;
   height: 95%;
@@ -100,12 +124,14 @@
 }
 .register-password-label {
   height: 11%;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
+  margin-bottom: 40px;
+
 }
 .register-password {
   display: flex;
   flex-direction: column;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
   width: 80%;
   align-items: center;
   align-content: center;
@@ -114,13 +140,21 @@
   border: none;
   border-bottom: 1px solid #5b5b5b;
 }
-.register-button {
+.register-button button{
   display: flex;
   flex-direction: column;
-  background-color: #c7c7c7;
-  width: 100%;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 20px;
-  height: 10%;
+  width: 60%;
+  margin: 0 auto;
+  background-color: #3645e9;
+  font-size: 1.2em;
+  color: #ffffff;
+  padding: 1em;
+  border-radius: 30px;
+  border-width: 0px;
+  text-transform: uppercase;
+}
+.register-button button:hover {
+  background-color: #0232f2;
+  transition: 500ms;
 }

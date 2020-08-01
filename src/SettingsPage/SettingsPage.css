@@ -7,9 +7,6 @@
 .SettingsPage h2{
   margin: 10px auto;
 }
-.settings-group:hover{
-  background-color: rgb(189, 189, 189);
-}
 .settings-wall {
   display: flex;
   flex-direction: column;

@@ -2,35 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  height: 100%;
-}
-.InvitePage h2{
-  margin: 10px auto;
-}
-.invite-groups-slide {
-  display: flex;
-  align-items: center;
-  align-content: center;
-  /* justify-content: space-evenly; */
-  height: 40%;
-  overflow: scroll;
-}
-.invite-group {
-  display: flex;
-  align-items: center;
-  align-content: center;
-  padding-left: 5px;
-  padding-right: 5px;
-  height: 80%;
-  width: 20%;
-  margin: 0 auto;
-  text-align: center;
-  justify-content: center;
-  background-color: rgb(223, 223, 223);
-  border-radius: 10px;
-}
-.invite-group:hover{
-  background-color: rgb(189, 189, 189);
+  height: 65%;
 }
 .invite-icons{
   display: flex;
@@ -60,9 +32,7 @@
 .invite-wall {
   display: flex;
   flex-direction: column;
-  /* align-content: center;
-  align-items: center; */
-  height: 50%;
+  height: 90%;
   overflow: auto;
 }
 .invite-bubble {

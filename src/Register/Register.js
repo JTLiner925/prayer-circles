@@ -8,9 +8,10 @@ export default class Register extends Component {
   render() {
     return (
       <div className="Register">
-        <h1 className="register-header">Prayer Circles</h1>
+        <div className="register-header">
+        <h1 className="register-header-content">Prayer Circles</h1>
+        </div>
         <form className="register-form">
-          <legend className="register-legend">Welcome Back</legend>
           <div className='register-fontawesome'>
             <FontAwesomeIcon
               id="user-icon"

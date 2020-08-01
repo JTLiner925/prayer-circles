@@ -1,25 +1,21 @@
-.AddPrayerPage {
+.Prayer-Wall-Component {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  height: 65%;
-}
-.add-prayer-form {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center; 
   height: 85%;
   overflow: auto;
+  white-space: nowrap;
 }
-.add-prayer-request {
+.prayer-wall-component-requests {
+  margin-top: 20px;
+}
+.prayer-wall-component-request {
   display: flex;
+  flex-direction: column;
   align-items: center;
   align-content: center;
-  
   padding: 10px;
-  height: 400px;
-  width: 80%;
+  height: 100px;
+  width: 300px;
   margin: 10px auto;
   margin-top: 10px;
   text-align: center;

@@ -6,7 +6,9 @@ export default class Login extends Component {
   render() {
     return (
       <div className="Login">
-        <h1 className="login-header">Prayer Circles</h1>
+        <div className="login-header">
+        <h1 className="login-header-content">Prayer Circles</h1>
+        </div>
         <form className="login-form">
           <legend className='login-legend'>Welcome Back</legend>
           <label className='login-user-label'>

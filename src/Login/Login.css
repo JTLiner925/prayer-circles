@@ -8,11 +8,46 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
   width: 100%;
   align-items: center;
   justify-content: center;
   height: 24%;
+}
+.login-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 30%;
+  overflow: hidden;
+}
+
+.login-header-content {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  max-width: 900px;
+  text-align: center;
+}
+.login-header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #03ffc4, #013af5);
+  border-radius: 0 0 50% 50%/0 0 100% 100%;
+  transform: scaleX(1.5);
+}
+.login-header h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  color: #ffffff;
 }
 .login-form {
   display: flex;
@@ -23,8 +58,9 @@
 }
 .login-legend {
   display: flex;
+  font-size: 24px;
   flex-direction: column;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -32,12 +68,12 @@
 }
 .login-user-label {
   height: 11%;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
 }
 .login-user {
   display: flex;
   flex-direction: column;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
   width: 80%;
   align-items: center;
   height: 95%;
@@ -47,12 +83,12 @@
 }
 .login-password-label {
   height: 11%;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
 }
 .login-password {
   display: flex;
   flex-direction: column;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
   width: 80%;
   align-items: center;
   align-content: center;
@@ -64,10 +100,27 @@
 .login-button {
   display: flex;
   flex-direction: column;
-  background-color: #c7c7c7;
+  background-color: #ffffff;
   width: 100%;
+  height: 40%;
+  padding-top: 20px;
+}
+.login-button button {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 20px;
-  height: 40%;
+  width: 60%;
+  margin: 10px auto;
+  background-color: #3645e9;
+  font-size: 1.2em;
+  color: #ffffff;
+  padding: 1em;
+  border-radius: 30px;
+  border-width: 0px;
+  text-transform: uppercase;
+}
+.login-button button:hover {
+  background-color: #0232f2;
+  transition: 500ms;
 }
