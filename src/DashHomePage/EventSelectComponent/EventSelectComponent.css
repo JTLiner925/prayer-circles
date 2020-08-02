@@ -1,24 +1,45 @@
-.Event-Select-Component{
+.Event-Select-Component {
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
   height: 15%;
 }
-.event-select-view, .event-select-add {
+.event-select-container{
+  height: 100%;
   display: flex;
+}
+.event-select-view,
+.event-select-add {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   align-content: center;
-  padding-left: 5px;
-  padding-right: 5px;
+  /* padding-left: 5px;
+  padding-right: 5px; */
   height: 80%;
   width: 30%;
   margin: 0 auto;
   text-align: center;
   justify-content: center;
-  background-color: rgb(223, 223, 223);
+  /* background-color: rgb(223, 223, 223); */
   border-radius: 10px;
 }
-.event-select-view:hover, .event-select-add:hover {
+/* .event-select-view:hover,
+.event-select-add:hover {
   background-color: rgb(189, 189, 189);
+} */
+#event-calendar-icon,
+#add-event-icon {
+  width: 40px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+#event-calendar-icon:hover,
+#add-event-icon:hover, 
+.event-select-add p:hover,
+.event-select-view p:hover {
+ color: turquoise;
+ transition: 500ms;
 }
