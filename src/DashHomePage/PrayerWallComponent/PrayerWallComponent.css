@@ -4,6 +4,8 @@
   height: 85%;
   overflow: auto;
   white-space: nowrap;
+  
+
 }
 .prayer-wall-component-request {
   display: flex;
@@ -12,13 +14,10 @@
   /* align-content: center; */
   padding: 10px;
   /* height: 100px; */
-  width: 90%;
+  width: 85%;
   margin: 10px auto;
-  /* margin-top: 10px; */
-  /* text-align: center; */
-  /* justify-content: center; */
-  background-color: rgb(223, 223, 223);
   border-radius: 10px;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.637);
 }
 .prayer-header {
 }
