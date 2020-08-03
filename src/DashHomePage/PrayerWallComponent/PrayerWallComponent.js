@@ -46,9 +46,9 @@ export default class PrayerWallComponent extends Component {
             </div>
             <FontAwesomeIcon id="prayer-heart-icon" icon={faEllipsisH} />
           </div>
-          <div className='chat-input-container'>
-            <div className='chat-input-option'>
-            <FontAwesomeIcon id="chat-camera-icon" icon={faCamera} />
+          <div className='prayer-input-container'>
+            <div className='prayer-input-option'>
+            <FontAwesomeIcon id="prayer-camera-icon" icon={faCamera} />
             </div>
             <input className='prayer-input-text'type='text' placeholder='Message'></input>
           </div>
@@ -81,11 +81,11 @@ export default class PrayerWallComponent extends Component {
             </div>
             <FontAwesomeIcon id="prayer-dots-icon" icon={faEllipsisH} />
           </div>
-          <div className='chat-input-container'>
-            <div className='chat-input-option'>
-            <FontAwesomeIcon id="chat-camera-icon" icon={faCamera} />
+          <div className='prayer-input-container'>
+            <div className='prayer-input-option'>
+            <FontAwesomeIcon id="prayer-camera-icon" icon={faCamera} />
             </div>
-            <input className='chat-input-text'type='text' placeholder='Message'></input>
+            <input className='prayer-input-text'type='text' placeholder='Message'></input>
           </div>
         </div>
         <div className="prayer-wall-component-request">
@@ -119,11 +119,11 @@ export default class PrayerWallComponent extends Component {
             </div>
             <FontAwesomeIcon id="prayer-heart-icon" icon={faEllipsisH} />
           </div>
-          <div className='chat-input-container'>
-            <div className='chat-input-option'>
-            <FontAwesomeIcon id="chat-camera-icon" icon={faCamera} />
+          <div className='prayer-input-container'>
+            <div className='prayer-input-option'>
+            <FontAwesomeIcon id="prayer-camera-icon" icon={faCamera} />
             </div>
-            <input className='chat-input-text'type='text' placeholder='Message'></input>
+            <input className='prayer-input-text'type='text' placeholder='Message'></input>
           </div>
         </div>
       </div>
