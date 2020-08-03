@@ -14,7 +14,7 @@ export default class Footer extends Component {
   render() {
     return (
       <div className="Footer">
-        <Link to="/dashboard" className="footer-home-icon">
+        <Link to="/dashboard" type='text' className="footer-home-icon">
           <FontAwesomeIcon id="home-icon" icon={faHome} />
         </Link>
 

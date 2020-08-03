@@ -24,7 +24,7 @@
 #plus-icon,
 #invite-icon,
 #chat-icon {
-  height: 50%;
+  height: 70%;
   width: 100%;
   color: rgb(169, 169, 169);
 }
@@ -32,6 +32,6 @@
 #group-icon:hover,
 #plus-icon:hover,
 #invite-icon:hover,
-#chat-icon:hover{
+#chat-icon:hover {
   color: rgb(128, 128, 128);
 }

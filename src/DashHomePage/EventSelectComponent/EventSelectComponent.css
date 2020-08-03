@@ -30,16 +30,24 @@
   background-color: rgb(189, 189, 189);
 } */
 #event-calendar-icon,
-#add-event-icon {
-  width: 40px;
+#add-event-icon, 
+.event-select-add p,
+.event-select-view p 
+{
+  width: 50px;
   height: auto;
   margin: 0;
   padding: 0;
+  color: #839df5;
+}
+.event-select-add p,
+.event-select-view p {
+  width: 100%;
 }
 #event-calendar-icon:hover,
 #add-event-icon:hover, 
 .event-select-add p:hover,
 .event-select-view p:hover {
- color: turquoise;
+ color: #8dfae1;
  transition: 500ms;
 }

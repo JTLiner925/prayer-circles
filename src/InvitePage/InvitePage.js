@@ -26,7 +26,21 @@ export default class InvitePage extends Component {
         </div>
         <div className="invite-wall">
           <div className="invite-bubble">
-            <div className='invite-bubble-text'>invite Bubble #1</div>
+          <div className="invite-header">
+            <div className="invite-header-top">
+              <FontAwesomeIcon id="invite-header-user-icon" icon={faUser} />
+              <FontAwesomeIcon id="invite-header-users-icon" icon={faUsers} />
+            </div>
+          </div>
+       
+            <div className='invite-bubble-text'>Invite your friends!</div>
+            <form className='invite-form'>
+              <div>
+              <input className='invite-input' type='email' placeholder='johnDoe@gmail.com'></input>
+              <button className='invite-add-more'>+ add</button>
+              </div>
+              <button className='invite-form-submit' type='submit' >Invite</button>
+            </form>
           </div>
         </div>
       </div>
