@@ -53,7 +53,7 @@ export default class PrayerWallComponent extends Component {
             <input className='prayer-input-text'type='text' placeholder='Message'></input>
           </div>
         </div>
-        <div className="prayer-wall-component-request">
+        {/* <div className="prayer-wall-component-request">
           <div className="prayer-header">
             <div className="prayer-header-top">
               <FontAwesomeIcon id="prayer-user-icon" icon={faUser} />
@@ -65,10 +65,7 @@ export default class PrayerWallComponent extends Component {
               </div>
               <FontAwesomeIcon id="prayer-users-icon" icon={faUsers} />
             </div>
-            {/* <div className="prayer-header-bottom">
-              <div>&#9734; Answered &#9734;</div>
-              <p>3 Days Ago</p>
-            </div> */}
+           
           </div>
           <div className="prayer-main">
             <p>My husband drives me crazy!</p>
@@ -125,7 +122,7 @@ export default class PrayerWallComponent extends Component {
             </div>
             <input className='prayer-input-text'type='text' placeholder='Message'></input>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

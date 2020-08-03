@@ -8,18 +8,14 @@
 .prayer-wall-component-request {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* align-content: center; */
   padding: 10px;
-  /* height: 100%; */
-  /* height: 100px; */
   width: 85%;
   margin: 10px auto;
   border-radius: 10px;
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.637);
 }
 .prayer-header {
-  /* height: 10%; */
+  height: 10%;
   margin-bottom: 10px;
 }
 .prayer-header-top {
@@ -68,7 +64,7 @@
 }
 .prayer-main {
   /* min-height: 50px; */
-  /* height: 80%; */
+  height: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -80,11 +76,15 @@
   border-radius: unset;
 }
 .prayer-footer {
-  /* height: 5%; */
+  height: 5%;
   display: flex;
   justify-content: space-between;
   padding-bottom: 2px;
 }
+.prayer-footer-left{
+  height: 100%;
+}
+
 #prayer-heart-icon,
 #prayer-thumbs-up-icon,
 #prayer-comment-icon,
@@ -94,6 +94,7 @@
 .prayer-input-container{
   border-top: 1px solid rgba(154, 154, 154, 0.447);
   padding-top: 5px;
+  height: 5%;
   width: 100%;
   display: flex;
   justify-content: space-between;
