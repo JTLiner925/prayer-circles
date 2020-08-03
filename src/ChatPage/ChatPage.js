@@ -8,8 +8,11 @@ export default class ChatPage extends Component {
     return (
       <div className="ChatPage">
         <PrivateChatSelect />
+        <div className='chat-page-component'>
         <ChatWallComponent />
         <ChatWallComponent />
+        </div>
+        
       </div>
     );
   }
