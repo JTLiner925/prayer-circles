@@ -7,15 +7,12 @@ export default class DashHomePage extends Component {
   render() {
     return (
       <div className="DashHomePage">
-        {/* <div className='dash-container'> */}
-        <div className='dash-event-container'>
-        <EventSelectComponent />
-        </div>
+        <EventSelectComponent />       
         <div className='dash-prayer-container'>
         <PrayerWallComponent />
         </div>
      
-        {/* </div> */}
+        
       </div>
     );
   }

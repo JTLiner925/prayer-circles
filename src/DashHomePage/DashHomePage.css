@@ -3,13 +3,8 @@
   flex-direction: column;
   background-color: #ffffff;
   height: 65%;
-}
-/* .dash-container{
-  height: 100%
-} */
-.dash-event-container{
-height: 20%
+  overflow: auto;
 }
 .dash-prayer-container{
-  height: 80%;
+  height: 85%;
 }
