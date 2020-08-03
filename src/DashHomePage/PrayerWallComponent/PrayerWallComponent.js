@@ -9,6 +9,7 @@ import {
   faCommentAlt,
   faEllipsisH,
   faImages,
+  faCamera
 } from "@fortawesome/free-solid-svg-icons";
 import "./PrayerWallComponent.css";
 
@@ -45,6 +46,12 @@ export default class PrayerWallComponent extends Component {
             </div>
             <FontAwesomeIcon id="prayer-heart-icon" icon={faEllipsisH} />
           </div>
+          <div className='chat-input-container'>
+            <div className='chat-input-option'>
+            <FontAwesomeIcon id="chat-camera-icon" icon={faCamera} />
+            </div>
+            <input className='chat-input-text'type='text' placeholder='Message'></input>
+          </div>
         </div>
         <div className="prayer-wall-component-request">
           <div className="prayer-header">
@@ -72,7 +79,13 @@ export default class PrayerWallComponent extends Component {
               <FontAwesomeIcon id="prayer-thumbs-up-icon" icon={faThumbsUp} />
               <FontAwesomeIcon id="prayer-comment-icon" icon={faCommentAlt} />
             </div>
-            <FontAwesomeIcon id="prayer-heart-icon" icon={faEllipsisH} />
+            <FontAwesomeIcon id="prayer-dots-icon" icon={faEllipsisH} />
+          </div>
+          <div className='chat-input-container'>
+            <div className='chat-input-option'>
+            <FontAwesomeIcon id="chat-camera-icon" icon={faCamera} />
+            </div>
+            <input className='chat-input-text'type='text' placeholder='Message'></input>
           </div>
         </div>
         <div className="prayer-wall-component-request">
@@ -105,6 +118,12 @@ export default class PrayerWallComponent extends Component {
               <FontAwesomeIcon id="prayer-comment-icon" icon={faCommentAlt} />
             </div>
             <FontAwesomeIcon id="prayer-heart-icon" icon={faEllipsisH} />
+          </div>
+          <div className='chat-input-container'>
+            <div className='chat-input-option'>
+            <FontAwesomeIcon id="chat-camera-icon" icon={faCamera} />
+            </div>
+            <input className='chat-input-text'type='text' placeholder='Message'></input>
           </div>
         </div>
       </div>

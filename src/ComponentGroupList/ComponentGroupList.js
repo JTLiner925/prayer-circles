@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./GroupListComponent.css";
+import "./ComponentGroupList.css";
 
-export default class GroupListComponent extends Component {
+export default class ComponentGroupList extends Component {
   render() {
     return (
       <div className="Group-List-Slider">

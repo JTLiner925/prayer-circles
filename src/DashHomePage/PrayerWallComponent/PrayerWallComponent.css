@@ -77,9 +77,11 @@ border-radius: unset;
 .prayer-footer{
   display: flex;
   justify-content: space-between;
+  padding-bottom: 2px;
 }
 #prayer-heart-icon,
 #prayer-thumbs-up-icon,
-#prayer-comment-icon{
+#prayer-comment-icon,
+#chat-dots-icon{
   margin-right: 20px;
 }

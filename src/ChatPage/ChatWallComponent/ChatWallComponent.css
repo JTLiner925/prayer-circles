@@ -1,0 +1,77 @@
+
+.Chat-Wall-Component{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 15px 0 15px 0;
+}
+.chat-component-container {
+  display: block;
+  flex-direction: column;
+  padding: 10px;
+  width: 85%;
+  margin: 10px auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.637);
+  height: 100%;
+}
+.chat-header{
+  border-bottom: 1px solid rgba(154, 154, 154, 0.447);
+  padding-bottom: 5px;
+
+}
+.chat-header-top {
+  margin-top: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.chat-user {
+  width: 86%;
+}
+#chat-user-icon,
+#chat-user-icons {
+  width: 7%;
+}
+.chat-main{
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+.chat-footer{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+#chat-heart-icon,
+#chat-thumbs-up-icon,
+#chat-comment-icon,
+#chat-dots-icon{
+  margin-right: 20px;
+}
+.chat-input-container{
+border-top: 1px solid rgba(154, 154, 154, 0.447);
+padding-top: 5px;
+width: 100%;
+display: flex;
+justify-content: space-between;
+}
+.chat-input-option{
+  width: 10%;
+
+}
+#chat-camera-icon{
+  height: 90%;
+}
+.chat-input-text{
+  border-radius: 25px;
+width: 90%;
+}
+.chat-input-text:hover{
+  background-color: rgb(240, 240, 240);
+  transition: 500ms;
+}

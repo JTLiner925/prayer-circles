@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import Header from "../Header/Header";
-import GroupListComponent from '../GroupListComponent/GroupListComponent'
+import ComponentGroupList from '../ComponentGroupList/ComponentGroupList'
 import DashHomePage from "../DashHomePage/DashHomePage";
 import EventListPage from "../EventListPage/EventListPage";
 import ChatPage from "../ChatPage/ChatPage";
@@ -38,7 +38,7 @@ export default class Dashboard extends Component {
           "/add-event",
           "/add-prayer",
         ].map((path) => (
-          <Route key={path} path={path} component={GroupListComponent} />
+          <Route key={path} path={path} component={ComponentGroupList} />
         ))}
         <Route path="/dashboard" component={DashHomePage} />
         <Route path="/events" component={EventListPage} />

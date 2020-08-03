@@ -7,25 +7,31 @@ export default class PrivateChatSelect extends Component {
       <div className="Private-Chat-Select">
         <div className='chat-people'>
           <div className="chat-person">
-            <div>Pers1</div>
+            <div>P-1</div>
           </div>
           <div className="chat-person">
-            <div>Pers2</div>
+            <div>P-2</div>
           </div>
           <div className="chat-person">
-            <div>Pers3</div>
+            <div>P-3</div>
           </div>
           <div className="chat-person">
-            <div>Pers4</div>
+            <div>P-4</div>
           </div>
           <div className="chat-person">
-            <div>Pers5</div>
+            <div>P-5</div>
           </div>
           <div className="chat-person">
-            <div>Pers6</div>
+            <div>P-6</div>
           </div>
           <div className="chat-person">
-            <div>Pers7</div>
+            <div>P-7</div>
+          </div>
+          <div className="chat-person">
+            <div>P-8</div>
+          </div>
+          <div className="chat-person">
+            <div>P-9</div>
           </div>
         </div>
       </div>
