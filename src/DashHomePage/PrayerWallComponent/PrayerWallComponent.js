@@ -50,7 +50,7 @@ export default class PrayerWallComponent extends Component {
             <div className='chat-input-option'>
             <FontAwesomeIcon id="chat-camera-icon" icon={faCamera} />
             </div>
-            <input className='chat-input-text'type='text' placeholder='Message'></input>
+            <input className='prayer-input-text'type='text' placeholder='Message'></input>
           </div>
         </div>
         <div className="prayer-wall-component-request">
