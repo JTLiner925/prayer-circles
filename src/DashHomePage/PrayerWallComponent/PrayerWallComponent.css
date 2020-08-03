@@ -1,7 +1,7 @@
 .Prayer-Wall-Component {
   display: flex;
   flex-direction: column;
-  height: 85%;
+  height: 100%;
   overflow: auto;
   white-space: nowrap;
 }
@@ -11,7 +11,7 @@
   /* align-items: center; */
   /* align-content: center; */
   padding: 10px;
-  height: 100%;
+  /* height: 100%; */
   /* height: 100px; */
   width: 85%;
   margin: 10px auto;
@@ -72,7 +72,7 @@
 #prayer-images-icon {
   margin: 0;
   width: 100%;
-  /* height: auto; */
+  height: 100%;
   border-radius: unset;
 }
 .prayer-footer {

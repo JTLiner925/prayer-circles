@@ -4,3 +4,12 @@
   background-color: #ffffff;
   height: 65%;
 }
+.dash-container{
+  height: 100%
+}
+.dash-event-container{
+height: 20%
+}
+.dash-prayer-container{
+  height: 80%;
+}
