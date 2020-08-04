@@ -8,7 +8,6 @@ import {
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import "./HomePage.css";
-
 export default class HomePage extends Component {
   render() {
     return (

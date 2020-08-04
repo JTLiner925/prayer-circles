@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-prayercircles-dev-115826-authRole",
+            "UnauthRoleArn": "arn:aws:iam::430194536372:role/amplify-prayercircles-dev-115826-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::430194536372:role/amplify-prayercircles-dev-115826-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-prayercircles-dev-115826-deployment",
+            "UnauthRoleName": "amplify-prayercircles-dev-115826-unauthRole",
+            "StackName": "amplify-prayercircles-dev-115826",
+            "StackId": "arn:aws:cloudformation:us-east-2:430194536372:stack/amplify-prayercircles-dev-115826/b7531540-d673-11ea-9a48-0653eeca5e60",
+            "AmplifyAppId": "d3m9dt8v2pyv6h"
+        },
+        "categories": {
+            "auth": {
+                "prayercirclesc5e4df29": {}
+            }
+        }
+    }
+}

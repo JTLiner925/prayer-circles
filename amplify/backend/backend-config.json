@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"prayercirclesc5e4df29": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}
