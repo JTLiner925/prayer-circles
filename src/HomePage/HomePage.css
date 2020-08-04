@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: center;
   height: 50%;
+  letter-spacing: .15em;
   overflow: hidden;
 }
 
@@ -30,7 +31,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #03ffc4, #013af5);
+  background: linear-gradient(45deg, #01ffc4, #013af5a7);
   border-radius: 0 0 50% 50%/0 0 100% 100%;
   transform: scaleX(1.5);
 }
@@ -116,9 +117,12 @@
   font-size: 1.2em;
   color: #ffffff;
   padding: 1em;
+  font-weight: bold;
   border-radius: 30px;
   border-width: 0px;
   text-transform: uppercase;
+  letter-spacing: .15em;
+
 }
 .home-register:hover {
   background-color: #0232f2;
@@ -144,4 +148,6 @@
 .home-login {
   width: 100%;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: .15em;
 }

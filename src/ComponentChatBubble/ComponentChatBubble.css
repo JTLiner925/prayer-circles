@@ -1,29 +1,31 @@
 .Chat-Bubble-Component {
   display: flex;
   flex-direction: column;
-  
+
   /* min-height: 100px; */
   /* height: max-content; */
 }
-.chat-single-rt, .chat-single-lf{
+.chat-single-rt,
+.chat-single-lf {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
   width: 100%;
 }
-.chat-single-header-rt{
+.chat-single-header-rt {
   display: flex;
   justify-content: space-between;
   width: 80%;
   margin: 0 0 0 auto;
 }
-.chat-single-header-lf{
+.chat-single-header-lf {
   display: flex;
   justify-content: space-between;
   width: 80%;
   margin: 0 auto 0 0;
 }
-.chat-single-header-rt p, .chat-single-header-lf p{
+.chat-single-header-rt p,
+.chat-single-header-lf p {
   margin: 0;
 }
 .speech-bubble-rt {
@@ -38,7 +40,9 @@
   padding: 5px;
   position: relative;
   width: 80%;
-  background: linear-gradient(45deg, #8dfae1, #839df5);
+  color: #ffffff;
+  font-weight: bold;
+  background: linear-gradient(45deg, #03ffc4, #013af572);
 
   /* background-color: rgb(176, 247, 105); */
   margin: 2px 0 8px auto;
@@ -49,7 +53,7 @@
   border: 1px solid #a7a7a7;
   border-radius: 10px;
   text-align: left;
-  box-shadow:   -4px 4px 0  rgba(0, 0, 0, 0.2);
+  box-shadow: -4px 4px 0 rgba(0, 0, 0, 0.2);
   font-size: 1.2rem;
   line-height: 1.3;
   padding: 5px;
@@ -58,7 +62,8 @@
   margin: 0 auto 8px 0;
   background-color: rgb(230, 230, 230);
 }
-.speech-bubble-lf p, .speech-bubble-rt p {
+.speech-bubble-lf p,
+.speech-bubble-rt p {
   height: 95%;
   margin: 0;
   padding: 0;
@@ -72,17 +77,17 @@
 }
 .speech-bubble-ds__arrow-rt::before {
   border-left: 23px solid transparent;
-  border-top: 23px solid #8fa7f7;
+  border-top: 23px solid #1b4ff84d;
   bottom: 2px;
-  content: "";
+  content: '';
   position: absolute;
   right: 5px;
 }
 .speech-bubble-ds__arrow-rt::after {
   border-left: 21px solid transparent;
-  border-top: 21px solid #8fa7f7;
+  border-top: 21px solid #1b4ff84d;
   bottom: 4px;
-  content: "";
+  content: '';
   position: absolute;
   right: 6px;
 }
@@ -97,7 +102,7 @@
   border-right: 23px solid transparent;
   border-top: 23px solid rgb(230, 230, 230);
   bottom: 2px;
-  content: "";
+  content: '';
   position: absolute;
   left: 5px;
 }
@@ -105,10 +110,10 @@
   border-right: 21px solid transparent;
   border-top: 21px solid rgb(230, 230, 230);
   bottom: 4px;
-  content: "";
+  content: '';
   position: absolute;
   left: 6px;
 }
-#chat-heart-icon-rt{
+#chat-heart-icon-rt {
   margin: 0 0 0 auto;
 }

@@ -14,7 +14,7 @@ export default class HomePage extends Component {
       <div className="Home">
         <div className="home-hero">
           <div className='home-hero-content'>
-            <h1>Welcome to Prayer Circles</h1>
+            <Link to='/'><h1>Welcome to Prayer Circles</h1></Link>
             {/* <p>Stay connected even when you're apart from oneAnother</p>
             <p>You can post a prayer request or even encourage oneAnother</p> */}
           </div>

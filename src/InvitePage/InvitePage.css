@@ -101,7 +101,7 @@
   border-radius: 25px;
   width: 50%;
   margin: 0 auto;
-  background: linear-gradient(45deg, #8dfae1, #839df5);
+  background: linear-gradient(45deg, #03ffc4, #013af572);
 }
 .invite-form-submit:hover{
   background: linear-gradient(45deg, #51fcd4, #5177f7);

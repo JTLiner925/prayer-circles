@@ -12,6 +12,7 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+  letter-spacing: .15em;
   height: 30%;
   overflow: hidden;
 }
@@ -30,7 +31,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #03ffc4, #013af5);
+  background: linear-gradient(45deg, #01ffc4, #013af5a7);
   border-radius: 0 0 50% 50%/0 0 100% 100%;
   transform: scaleX(1.5);
 }
@@ -125,7 +126,7 @@
 .register-password-label {
   height: 11%;
   background-color: #ffffff;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 
 }
 .register-password {
@@ -140,21 +141,24 @@
   border: none;
   border-bottom: 1px solid #5b5b5b;
 }
-.register-button button{
+.register-button{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
-  background-color: #3645e9;
+  background: linear-gradient(45deg, #01ffc4, #013af5a7);
   font-size: 1.2em;
   color: #ffffff;
+  font-weight: bold;
   padding: 1em;
+  letter-spacing: .15em;
+
   border-radius: 30px;
   border-width: 0px;
   text-transform: uppercase;
 }
-.register-button button:hover {
-  background-color: #0232f2;
+.register-button:hover {
+  background: linear-gradient(45deg, #51fcd4, #1247f5);
   transition: 500ms;
 }
