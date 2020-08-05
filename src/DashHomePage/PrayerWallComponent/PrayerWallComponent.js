@@ -8,7 +8,6 @@ import {
   faThumbsUp,
   faCommentAlt,
   faEllipsisH,
-  faImages,
   faCamera
 } from "@fortawesome/free-solid-svg-icons";
 import "./PrayerWallComponent.css";

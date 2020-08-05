@@ -13,6 +13,7 @@
   width: 100%;
   padding: 5%;
   padding-bottom: 0;
+  padding-top: 0;
   margin: 10px auto;
   /* border-radius: 10px; */
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.637);
@@ -20,17 +21,35 @@
 .chat-header {
   border-bottom: 1px solid rgba(154, 154, 154, 0.447);
   padding-bottom: 5px;
+  padding-top: 5px;
 }
 .chat-header-top {
   margin-top: 0;
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
+}
+.chat-header-top div {
 }
 .chat-user {
   width: 86%;
 }
-#chat-user-icon,
+#chat-user-icon {
+  display: flex;
+  flex-direction: column;
+  width: 25px;
+  border-radius: 50%;
+  height: 25px;
+}
+#chat-users-icon {
+  display: flex;
+  flex-direction: column;
+  width: 25px;
+  border-radius: 5px;
+  height: 25px;
+}
+.chat-header-top div,
 #chat-user-icons {
   width: 7%;
 }
