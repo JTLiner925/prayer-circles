@@ -124,7 +124,8 @@
   height: 90%;
 }
 .prayer-input-text {
- 
+  height: 20px;
+
   border-radius: 25px;
   width: 90%;
 }

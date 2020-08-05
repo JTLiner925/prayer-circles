@@ -94,6 +94,7 @@
   border: 1px solid rgba(0, 0, 0, 0.276);
   padding-left: 5px;
   padding-right: 5px;
+  height: 20px;
   border-radius: 25px;
   width: 90%;
 }
