@@ -7,23 +7,129 @@
 .add-group-form {
   display: flex;
   flex-direction: column;
-  align-content: center;
-  align-items: center; 
-  height: 100%;
-  overflow: auto;
+  justify-content: space-around;
+  background-color: #ffffff;
+  height: 80%;
+  justify-content: center;
 }
-.add-group-request {
+.add-group-avatar {
+  background-color: #ffffff;
+  height: 35%;
+  margin-bottom: 20px;
+}
+.add-group-fontawesome {
+  background-color: #ffffff;
+  margin-top: 20px;
+}
+#user-icon {
   display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid #5b5b5b;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #c7c7c7;
+  color: #3e3e3e;
+}
+.add-group-phone-location-div {
+  display: flex;
+  height: 11%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.add-group-phone-label {
+  width: 50%;
+  background-color: #ffffff;
+}
+.add-group-phone {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 60%;
+  align-items: center;
+  height: 95%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid #5b5b5b;
+}
+.add-group-location-label {
+  width: 50%;
+  background-color: #ffffff;
+}
+.add-group-location {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 60%;
+  align-items: center;
+  height: 95%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid #5b5b5b;
+}
+.add-group-name-label,
+.add-group-pitch-textarea-label,
+.add-group-time-date-label {
+  height: 11%;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+.add-group-name-label{
+  margin-top: 20px;
+}
+.add-group-name,
+.add-group-pitch-textarea,
+.add-group-time-date {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 80%;
+  align-items: center;
+  height: 95%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid #5b5b5b;
+}
+.add-group-more-info-label {
+  height: 11%;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+.add-group-pitch-textarea-label {
+  margin-bottom: 0;
+}
+.add-group-more-info {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 80%;
   align-items: center;
   align-content: center;
-  
-  padding: 10px;
-  height: 100%;
-  width: 80%;
-  margin: 10px auto;
-  margin-top: 10px;
-  text-align: center;
-  justify-content: center;
-  background-color: rgb(223, 223, 223);
-  border-radius: 10px;
+  height: 95%;
+  margin: 0 auto;
+  border: none;
+  border-bottom: 1px solid #5b5b5b;
+}
+.add-group-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* width: 60%; */
+  margin: 0 auto;
+  background: linear-gradient(45deg, #01ffc4, #013af5a7);
+  font-size: 1.2em;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 1em;
+  letter-spacing: 0.15em;
+
+  border-radius: 30px;
+  border-width: 0px;
+  text-transform: uppercase;
+}
+.add-group-button:hover {
+  background: linear-gradient(45deg, #51fcd4, #1247f5);
+  transition: 500ms;
 }
