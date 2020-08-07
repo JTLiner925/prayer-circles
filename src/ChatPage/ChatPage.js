@@ -10,7 +10,6 @@ export default class ChatPage extends Component {
         <PrivateChatSelect />
         <div className='chat-page-component'>
         <ChatWallComponent />
-        <ChatWallComponent />
         </div>
         
       </div>

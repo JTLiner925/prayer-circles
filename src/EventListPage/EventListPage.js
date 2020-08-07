@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
+import guy1 from '../Images/guy1.jpg';
+import friends1 from '../Images/friends1.jpg';
 import './EventListPage.css'
 
 export default class EventListPage extends Component {
@@ -13,7 +15,24 @@ export default class EventListPage extends Component {
         </div>
         <div className="event-list-form">
           <div className="event-list-request">
-            <div className='event-list-text'>Event #1</div>
+            <div className='event-time-date'>
+              <p className='event-date'>Aug<strong> 11 </strong>Tue</p>
+              <p className='event-time'><strong>4:00 </strong>AM</p>
+            </div>
+            <div className='event-list-text'>
+            <div className='event-header-top'>
+              <div>
+                <img id='event-user-icon' src={guy1} alt='guy' />
+              </div>
+              <div className='event-user'>
+                <p>Host</p>
+              <p><strong>JT Liner</strong></p>
+              </div>
+              <div>
+                <img id='event-users-icon' src={friends1} alt='Friends' />
+              </div>
+            </div>
+            </div>
           </div>
           <div className="event-list-request">
             <div className='event-list-text'>Event #2</div>

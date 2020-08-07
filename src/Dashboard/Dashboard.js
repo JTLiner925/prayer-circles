@@ -15,7 +15,11 @@ import Footer from "../Footer/Footer";
 import "./Dashboard.css";
 
 export default class Dashboard extends Component {
-
+  static defaultProps = {
+    userId: "",
+    groupId: "",
+    eventId: "",
+  };
   state={
     passage: "",
     users: [],
@@ -155,7 +159,12 @@ handleBiblePassage = (eventId) => {
         });
     }
   }; 
-
+  resetError = () => {
+    //reset error message when I leave page
+    this.setState({
+      eventMessage: "",
+    });
+  };
   createGroup = (formData) => {
     //add group to api
     fetch(`${config.HOST}/api/groups/creategroup`, {
@@ -182,6 +191,53 @@ handleBiblePassage = (eventId) => {
         this.setState({ createMessage: error.message });
       });
   };
+  pushNeededItems = (id, neededItems) => {
+    fetch(`${config.HOST}/api/needed/add-item`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      },
+      method: "POST",
+      body: JSON.stringify({ id, neededItems }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((resData) => {
+        this.props.history.push("/dashboard");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  createEvent = (formData) => {
+    //add event for group
+    fetch(`${config.HOST}/api/events/createevent`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      },
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((data) => {
+            return Promise.reject(new Error(data.error.message));
+          });
+        } else {
+          return res.json();
+        }
+      })
+      .then((resData) => {
+        this.pushNeededItems(resData.eventId, formData.needed_items);
+      })
+      .catch((error) => {
+        this.setState({ eventMessage: error.message });
+      });
+  };
+
   render() {
     return (
       <main className="Dashboard">
@@ -227,6 +283,21 @@ handleBiblePassage = (eventId) => {
           }}
         />
         <Route path="/add-event" component={AddEventPage} />
+        <Route
+          path="/createevent"
+          render={() => {
+            return (
+              <AddEventPage
+                resetError={this.resetError}
+                eventMessage={this.state.eventMessage}
+                groups={this.state.groups}
+                userId={this.state.userId}
+                onCreateEvent={this.createEvent}
+                // onHandleHam={this.HamNavPage}
+              ></AddEventPage>
+            );
+          }}
+        />
         <Route path="/add-prayer" component={AddPrayerPage} />
         <Route path="/settings" component={SettingsPage} />
         {[

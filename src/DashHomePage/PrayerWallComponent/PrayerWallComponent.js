@@ -13,8 +13,34 @@ import {
 import "./PrayerWallComponent.css";
 
 export default class PrayerWallComponent extends Component {
+  state={
+    showAddPhoto: false,
+  }
+  toggleAddPhoto = () => {
+    this.setState({
+      showAddPhoto: !this.state.showAddPhoto,
+    });
+  };
+
+  handleAddPhoto = (e) => {
+    e.preventDefault();
+    console.log(e.target.value)
+  }
   render() {
     return (
+      <>
+      {this.state.showAddPhoto ? <div className='add-photo-background'>
+        <div className='add-photo-model'>
+          <p onClick={this.toggleAddPhoto}>X</p>
+          <form>
+            <div id='prayer-drop-area'>
+            <input id='handle-add-photo'type='file' onChange={this.handleAddPhoto} ></input>
+            </div>
+            
+          </form>
+        </div>
+      </div>: ''}
+
       <div className="Prayer-Wall-Component">
         <div className="prayer-wall-component-request">
           <div className="prayer-header">
@@ -47,7 +73,7 @@ export default class PrayerWallComponent extends Component {
           </div>
           <div className='prayer-input-container'>
             <div className='prayer-input-option'>
-            <FontAwesomeIcon id="prayer-camera-icon" icon={faCamera} />
+            <FontAwesomeIcon id="prayer-camera-icon" onClick={this.toggleAddPhoto} icon={faCamera} />
             </div>
             <input className='prayer-input-text'type='text' placeholder='Message'></input>
           </div>
@@ -83,7 +109,7 @@ export default class PrayerWallComponent extends Component {
           </div>
           <div className='prayer-input-container'>
             <div className='prayer-input-option'>
-            <FontAwesomeIcon id="prayer-camera-icon" icon={faCamera} />
+            <FontAwesomeIcon id="prayer-camera-icon" onClick={this.toggleAddPhoto} icon={faCamera} />
             </div>
             <input className='prayer-input-text'type='text' placeholder='Message'></input>
           </div>
@@ -119,13 +145,14 @@ export default class PrayerWallComponent extends Component {
           </div>
           <div className='prayer-input-container'>
             <div className='prayer-input-option'>
-            <FontAwesomeIcon id="prayer-camera-icon" icon={faCamera} />
+            <FontAwesomeIcon id="prayer-camera-icon" onClick={this.toggleAddPhoto} icon={faCamera} />
             </div>
             <input className='prayer-input-text'type='text' placeholder='Message'></input>
           </div>
         </div>
 
       </div>
+      </>
     );
   }
 }

@@ -7,7 +7,18 @@ import './AddGroupPage.css';
 export default class AddGroupPage extends Component {
   state = {
     group: '',
+    showGroupPhoto: false,
   };
+  toggleGroupPhoto = () => {
+    this.setState({
+      showGroupPhoto: !this.state.showGroupPhoto,
+    });
+  };
+
+  handleGroupPhoto = (e) => {
+    e.preventDefault();
+    console.log(e.target.value)
+  }
   submitHandler = (e) => {
     e.preventDefault();
     //create group from dashboard
@@ -35,9 +46,22 @@ export default class AddGroupPage extends Component {
   };
   render() {
     return (
+      <>
+      {this.state.showGroupPhoto ? <div className='group-photo-background'>
+          <div className='group-photo-model'>
+            <p onClick={this.toggleGroupPhoto}>X</p>
+            <form>
+              <div id='group-drop-area'>
+              <input id='handle-group-photo'type='file' onChange={this.handleGroupPhoto} ></input>
+              </div>
+              
+            </form>
+          </div>
+        </div>: ''}
+
       <div className='AddGroupPage'>
         <form className='add-group-form' onSubmit={this.submitHandler}>
-          <div className='add-group-fontawesome'>
+          <div className='add-group-fontawesome' onClick={this.toggleGroupPhoto}>
             <FontAwesomeIcon
               id='user-icon'
               className='add-group-avatar'
@@ -113,6 +137,7 @@ export default class AddGroupPage extends Component {
           </button>
         </form>
       </div>
+      </>
     );
   }
 }

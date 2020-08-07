@@ -4,7 +4,35 @@
   background-color: #ffffff;
   height: 100%;
 }
-
+.user-photo-background {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: #00000075;
+  z-index: 2;
+}
+.user-photo-model {
+  position: absolute;
+  height: 70%;
+  width: 85%;
+  background: white;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background-color: white;
+  border-radius: 7px;
+  z-index: 3;
+}
+#drop-area {
+  width: 80%;
+  height: 100px;
+  border: 2px dashed #013af5a7;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 7px;
+}
+#handle-user-photo {
+}
 .register-header {
   position: relative;
   display: flex;
@@ -12,7 +40,7 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  letter-spacing: .15em;
+  letter-spacing: 0.15em;
   height: 30%;
   overflow: hidden;
 }
@@ -25,7 +53,7 @@
   text-align: center;
 }
 .register-header:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -74,7 +102,6 @@
   height: 11%;
   margin-top: 20px;
   margin-bottom: 20px;
-
 }
 .register-first-label {
   width: 50%;
@@ -110,7 +137,6 @@
   height: 11%;
   background-color: #ffffff;
   margin-bottom: 20px;
-
 }
 .register-user {
   display: flex;
@@ -127,7 +153,6 @@
   height: 11%;
   background-color: #ffffff;
   margin-bottom: 20px;
-
 }
 .register-password {
   display: flex;
@@ -141,7 +166,7 @@
   border: none;
   border-bottom: 1px solid #5b5b5b;
 }
-.register-button{
+.register-button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -152,7 +177,7 @@
   color: #ffffff;
   font-weight: bold;
   padding: 1em;
-  letter-spacing: .15em;
+  letter-spacing: 0.15em;
 
   border-radius: 30px;
   border-width: 0px;
