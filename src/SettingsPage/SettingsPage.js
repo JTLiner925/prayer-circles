@@ -97,7 +97,7 @@ export default class SettingsPage extends Component {
               </label>
             </div>
 
-            <label htmlFor='email-input' className='settings-user-label'>
+            {/* <label htmlFor='email-input' className='settings-user-label'>
               <input
                 className='settings-user'
                 placeholder='Email'
@@ -132,7 +132,7 @@ export default class SettingsPage extends Component {
                 onChange={this.changeHandler}
                 required
               ></input>
-            </label>
+            </label> */}
             <button type='submit' className='settings-button'>
               Update Account
             </button>

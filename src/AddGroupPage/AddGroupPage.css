@@ -3,6 +3,9 @@
   flex-direction: column;
   background-color: #ffffff;
   height: 65%;
+  margin: 15px auto;
+  width: 100%;
+  max-width: 1000px;
 }
 .add-group-form {
   display: flex;

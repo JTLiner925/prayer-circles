@@ -3,6 +3,9 @@
   flex-direction: column;
   background-color: #ffffff;
   height: 65%;
+  margin: 15px auto;
+  width: 100%;
+  max-width: 1000px;
 }
 .invite-icons{
   display: flex;
@@ -75,6 +78,9 @@
   justify-content: space-between;
   height: 80%;
 }
+.invite-form label{
+  display: flex;
+}
 .invite-bubble-text {
   margin-top:10px;
   margin-bottom: 10px;
@@ -86,12 +92,12 @@
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 10px;
-  padding-right: 50px;
+  /* padding-right: 50px; */
   
 }
 .invite-add-more{
   border: 1px solid rgba(154, 154, 154, 0.447);
-  margin-left: -40px;
+  /* margin-left: -40px; */
   padding: 10px;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;

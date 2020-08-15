@@ -4,6 +4,9 @@
   background-color: #ffffff;
   height: 65%;
   overflow: auto;
+  margin: 15px auto;
+  width: 100%;
+  max-width: 1000px;
 }
 .chat-page-component{
   height: 85%;

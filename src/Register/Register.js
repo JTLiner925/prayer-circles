@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import config from '../config';
 import './Register.css';
 
 export default class Register extends Component {
@@ -11,6 +12,7 @@ export default class Register extends Component {
     user_password: '',
     password_confirmation: '',
     showUserPhoto: false,
+    profilePic: {},
   };
   submitHandler = (e) => {
     //check passwords before submitting
@@ -30,30 +32,77 @@ export default class Register extends Component {
       showUserPhoto: !this.state.showUserPhoto,
     });
   };
+  dropHandler = (e) => {
+    e.preventDefault();
+    if (e.dataTransfer.items) {
+      for (let i = 0; i < e.dataTransfer.items.length; i++) {
+        if (e.dataTransfer.items[i].kind === 'file') {
+          let file = e.dataTransfer.items[i].getAsFile();
+          this.setState({
+            profilePic: file,
+          });
+        }
+      }
+    }
+  };
 
   handleUserPhoto = (e) => {
-    e.preventDefault();
-    console.log(e.target.value)
-  }
+    console.log(e);
+    this.setState({
+      profilePic: e,
+    })
+  };
   changeHandler = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
   render() {
+    console.log(this.state.profilePic);
     return (
       <>
-        {this.state.showUserPhoto ? <div className='user-photo-background'>
-          <div className='user-photo-model'>
-            <p onClick={this.toggleUserPhoto}>X</p>
-            <form>
-              <div id='drop-area'>
-              <input id='handle-user-photo'type='file' onChange={this.handleUserPhoto} ></input>
-              </div>
-              
-            </form>
+        {this.state.showUserPhoto ? (
+          <div className='user-photo-background'>
+            <div className='user-photo-model'>
+              <p onClick={this.toggleUserPhoto}>X</p>
+              <form>
+                <div
+                  name='drop-area'
+                  id='drop-area'
+                  onDragEnter={(e) => {
+                    e.preventDefault();
+                    return false;
+                  }}
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                  }}
+                  onDragLeave={(e) => {
+                    e.preventDefault();
+                  }}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    this.dropHandler(e);
+                  }}
+                >
+                  <input
+                    id='handle-user-photo'
+                    type='file'
+                    onChange={(e) => {e.preventDefault(); this.handleUserPhoto(document.getElementById('handle-user-photo')['files'][0])}}
+                    style={{ display: 'none' }}
+                  ></input>
+                  <p>
+                    Drag and Drop, or{' '}
+                    <span style={{ color: 'blue' }} onClick={() => {
+                      document.getElementById('handle-user-photo').click()
+                    }}>Browse</span> your files
+                  </p>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>: ''}
+        ) : (
+          ''
+        )}
 
         <div className='Register'>
           <div className='register-header'>

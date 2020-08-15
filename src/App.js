@@ -21,11 +21,52 @@ class App extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
+        return res.json()
+      })
+      .then((resData) => {
+        console.log(resData)
+        let userPic = `${resData.user.id}_${formData.profilePic.name}`
+        
+        this.uploadFile(formData.profilePic, userPic)
         this.logIn(formData);
       })
       .catch((error) => {
         this.setState({ error });
       });
+  };
+  uploadFile = (file, newFileName) => {
+    let url;
+    fetch(`${config.HOST}/api/getUrl`, {
+      
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({name: newFileName, type: file.type}),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((resData) => {
+        url = resData.url
+        let reader = new FileReader()
+        reader.addEventListener('loadend', (event) => {
+          console.log(reader.result)
+          fetch(url, {
+      
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Credentials': '*',
+            },
+            method: 'PUT',
+            body: new Blob([reader.result], {type: file.type})
+           
+          })
+        })
+        reader.readAsArrayBuffer(file);
+      })
+      .catch();
+   
   };
   resetError = () => {
     this.setState({

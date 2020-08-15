@@ -1,42 +1,46 @@
-import React, { Component } from 'react'
-import config from '../config'
-import './AddEventPage.css'
+import React, { Component } from 'react';
+import config from '../config';
+import friends1 from '../Images/friends1.jpg';
+import './AddEventPage.css';
 
 export default class AddEventPage extends Component {
   state = {
-    event: "",
-    group: "",
-    passage: "",
+    event: '',
+    group: '',
+    passage: '',
     needed_items: [],
-    item_value: "",
+    item_value: '',
     question: [],
-    question_value: "",
+    question_value: '',
+    selectedGroup: '',
   };
+
   setEvent = (event, group) => {
     this.setState({
       event,
-      group,
-      error: "",
+
+      error: '',
     });
   };
   componentDidMount() {
     fetch(`${config.HOST}/api/events`, {
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${window.localStorage.getItem('token')}`,
       },
-      method: "GET",
+      method: 'GET',
     })
       .then((res) => {
+        console.log(res);
         if (!res.ok) {
-          throw new Error("Something went wrong, please try again later.");
+          throw new Error('Something went wrong, please try again later.');
         }
         return res.json();
       })
-      .then((event, group) => {
+      .then((event) => {
         this.setState({
           event: event,
-          group: group,
+       
         });
         this.setEvent(event);
       })
@@ -49,18 +53,18 @@ export default class AddEventPage extends Component {
   submitHandler = (e) => {
     // this.props.resetError();
     this.setState({
-      error: "",
+      error: '',
     });
     e.preventDefault();
 
     let checkVerse = this.state.bible_passage;
 
     let url = new URL(`${config.API_ENDPOINT}text/`);
-    url.searchParams.set("q", checkVerse);
-    url.searchParams.set("include-passage-reference", true);
+    url.searchParams.set('q', checkVerse);
+    url.searchParams.set('include-passage-reference', true);
 
     const options = {
-      method: "GET",
+      method: 'GET',
 
       headers: {
         Authorization: `Token ${config.API_KEY}`,
@@ -78,13 +82,13 @@ export default class AddEventPage extends Component {
             'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
           );
         }
-        if (
-          //select group before submitting
-          this.state.group_name === "Select Group" ||
-          this.state.group_name === undefined
-        ) {
-          throw new Error("Must Select Group");
-        }
+        // if (
+        //   //select group before submitting
+        //   this.state.group_name === 'Select Group' ||
+        //   this.state.group_name === undefined
+        // ) {
+        //   throw new Error('Must Select Group');
+        // }
         this.props.onCreateEvent(this.state);
       })
       .catch((error) => {
@@ -95,12 +99,12 @@ export default class AddEventPage extends Component {
   };
   changeHandler = (e) => {
     // this.props.resetError();
-    if (e.target.name === "group_name") {
+    if (e.target.name === 'group_name') {
       let element = document.querySelector(
-        `#${e.target.value.split(" ").join("_")}`
+        `#${e.target.value.split(' ').join('_')}`
       );
       let groupid;
-      groupid = element.getAttribute("groupid");
+      groupid = element.getAttribute('groupid');
 
       this.setState({
         [e.target.name]: e.target.value,
@@ -126,7 +130,7 @@ export default class AddEventPage extends Component {
 
       return {
         needed_items,
-        item_value: "",
+        item_value: '',
       };
     });
   };
@@ -141,7 +145,7 @@ export default class AddEventPage extends Component {
 
       return {
         question,
-        question_value: "",
+        question_value: '',
       };
     });
   };
@@ -150,158 +154,191 @@ export default class AddEventPage extends Component {
       question: this.state.question.filter((question, j) => i !== j),
     });
   };
+  static getDerivedStateFromProps(props){
+    console.log(props)
+    return {groupid : props.groupId}
+  }
   render() {
+    let BackgroundImage = {
+      backgroundImage: `url(${friends1})`,
+    };
+    const { events = [], userId } = this.props;
+    const { groups = [], groupId } = this.props;
+
+    console.log(this.state);
+    
     return (
-      <div className="AddEventPage">
+      <div className='AddEventPage'>
         {/* <div className="add-event-event-banner">
           <Link className='add-event-event' to='/events'>View Events</Link>
           <h2>Or</h2>
           <Link className='add-event-event' to='/add-event'>Add Event</Link>
         </div> */}
         <form className='add-event-form' onSubmit={this.submitHandler}>
-        <h2>Create New Event</h2>
-        <label htmlFor="announcements" className="add-event-announcements-label">
-                  
-                  <textarea
-                  placeholder='Announcements'
-                    id="announcements"
-                    name="announcements"
-                    className='add-event-announcements'
-                    onChange={this.changeHandler}
-                  ></textarea>
-                </label>
-                <label htmlFor="needed-items" className='add-event-needed-items-label'>
-                  
-                  <input
-                  placeholder='Needed Items'
-                    id="needed-items"
-                    className='add-event-needed-items'
-                    name="needed_items"
-                    type='text'
-                    value={this.state.item_value}
-                    onChange={this.onChangeItemValue}
-                    ></input>
-                    <button
-                  id="add-button"
-                  type="button"
-                  onClick={this.addItemHandler}
-                  disabled={!this.state.item_value}
-                >
-                  +
-                </button>
-                </label>
-                <ul className=" list-items">
-                {(this.state.needed_items || []).map((item, index) => {
-                  return (
-                    <div key={index} className="list-div" name="needed_items">
-                      <button
-                        id="delete-button"
-                        onClick={() => this.removeItemHandler(index)}
-                      >
-                        X
-                      </button>
-                      <li name="needed_items">{item}</li>
-                    </div>
-                  );
-                })}
-              </ul>
-            <div className='add-event-date-time-div'>
-              <label
-                htmlFor='date-input'
-                className='add-event-date-label'
-              >
-                <input
-                  id='date-input'
-                  name='event_date'
-                  type='date'
-                  className='add-event-date'
-                  placeholder='Date'
-                  onChange={this.changeHandler}
-                  required
-                ></input>
-              </label>
-              <label htmlFor='time-input' className='add-event-time-label'>
-                <input
-                  className='add-event-time'
-                  placeholder='Time'
-                  type='time'
-                  id='time-input'
-                  name='event_time'
-                  onChange={this.changeHandler}
-                ></input>
-              </label>
-            </div>
+          <h2>Create New Event</h2>
+          {groups.map((group) => {
+            console.log(group);
+            let selectedGroup = this.props.groupId;
+            console.log(selectedGroup);
+            if (selectedGroup && selectedGroup == group.id) {
 
-            <label htmlFor='lesson-title-input' className='add-event-lesson-label'>
-              <input
-                className='add-event-lesson'
-                placeholder='Lesson Title'
-                id='lesson-title'
-                name='lesson_title'
-                onChange={this.changeHandler}
-                required
-              ></input>
-            </label>
-            <label htmlFor='bible-passage-input' className='add-event-bible-passage-label'>
-              <input
-                className='add-event-bible-passage'
-                placeholder='Bible Passage'
-                id='bible-passage'
-                name='bible_passage'
-                onChange={this.changeHandler}
-                required
-              ></input>
-            </label>
-            <label
-              htmlFor='question'
-              className='add-event-question-label'
-            >
-              <input
-                className='add-event-question'
-                placeholder='Questions for passage'
-                id='question'
-                name='question'
-                value={this.state.question_value}
-                onChange={this.onChangeQuestionValue}
-              ></input>
-              <button
-                    id="add-button"
-                    type="button"
-                    onClick={this.addQuestionHandler}
-                    disabled={!this.state.question_value}
+              return (
+                <div key={group.id} className='add-event-header-top'>
+                  <div
+                    style={BackgroundImage}
+                    className='event-group-icon'
+                    name='group_name'
                   >
-                    +
+                    <div groupid={group.id}>{group.group_name}</div>
+                  </div>
+                </div>
+              );
+            }
+          })}
+          <label
+            htmlFor='announcements'
+            className='add-event-announcements-label'
+          >
+            <textarea
+              placeholder='Announcements'
+              id='announcements'
+              name='announcements'
+              className='add-event-announcements'
+              onChange={this.changeHandler}
+            ></textarea>
+          </label>
+          <label
+            htmlFor='needed-items'
+            className='add-event-needed-items-label'
+          >
+            <input
+              placeholder='Needed Items'
+              id='needed-items'
+              className='add-event-needed-items'
+              name='needed_items'
+              type='text'
+              value={this.state.item_value}
+              onChange={this.onChangeItemValue}
+            ></input>
+            <button
+              id='add-button'
+              type='button'
+              onClick={this.addItemHandler}
+              disabled={!this.state.item_value}
+            >
+              +
+            </button>
+          </label>
+          <ul className=' list-items'>
+            {(this.state.needed_items || []).map((item, index) => {
+              return (
+                <div key={index} className='list-div' name='needed_items'>
+                  <button
+                    id='delete-button'
+                    onClick={() => this.removeItemHandler(index)}
+                  >
+                    X
                   </button>
+                  <li name='needed_items'>{item}</li>
+                </div>
+              );
+            })}
+          </ul>
+          <div className='add-event-date-time-div'>
+            <label htmlFor='date-input' className='add-event-date-label'>
+              <input
+                id='date-input'
+                name='event_date'
+                type='date'
+                className='add-event-date'
+                placeholder='Date'
+                onChange={this.changeHandler}
+                required
+              ></input>
             </label>
-            <ul className="list-questions">
-                  {(this.state.question || []).map((question, index) => {
-                    return (
-                      <div key={index} className="list-div">
-                        <button
-                          id="delete-button"
-                          onClick={() => this.removeQuestionHandler(index)}
-                        >
-                          X
-                        </button>
-                        <li name="question">{question}</li>
-                      </div>
-                    );
-                  })}
-                </ul>
-              
-            
-       
-          <div className="create-button">
-            <p className="error-alert">{this.props.eventMessage}</p>
-            <p className="error-alert">{this.state.error}</p>
+            <label htmlFor='time-input' className='add-event-time-label'>
+              <input
+                className='add-event-time'
+                placeholder='Time'
+                type='time'
+                id='time-input'
+                name='event_time'
+                onChange={this.changeHandler}
+              ></input>
+            </label>
+          </div>
+
+          <label
+            htmlFor='lesson-title-input'
+            className='add-event-lesson-label'
+          >
+            <input
+              className='add-event-lesson'
+              placeholder='Lesson Title'
+              id='lesson-title'
+              name='lesson_title'
+              onChange={this.changeHandler}
+              required
+            ></input>
+          </label>
+          <label
+            htmlFor='bible-passage-input'
+            className='add-event-bible-passage-label'
+          >
+            <input
+              className='add-event-bible-passage'
+              placeholder='Bible Passage'
+              id='bible-passage'
+              name='bible_passage'
+              onChange={this.changeHandler}
+              required
+            ></input>
+          </label>
+          <label htmlFor='question' className='add-event-question-label'>
+            <input
+              className='add-event-question'
+              placeholder='Questions for passage'
+              id='question'
+              name='question'
+              value={this.state.question_value}
+              onChange={this.onChangeQuestionValue}
+            ></input>
+            <button
+              id='add-button'
+              type='button'
+              onClick={this.addQuestionHandler}
+              disabled={!this.state.question_value}
+            >
+              +
+            </button>
+          </label>
+          <ul className='list-questions'>
+            {(this.state.question || []).map((question, index) => {
+              return (
+                <div key={index} className='list-div'>
+                  <button
+                    id='delete-button'
+                    onClick={() => this.removeQuestionHandler(index)}
+                  >
+                    X
+                  </button>
+                  <li name='question'>{question}</li>
+                </div>
+              );
+            })}
+          </ul>
+
+          <div className='create-button'>
+            <p className='error-alert'>{this.props.eventMessage}</p>
+            <p className='error-alert'>{this.state.error}</p>
             {/* <button type="submit" className="create-event">
               Create Event
             </button> */}
             <button type='submit' className='add-event-button'>
               Add Event
             </button>
-            </div>
-          </form>
+          </div>
+        </form>
       </div>
     );
   }

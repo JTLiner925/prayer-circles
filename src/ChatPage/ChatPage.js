@@ -4,6 +4,7 @@ import ChatWallComponent from './ChatWallComponent/ChatWallComponent'
 import './ChatPage.css'
 
 export default class ChatPage extends Component {
+  
   render() {
     return (
       <div className="ChatPage">

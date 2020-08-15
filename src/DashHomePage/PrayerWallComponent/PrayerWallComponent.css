@@ -4,7 +4,9 @@
 .Prayer-Wall-Component {
   display: flex;
   flex-direction: column;
-  margin: 15px 0 15px 0;
+  margin: 15px auto;
+  width: 100%;
+  max-width: 1000px;
   /* height: 65%; */
   /* overflow: auto; */
   /* white-space: nowrap; */
