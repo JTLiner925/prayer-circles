@@ -47,7 +47,6 @@ export default class Register extends Component {
   };
 
   handleUserPhoto = (e) => {
-    console.log(e);
     this.setState({
       profilePic: e,
     })
@@ -58,7 +57,6 @@ export default class Register extends Component {
     });
   };
   render() {
-    console.log(this.state.profilePic);
     return (
       <>
         {this.state.showUserPhoto ? (

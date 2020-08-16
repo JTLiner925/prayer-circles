@@ -11,7 +11,7 @@ export default class EventListPage extends Component {
     let id;
     let y;
     for (let [key, value] of x) {
-      if (key === "groupId") {
+      if (key === 'groupId') {
         y = `?groupId=${value}`;
         id = value;
       }
@@ -19,10 +19,9 @@ export default class EventListPage extends Component {
 
     const { eventId, events = [], groups = [], groupId, needed } = this.props;
     const groupEvents = []
-    .concat(groups)
-    .sort((a, b) => (a.id > b.id ? 1 : -1));
-  const sortEvents = [].concat(events).sort((a, b) => (a.id > b.id ? 1 : -1));
-    console.log(sortEvents);
+      .concat(groups)
+      .sort((a, b) => (a.id > b.id ? 1 : -1));
+    const sortEvents = [].concat(events).sort((a, b) => (a.id > b.id ? 1 : -1));
     return (
       <div className='EventListPage'>
         <div className='event-list-event-banner'>
@@ -36,53 +35,51 @@ export default class EventListPage extends Component {
         </div>
         <div className='event-list-form'>
           {sortEvents.map((event) => {
-              // let idee = event.id;
-              console.log(event)
-                if (event.group_event && event.group_event == groupId)
-                  return (
-                    <div key={event.id}className='event-list-request'>
-                      <div className='event-time-date'>
-                        <p className='event-date'>
-                         {event.event_date}
-                        </p>
-                        <p className='event-time'>
-                          {event.event_time}
-                        </p>
-                      </div>
-                      <div className='event-list-text'>
-                        <div className='event-header-top'>
-                          <div>
-                            <img id='event-user-icon' src={guy1} alt='guy' />
-                          </div>
-                          <div className='event-user'>
-                            <p>Host</p>
-                            <p>
-                              <strong>JT Liner</strong>
-                            </p>
-                          </div>
-                          <div>
-                            <img
-                              id='event-users-icon'
-                              src={friends1}
-                              alt='Friends'
-                            />
-                          </div>
+            if (event.group_event && event.group_event == groupId)
+              return (
+                <div key={event.id} className='event-list-request'>
+                  <div className='event-time-date'>
+                    <p className='event-date'>{event.event_date}</p>
+                    <p className='event-time'>{event.event_time}</p>
+                  </div>
+                  <div className='event-list-text'>
+                    <div className='event-header-top'>
+                      <div className='event-user-side'>
+                        <img id='event-user-icon' src={guy1} alt='guy' />
+                        <div className='event-user'>
+                          <p>Host</p>
+                          <p>
+                            <strong>
+                              {window.localStorage.getItem('userName')}
+                            </strong>
+                          </p>
+                        </div>
+                        <div>
+                          <img
+                            id='event-users-icon'
+                            src={friends1}
+                            alt='Friends'
+                          />
                         </div>
                       </div>
-                    </div>
-                  );
-              })
-            }
 
-          {/* <div className='event-list-request'>
-            <div className='event-list-text'>Event #2</div>
-          </div>
-          <div className='event-list-request'>
-            <div className='event-list-text'>Event #3</div>
-          </div>
-          <div className='event-list-request'>
-            <div className='event-list-text'>Event #4</div>
-          </div> */}
+                      <div className='event-main-section'>
+                        <p className='event-announcements'>
+                          {event.announcements}
+                        </p>
+                        <div>
+                          <p>{event.lesson_title}</p>
+                          <p>{event.bible_passage}</p>
+                        </div>
+                      </div>
+                      <div className='event-question-section'>
+                        <p>{event.question}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+          })}
         </div>
       </div>
     );

@@ -44,13 +44,20 @@ export default class AddGroupPage extends Component {
       });
     }
   };
+  submitJoinHandler = (e) => {
+    e.preventDefault();
+    let group = this.props.groups.find((g) => {
+      return g.group_name === this.state.group_name;
+    });
+    //join group from dashboard
+    this.props.onJoinGroup(group);
+  };
   accessHandler = (event) => {
     this.setState({
       group_access: event.target.value
     })
   }
   render() {
-    console.log(this.state.groupAccess)
     return (
       <>
         {this.state.showGroupPhoto ? (
@@ -73,7 +80,41 @@ export default class AddGroupPage extends Component {
         )}
 
         <div className='AddGroupPage'>
+          <div className='add-group-container'>
+        <form className=" join-form" onSubmit={this.submitJoinHandler}>
+          <h2>Join Group</h2>
+          <div className="join-div">
+            <p className="error-alert">{this.props.message}</p>
+            <label htmlFor="group-names"></label>
+            <select
+              id="group-names"
+              name="group_names"
+              className='add-group-name-label'
+              onChange={this.changeHandler}
+            >
+              {" "}
+              <option>Select Group</option>
+              {this.props.groups &&
+                this.props.groups.map((gr) => (
+                  <option
+                    label={gr.group_name}
+                    className="group-option"
+                    id={gr.group_name.split(" ").join("_")}
+                    groupid={gr.id}
+                    key={gr.id}
+                  >
+                    {gr.group_name}
+                  </option>
+                ))}
+            </select>
+            <div className="join-group">
+              <button className='join-group-button'type="submit">Request to Join Group</button>
+            </div>
+          </div>
+        </form>
           <form className='add-group-form' onSubmit={this.submitHandler}>
+          <h2>Create Group</h2>
+
             <div
               className='add-group-fontawesome'
               onClick={this.toggleGroupPhoto}
@@ -84,7 +125,7 @@ export default class AddGroupPage extends Component {
                 icon={faUser}
               />
             </div>
-            <select onChange={this.accessHandler}>
+            <select id='group-public-private' onChange={this.accessHandler}>
               <option selected disabled hidden>Chooses Access Setting</option>
               <option value='public'>Public Group</option>
               <option value='private'>Private Group</option>
@@ -170,6 +211,7 @@ export default class AddGroupPage extends Component {
               Create New Group
             </button>
           </form>
+        </div>
         </div>
       </>
     );

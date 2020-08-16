@@ -24,7 +24,6 @@ class App extends Component {
         return res.json()
       })
       .then((resData) => {
-        console.log(resData)
         let userPic = `${resData.user.id}_${formData.profilePic.name}`
         
         this.uploadFile(formData.profilePic, userPic)
@@ -51,7 +50,6 @@ class App extends Component {
         url = resData.url
         let reader = new FileReader()
         reader.addEventListener('loadend', (event) => {
-          console.log(reader.result)
           fetch(url, {
       
             headers: {

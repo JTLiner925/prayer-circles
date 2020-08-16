@@ -189,6 +189,32 @@ export default class Dashboard extends Component {
         this.setState({ createMessage: error.message });
       });
   };
+  joinGroup = (formData) => {
+    //join current group
+    fetch(`${config.HOST}/api/groups/joingroup`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      },
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((resData) => {
+        if (resData.message !== "Already Joined Group") {
+          this.props.history.push("/dashboard");
+        } else {
+          this.setState({
+            message: resData.message,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   pushNeededItems = (id, neededItems) => {
     fetch(`${config.HOST}/api/needed/add-item`, {
       headers: {
@@ -210,7 +236,6 @@ export default class Dashboard extends Component {
   };
 
   createEvent = (formData) => {
-    console.log(formData)
     //add event for group
 
     fetch(`${config.HOST}/api/events/createevent`, {
@@ -222,7 +247,6 @@ export default class Dashboard extends Component {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        console.log(res)
         if (!res.ok) {
           return res.json().then((data) => {
             return Promise.reject(new Error(data.error.message));
@@ -232,7 +256,6 @@ export default class Dashboard extends Component {
         }
       })
       .then((resData) => {
-        console.log(resData);
         this.pushNeededItems(resData.eventId, formData.needed_items);
       })
       .catch((error) => {
@@ -250,7 +273,6 @@ export default class Dashboard extends Component {
     });
   };
   render() {
-    console.log(this.state);
     let i = window.location.search;
     let x = new URLSearchParams(i);
     for (let [key, value] of x) {

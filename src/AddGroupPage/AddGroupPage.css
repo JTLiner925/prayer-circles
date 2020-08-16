@@ -3,30 +3,47 @@
   flex-direction: column;
   background-color: #ffffff;
   height: 65%;
-  margin: 15px auto;
+  margin: 5px auto;
   width: 100%;
   max-width: 1000px;
+}
+.add-group-container {
+  height: 100%;
+  margin-bottom: 20px;
+  overflow: scroll;
 }
 .add-group-form {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   background-color: #ffffff;
-  height: 80%;
   justify-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+.join-form {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  background-color: #ffffff;
+  height: fit-content;
+  justify-content: flex-start;
+  text-align: center;
+  /* margin-bottom: 50px; */
+  overflow: auto;
+
 }
 .add-group-avatar {
   background-color: #ffffff;
-  height: 35%;
-  margin-bottom: 20px;
+  /* height: 35%; */
 }
 .add-group-fontawesome {
   background-color: #ffffff;
-  margin-top: 20px;
 }
 .group-photo-background {
   position: fixed;
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
   background: #00000075;
   z-index: 2;
@@ -57,10 +74,10 @@
   display: flex;
   flex-direction: column;
   width: 100px;
-  height: 100px;
+  /* height: 100px; */
   border-radius: 50%;
   border: 1px solid #5b5b5b;
-  overflow: hidden;
+  /* overflow: hidden; */
   margin: 0 auto;
   background-color: #c7c7c7;
   color: #3e3e3e;
@@ -70,6 +87,35 @@
   height: 11%;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.join-form h2,
+.add-group-form h2 {
+  margin: 0;
+}
+.add-group-name-label {
+  height: 30px;
+}
+#group-names,
+#group-public-private {
+  height: 100%;
+  padding: 0.5em;
+  border-radius: 7px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+#group-public-private {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.join-div {
+  display: flex;
+  flex-direction: column;
+  height: 35%;
+  margin-top: 0;
+  margin-bottom: 20px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 .add-group-phone-label {
   width: 50%;
@@ -106,10 +152,10 @@
 .add-group-time-date-label {
   height: 11%;
   background-color: #ffffff;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
-.add-group-name-label{
-  margin-top: 20px;
+.add-group-name-label {
+  /* margin-top: 20px; */
 }
 .add-group-name,
 .add-group-pitch-textarea,
@@ -144,7 +190,9 @@
   border: none;
   border-bottom: 1px solid #5b5b5b;
 }
-.add-group-button {
+
+.add-group-button,
+.join-group-button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -161,7 +209,12 @@
   border-width: 0px;
   text-transform: uppercase;
 }
-.add-group-button:hover {
+.join-group-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.add-group-button:hover,
+.join-group-button:hover {
   background: linear-gradient(45deg, #51fcd4, #1247f5);
   transition: 500ms;
 }

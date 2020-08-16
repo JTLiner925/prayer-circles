@@ -31,7 +31,6 @@ export default class AddEventPage extends Component {
       method: 'GET',
     })
       .then((res) => {
-        console.log(res);
         if (!res.ok) {
           throw new Error('Something went wrong, please try again later.');
         }
@@ -155,7 +154,6 @@ export default class AddEventPage extends Component {
     });
   };
   static getDerivedStateFromProps(props){
-    console.log(props)
     return {groupid : props.groupId}
   }
   render() {
@@ -165,7 +163,6 @@ export default class AddEventPage extends Component {
     const { events = [], userId } = this.props;
     const { groups = [], groupId } = this.props;
 
-    console.log(this.state);
     
     return (
       <div className='AddEventPage'>
@@ -177,9 +174,7 @@ export default class AddEventPage extends Component {
         <form className='add-event-form' onSubmit={this.submitHandler}>
           <h2>Create New Event</h2>
           {groups.map((group) => {
-            console.log(group);
             let selectedGroup = this.props.groupId;
-            console.log(selectedGroup);
             if (selectedGroup && selectedGroup == group.id) {
 
               return (

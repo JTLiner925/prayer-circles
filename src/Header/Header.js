@@ -12,12 +12,10 @@ import './Header.css';
 
 export default class Header extends Component {
   static getDerivedStateFromProps(props){
-    console.log(props)
     let userName = window.localStorage.getItem('userName')
     let user = props.users.find((u) => {
       return u.first_name === userName
     })
-    console.log(user)
     let url
     fetch(`${config.HOST}/api/getUrl/get-profile-pic`,{
       headers: {
@@ -31,7 +29,6 @@ export default class Header extends Component {
       return res.json()
     })
     .then((resData) => {
-      console.log(resData)
       url = resData
     })
     .catch((error) => {
@@ -41,7 +38,6 @@ export default class Header extends Component {
   }
   
   render() {
-    console.log(this.state)
     return (
       <div className='Header'>
         <div className='header-user-icon'>

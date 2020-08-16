@@ -71,13 +71,11 @@ export default class ComponentGroupList extends Component {
       .concat(groups)
       .sort((a, b) => (a.id > b.id ? 1 : -1));
     const sortEvents = [].concat(events).sort((a, b) => (a.id > b.id ? 1 : -1));
-    console.log(this.props);
     return (
       <div className='Group-List-Slider'>
         {/* <div className='group-list-slides'> */}
         <ul className='group-list-slides'>
           {groups.map((group) => {
-            // console.log(this.state);
             let idee = group.id;
             let { pathname } = document.location
             let userIds = group.user_ids;
