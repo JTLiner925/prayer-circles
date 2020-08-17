@@ -8,7 +8,9 @@ import {
   faThumbsUp,
   faCommentAlt,
   faEllipsisH,
-  faCamera
+  faCamera,
+  faPray,
+  faPrayingHands
 } from "@fortawesome/free-solid-svg-icons";
 import "./PrayerWallComponent.css";
 
@@ -65,11 +67,11 @@ export default class PrayerWallComponent extends Component {
           </div>
           <div className="prayer-footer">
             <div className="prayer-footer-left">
-              <FontAwesomeIcon id="prayer-heart-icon" icon={faHeart} />
+              <FontAwesomeIcon id="prayer-prayer-icon" icon={faPrayingHands} />
               <FontAwesomeIcon id="prayer-thumbs-up-icon" icon={faThumbsUp} />
               <FontAwesomeIcon id="prayer-comment-icon" icon={faCommentAlt} />
             </div>
-            <FontAwesomeIcon id="prayer-heart-icon" icon={faEllipsisH} />
+            <FontAwesomeIcon id="prayer-dots-icon" icon={faEllipsisH} />
           </div>
           <div className='prayer-input-container'>
             <div className='prayer-input-option'>

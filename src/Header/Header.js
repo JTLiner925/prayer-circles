@@ -39,9 +39,9 @@ export default class Header extends Component {
   
   render() {
     return (
-      <div className='Header'>
+      <nav className='Header'>
         <div className='header-user-icon'>
-          <div>
+          <div onClick={this.props.onHamNav}>
             <img id='header-user-icon' src="https://user-photo.s3.us-east-2.amazonaws.com/14_IMG_2314.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJKON4ODYPQTLBE2A%2F20200815%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200815T144547Z&X-Amz-Expires=900&X-Amz-Signature=d62fb050087858393b1207ddc9503bc76f84cce7472956a77d2a837e098252a5&X-Amz-SignedHeaders=host"/>
             {/* <img id='header-user-icon' src={guy1} alt='guy' /> */}
           </div>
@@ -54,7 +54,7 @@ export default class Header extends Component {
             <FontAwesomeIcon id='head-sign-out-icon' icon={faSignOutAlt} />
           </Link>
         </div>
-      </div>
+      </nav>
     );
   }
 }

@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 .Prayer-Wall-Component {
@@ -27,7 +27,6 @@
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #cecece61;
-
 }
 .prayer-header-top {
   margin-top: 0;
@@ -66,7 +65,7 @@
 .prayer-header-bottom div {
   margin: 0 auto;
 }
-.prayer-header-bottom div{
+.prayer-header-bottom div {
   background: linear-gradient(45deg, #8dfae1, #839df5);
   border-radius: 25px;
   padding: 5px;
@@ -101,17 +100,31 @@
   justify-content: space-between;
   padding-bottom: 2px;
 }
-.prayer-footer-left{
+.prayer-footer-left {
   /* height: 100%; */
 }
 
-#prayer-heart-icon,
+#prayer-prayer-icon,
 #prayer-thumbs-up-icon,
 #prayer-comment-icon,
 #prayer-dots-icon {
+  color: #83aca2;
+  font-size: 20px;
   margin-right: 20px;
 }
-.prayer-input-container{
+/* #prayer-prayer-icon{
+color: rgb(162, 206, 242);
+}
+#prayer-thumbs-up-icon{
+color: rgb(247, 167, 218);
+}
+#prayer-comment-icon{
+color: rgb(167, 245, 202);
+}
+#prayer-dots-icon{
+color: rgb(216, 169, 250);
+}  */
+.prayer-input-container {
   border-top: 1px solid rgba(154, 154, 154, 0.447);
   padding-top: 5px;
   /* height: 5%; */
@@ -152,6 +165,9 @@
 #handle-add-photo {
 }
 #prayer-camera-icon {
+  font-size: 20px;
+  color: #83aca2;
+
   height: 90%;
 }
 .prayer-input-text {

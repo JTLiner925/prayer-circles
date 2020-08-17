@@ -44,7 +44,7 @@ export default class SettingsPage extends Component {
     return (
       <>
         {this.state.showUpdateUserPhoto ? <div className='update-user-photo-background'>
-          <div className='update-user-photo-model'>
+          <div className='update-user-photo-model' >
             <p onClick={this.toggleUpdateUserPhoto}>X</p>
             <form>
               <div id='udpate-drop-area'>
@@ -55,7 +55,7 @@ export default class SettingsPage extends Component {
           </div>
         </div>: ''}
 
-        <div className='Settings'>
+        <div className='Settings' onClick={this.props.onHandleHam}>
           <div className='settings-header'>
          
               <h1 className='settings-header-content'>Prayer Circles</h1>

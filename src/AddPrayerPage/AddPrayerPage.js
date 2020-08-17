@@ -7,7 +7,7 @@ import './AddPrayerPage.css'
 export default class AddPrayerPage extends Component {
   render() {
     return (
-      <div className="AddPrayerPage">
+      <div className="AddPrayerPage" onClick={this.props.onHandleHam}>
         <PrayerPraiseComponent />
         <div className="add-prayer-form">
         <form className='add-prayer-form' onSubmit={this.submitHandler}>

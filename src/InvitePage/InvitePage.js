@@ -97,7 +97,7 @@ export default class InvitePage extends Component {
   };
   render() {
     return (
-      <div className="InvitePage">
+      <div className="InvitePage" onClick={this.props.onHandleHam}>
         <div className='invite-icons'>
           <div className='invite-user'><FontAwesomeIcon 
           id="invite-user-icon"

@@ -165,7 +165,7 @@ export default class AddEventPage extends Component {
 
     
     return (
-      <div className='AddEventPage'>
+      <div className='AddEventPage' onClick={this.props.onHandleHam}>
         {/* <div className="add-event-event-banner">
           <Link className='add-event-event' to='/events'>View Events</Link>
           <h2>Or</h2>

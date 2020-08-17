@@ -8,3 +8,72 @@
   background-color: #ffffff;
   height: 100%;
 }
+.DashHeader {
+  position: relative;
+  border-bottom: 1px solid #cecece61;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  height: 5%;
+}
+
+.header-user-icon {
+  position: absolute;
+  z-index: 2;
+  padding: 0;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.notification-alert{
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 10px;
+  left: 24px;
+  z-index: 4;
+  color: rgb(34, 248, 15);
+}
+#header-user-icon {
+  display: flex;
+  flex-direction: column;
+  width: 25px;
+  border-radius: 50%;
+  height: 25px;
+  margin-left: 10px;
+  z-index: 3;
+}
+.header-settings-icon,
+.header-sign-out-icon {
+  /* height: 8%; */
+  padding: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 50px;
+}
+
+.header-nav-icons {
+  margin-left: 50%;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+#head-settings-icon,
+#head-sign-out-icon {
+  margin: 0 auto;
+
+  height: 50%;
+  width: 50%;
+  color: rgb(169, 169, 169);
+}
+#head-settings-icon:hover,
+#head-sign-out-icon:hover {
+  color: rgb(128, 128, 128);
+}

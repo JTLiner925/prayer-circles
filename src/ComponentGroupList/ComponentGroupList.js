@@ -72,7 +72,7 @@ export default class ComponentGroupList extends Component {
       .sort((a, b) => (a.id > b.id ? 1 : -1));
     const sortEvents = [].concat(events).sort((a, b) => (a.id > b.id ? 1 : -1));
     return (
-      <div className='Group-List-Slider'>
+      <div className='Group-List-Slider' onClick={this.props.onHandleHam}>
         {/* <div className='group-list-slides'> */}
         <ul className='group-list-slides'>
           {groups.map((group) => {

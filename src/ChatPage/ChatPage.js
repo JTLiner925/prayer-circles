@@ -7,7 +7,7 @@ export default class ChatPage extends Component {
   
   render() {
     return (
-      <div className="ChatPage">
+      <div className="ChatPage" onClick={this.props.onHandleHam}>
         <PrivateChatSelect />
         <div className='chat-page-component'>
         <ChatWallComponent />

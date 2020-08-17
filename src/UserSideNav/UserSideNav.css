@@ -1,0 +1,43 @@
+.UserSideNav{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  max-width: 60%;
+  max-height: 75%;
+  padding: 10px;
+  padding-top: 80px;
+  overflow: scroll;
+  background-color: #ffffff;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.76);
+  position: fixed;
+  border-bottom-right-radius: 25px;
+  z-index: 1;
+  display: none;
+}
+.user-message-div{
+  display: flex;
+  
+}
+.user-message{
+  margin: 5px;  
+}
+.user-message-x{
+  cursor: pointer;
+  font-size: 24px;
+  margin: 5px;  
+color: rgb(238, 133, 133);
+}
+.user-message-x:hover{
+transition: 500ms;
+color: rgb(208, 43, 98);
+}
+.user-message-check{
+  cursor: pointer;
+  font-size: 24px;
+  margin: 5px;  
+color: rgb(152, 245, 152);
+}
+.user-message-check:hover{
+  transition: 500ms;
+  color: rgb(59, 216, 59);
+}

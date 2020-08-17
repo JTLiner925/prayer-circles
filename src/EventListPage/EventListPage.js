@@ -23,7 +23,7 @@ export default class EventListPage extends Component {
       .sort((a, b) => (a.id > b.id ? 1 : -1));
     const sortEvents = [].concat(events).sort((a, b) => (a.id > b.id ? 1 : -1));
     return (
-      <div className='EventListPage'>
+      <div className='EventListPage' onClick={this.props.onHandleHam}>
         <div className='event-list-event-banner'>
           <Link className='event-list-event' to='/events'>
             View Events

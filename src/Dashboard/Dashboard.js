@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import config from '../config';
 import Header from '../Header/Header';
+import UserSideNav from '../UserSideNav/UserSideNav';
 import ComponentGroupList from '../ComponentGroupList/ComponentGroupList';
 import DashHomePage from '../DashHomePage/DashHomePage';
 import EventListPage from '../EventListPage/EventListPage';
@@ -12,6 +13,15 @@ import AddEventPage from '../AddEventPage/AddEventPage';
 import AddPrayerPage from '../AddPrayerPage/AddPrayerPage';
 import SettingsPage from '../SettingsPage/SettingsPage';
 import Footer from '../Footer/Footer';
+import guy1 from '../Images/guy1.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faUser,
+  faUserCog,
+  faSignOutAlt,
+  faCircle
+} from '@fortawesome/free-solid-svg-icons';
+
 import './Dashboard.css';
 
 export default class Dashboard extends Component {
@@ -37,6 +47,25 @@ export default class Dashboard extends Component {
       passage,
       error: null,
     });
+  };
+  HamNav = (e) => {
+    console.log(e);
+    //event handler for hamburger menu
+    let elem = document.querySelector('.UserSideNav');
+    if (elem.style.display === 'block') {
+      elem.style.display = 'none';
+    } else {
+      elem.style.display = 'block';
+    }
+  };
+  HamNavPage = () => {
+    //event handler for menu to collapse by clicking in other places other than hamburger icon
+    let elem = document.querySelector('.UserSideNav');
+    if (elem.style.display === 'none') {
+      elem.style.display = 'none';
+    } else {
+      elem.style.display = 'none';
+    }
   };
 
   componentDidMount() {
@@ -193,18 +222,18 @@ export default class Dashboard extends Component {
     //join current group
     fetch(`${config.HOST}/api/groups/joingroup`, {
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${window.localStorage.getItem('token')}`,
       },
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(formData),
     })
       .then((res) => {
         return res.json();
       })
       .then((resData) => {
-        if (resData.message !== "Already Joined Group") {
-          this.props.history.push("/dashboard");
+        if (resData.message !== 'Already Joined Group') {
+          this.props.history.push('/dashboard');
         } else {
           this.setState({
             message: resData.message,
@@ -290,6 +319,28 @@ export default class Dashboard extends Component {
     }
     return (
       <main className='Dashboard'>
+        <nav className='DashHeader'>
+          <div className='header-user-icon'>
+            <div onClick={this.HamNav}>
+              {/* <img
+                id='header-user-icon'
+                src='https://user-photo.s3.us-east-2.amazonaws.com/14_IMG_2314.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJKON4ODYPQTLBE2A%2F20200815%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200815T144547Z&X-Amz-Expires=900&X-Amz-Signature=d62fb050087858393b1207ddc9503bc76f84cce7472956a77d2a837e098252a5&X-Amz-SignedHeaders=host'
+                alt='user avatar'
+              /> */}
+              <img id='header-user-icon' src={guy1} alt='guy' />
+              <FontAwesomeIcon className='notification-alert'icon={faCircle}/>
+            </div>
+          </div>
+          <div className='header-nav-icons' onClick={this.HamNavPage}>
+            <Link to='/settings' className='header-settings-icon'>
+              <FontAwesomeIcon id='head-settings-icon' icon={faUserCog} />
+            </Link>
+            <Link to='/' className='header-sign-out-icon'>
+              <FontAwesomeIcon id='head-sign-out-icon' icon={faSignOutAlt} />
+            </Link>
+          </div>
+        </nav>
+
         {[
           '/dashboard',
           '/events',
@@ -300,14 +351,18 @@ export default class Dashboard extends Component {
           '/add-prayer',
           '/settings',
         ].map((path) => (
-          <Route key={path} path={path} render={() => {
-            return (
-              <Header
-              users={this.state.users}>
-
-              </Header>
-            )
-          }} />
+          <Route
+            key={path}
+            path={path}
+            render={() => {
+              return (
+                <UserSideNav
+                  users={this.state.users}
+                  // onHamNav={this.HamNav}
+                ></UserSideNav>
+              );
+            }}
+          />
         ))}
         {[
           '/dashboard',
@@ -330,6 +385,7 @@ export default class Dashboard extends Component {
                   groupId={this.state.groupId}
                   users={this.state.users}
                   userId={this.state.userId}
+                  onHandleHam={this.HamNavPage}
                 ></ComponentGroupList>
               );
             }}
@@ -348,6 +404,7 @@ export default class Dashboard extends Component {
                 users={this.state.users}
                 userId={this.state.userId}
                 needed={this.state.needed}
+                onHandleHam={this.HamNavPage}
                 handleEvent={this.handleEvent}
                 handleBiblePassage={this.handleBiblePassage}
               ></DashHomePage>
@@ -367,14 +424,47 @@ export default class Dashboard extends Component {
                 users={this.state.users}
                 userId={this.state.userId}
                 needed={this.state.needed}
+                onHandleHam={this.HamNavPage}
                 handleEvent={this.handleEvent}
                 handleBiblePassage={this.handleBiblePassage}
               ></EventListPage>
             );
           }}
         />
-        <Route path='/chat' component={ChatPage} />
-        <Route path='/invite' component={InvitePage} />
+        <Route
+          path='/chat'
+          render={() => {
+            return (
+              <ChatPage
+                groups={this.state.groups}
+                events={this.state.events}
+                groupId={this.state.groupId}
+                eventId={this.state.eventId}
+                users={this.state.users}
+                userId={this.state.userId}
+                needed={this.state.needed}
+                onHandleHam={this.HamNavPage}
+              ></ChatPage>
+            );
+          }}
+        />
+        <Route
+          path='/invite'
+          render={() => {
+            return (
+              <InvitePage
+                groups={this.state.groups}
+                events={this.state.events}
+                groupId={this.state.groupId}
+                eventId={this.state.eventId}
+                users={this.state.users}
+                userId={this.state.userId}
+                needed={this.state.needed}
+                onHandleHam={this.HamNavPage}
+              ></InvitePage>
+            );
+          }}
+        />
         <Route
           path='/add-group'
           render={() => {
@@ -383,8 +473,9 @@ export default class Dashboard extends Component {
                 createMessage={this.state.createMessage}
                 message={this.state.message}
                 groups={this.state.groups}
+                onHandleHam={this.HamNavPage}
                 onCreateGroup={this.createGroup}
-                // onJoinGroup={this.joinGroup}
+                onJoinGroup={this.joinGroup}
               ></AddGroupPage>
             );
           }}
@@ -402,15 +493,45 @@ export default class Dashboard extends Component {
                 userId={this.state.userId}
                 events={this.state.events}
                 eventId={this.state.eventId}
+                onHandleHam={this.HamNavPage}
                 onCreateEvent={this.createEvent}
                 handleEvent={this.handleEvent}
-                // onHandleHam={this.HamNavPage}
               ></AddEventPage>
             );
           }}
         />
-        <Route path='/add-prayer' component={AddPrayerPage} />
-        <Route path='/settings' component={SettingsPage} />
+        <Route
+          path='/add-prayer'
+          render={() => {
+            return (
+              <AddPrayerPage
+                groups={this.state.groups}
+                groupId={this.state.groupId}
+                users={this.state.users}
+                userId={this.state.userId}
+                events={this.state.events}
+                eventId={this.state.eventId}
+                onHandleHam={this.HamNavPage}
+              ></AddPrayerPage>
+            );
+          }}
+        />
+        <Route
+          path='/settings'
+          render={() => {
+            return (
+              <SettingsPage
+                groups={this.state.groups}
+                groupId={this.state.groupId}
+                users={this.state.users}
+                userId={this.state.userId}
+                events={this.state.events}
+                eventId={this.state.eventId}
+                onHandleHam={this.HamNavPage}
+              ></SettingsPage>
+            );
+          }}
+        />
         {[
           '/dashboard',
           '/events',

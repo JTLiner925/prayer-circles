@@ -79,7 +79,7 @@ export default class AddGroupPage extends Component {
           ''
         )}
 
-        <div className='AddGroupPage'>
+        <div className='AddGroupPage' onClick={this.props.onHandleHam}>
           <div className='add-group-container'>
         <form className=" join-form" onSubmit={this.submitJoinHandler}>
           <h2>Join Group</h2>
