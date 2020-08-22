@@ -11,6 +11,39 @@
   background: #00000075;
   z-index: 2;
 }
+.photo-model-x {
+  cursor: pointer;
+  font-size: 24px;
+  margin: 5px;
+  color: rgb(238, 133, 133);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.photo-model-x:hover {
+  transition: 500ms;
+  color: rgb(208, 43, 98);
+}
+.browse-div {
+  text-align: center;
+}
+.photo-message {
+  text-align: center;
+  font-weight: bold;
+  color: rgb(172, 40, 216);
+}
+.register-browse-button {
+  border: 1px solid rgba(0, 0, 0, 0.39);
+  padding: 0.3em 1em;
+  border-radius: 7px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  color: rgb(2, 2, 250);
+  width: 200px;
+}
+.drag-p {
+  text-align: center;
+}
 .user-photo-model {
   position: absolute;
   height: 70%;
@@ -25,11 +58,19 @@
 }
 #drop-area {
   width: 80%;
-  height: 100px;
+  height: 150px;
   border: 2px dashed #013af5a7;
   margin: 0 auto;
   padding: 15px;
   border-radius: 7px;
+  margin-top: 70px;
+}
+#drop-area:hover {
+  border: 2.5px dashed #0337e4;
+}
+.register-browse-button:hover {
+  font-weight: bold;
+  text-transform: uppercase;
 }
 #handle-user-photo {
 }
@@ -186,4 +227,9 @@
 .register-button:hover {
   background: linear-gradient(45deg, #51fcd4, #1247f5);
   transition: 500ms;
+}
+.error-alert {
+  margin: 0 auto;
+  color: rgb(208, 2, 2);
+  margin-bottom: 10px;
 }

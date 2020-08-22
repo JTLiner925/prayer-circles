@@ -1,32 +1,35 @@
-import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
-import HomePage from "./HomePage/HomePage";
-import Login from "./Login/Login";
-import Register from "./Register/Register";
-import Dashboard from "./Dashboard/Dashboard";
-import config from './config'
-import "./App.css";
+import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
+import HomePage from './HomePage/HomePage';
+import Login from './Login/Login';
+import Register from './Register/Register';
+import Dashboard from './Dashboard/Dashboard';
+import config from './config';
+import './App.css';
 
 class App extends Component {
   state = {
-    users: []
-  }
+    users: [],
+  };
   register = (formData) => {
     //sign up for an account - feeds into login()
+    // console.log(formData);
+    formData.FileName = formData.profilePic.name;
     fetch(`${config.HOST}/api/users/register`, {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        return res.json()
+        return res.json();
       })
       .then((resData) => {
-        let userPic = `${resData.user.id}_${formData.profilePic.name}`
-        
-        this.uploadFile(formData.profilePic, userPic)
+        // console.log(resData)
+        let userPic = `${resData.user.id}_${formData.profilePic.name}`;
+
+        this.uploadFile(formData.profilePic, userPic );
         this.logIn(formData);
       })
       .catch((error) => {
@@ -36,48 +39,44 @@ class App extends Component {
   uploadFile = (file, newFileName) => {
     let url;
     fetch(`${config.HOST}/api/getUrl`, {
-      
       headers: {
         'Content-Type': 'application/json',
       },
       method: 'POST',
-      body: JSON.stringify({name: newFileName, type: file.type}),
+      body: JSON.stringify({ name: newFileName, type: file.type, location: 'user-photo' }),
     })
       .then((res) => {
         return res.json();
       })
       .then((resData) => {
-        url = resData.url
-        let reader = new FileReader()
+        url = resData.url;
+        let reader = new FileReader();
         reader.addEventListener('loadend', (event) => {
           fetch(url, {
-      
             headers: {
               'Access-Control-Allow-Origin': '*',
               'Access-Control-Allow-Credentials': '*',
             },
             method: 'PUT',
-            body: new Blob([reader.result], {type: file.type})
-           
-          })
-        })
+            body: new Blob([reader.result], { type: file.type }),
+          });
+        });
         reader.readAsArrayBuffer(file);
       })
       .catch();
-   
   };
   resetError = () => {
     this.setState({
-      message: "",
+      message: '',
     });
   };
   logIn = (formData) => {
     //logs into dashboard
     fetch(`${config.HOST}/api/users/login`, {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(formData),
     })
       .then((res) => {
@@ -90,9 +89,9 @@ class App extends Component {
         }
       })
       .then((userData) => {
-        window.localStorage.setItem("token", userData.token);
-        window.localStorage.setItem("userName", userData.userName);
-        this.props.history.push("/dashboard");
+        window.localStorage.setItem('token', userData.token);
+        window.localStorage.setItem('userName', userData.userName);
+        this.props.history.push('/dashboard');
       })
       .catch((error) => {
         this.setState({ message: error.message });
@@ -101,10 +100,16 @@ class App extends Component {
 
   render() {
     return (
-      <main className="App">
-        <Route exact path="/" component={HomePage} />
+      <main className='App'>
         <Route
-          path="/login"
+          exact
+          path='/'
+          render={() => {
+            return <HomePage resetError={this.resetError}></HomePage>;
+          }}
+        />
+        <Route
+          path='/login'
           render={() => {
             return (
               <Login
@@ -116,22 +121,28 @@ class App extends Component {
           }}
         />
         <Route
-          path="/register"
+          path='/register'
           render={() => {
-            return <Register onRegister={this.register}></Register>;
+            return (
+              <Register
+                resetError={this.resetError}
+                onRegister={this.register}
+              ></Register>
+            );
           }}
         />
         {[
-          "/dashboard",
-          "/events",
-          "/chat",
-          "/invite",
-          "/add-group",
-          "/add-event",
-          "/add-prayer",
-          "/settings",
+          '/dashboard',
+          '/events',
+          '/chat',
+          '/invite',
+          '/add-group',
+          '/add-event',
+          '/add-prayer',
+          '/settings',
         ].map((path) => (
-          <Route key={path} path={path} component={Dashboard} />))}
+          <Route key={path} path={path} component={Dashboard} />
+        ))}
       </main>
     );
   }

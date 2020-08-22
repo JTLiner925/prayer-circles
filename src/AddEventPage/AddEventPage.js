@@ -50,7 +50,7 @@ export default class AddEventPage extends Component {
   }
 
   submitHandler = (e) => {
-    // this.props.resetError();
+    this.props.resetError();
     this.setState({
       error: '',
     });
@@ -97,7 +97,7 @@ export default class AddEventPage extends Component {
       });
   };
   changeHandler = (e) => {
-    // this.props.resetError();
+    this.props.resetError();
     if (e.target.name === 'group_name') {
       let element = document.querySelector(
         `#${e.target.value.split(' ').join('_')}`
@@ -116,11 +116,11 @@ export default class AddEventPage extends Component {
     }
   };
   onChangeItemValue = (event) => {
-    // this.props.resetError();
+    this.props.resetError();
     this.setState({ item_value: event.target.value });
   };
   onChangeQuestionValue = (event) => {
-    // this.props.resetError();
+    this.props.resetError();
     this.setState({ question_value: event.target.value });
   };
   addItemHandler = () => {

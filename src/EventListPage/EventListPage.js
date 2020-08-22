@@ -17,11 +17,11 @@ export default class EventListPage extends Component {
       }
     }
 
-    const { eventId, events = [], groups = [], groupId, needed } = this.props;
+    const { eventId, events = [], groups = [], groupId, needed, profilePic } = this.props;
     const groupEvents = []
       .concat(groups)
-      .sort((a, b) => (a.id > b.id ? 1 : -1));
-    const sortEvents = [].concat(events).sort((a, b) => (a.id > b.id ? 1 : -1));
+      .sort((a, b) => (a.event_date > b.event_date ? 1 : -1));
+    const sortEvents = [].concat(events).sort((a, b) => (a.event_date > b.event_date ? 1 : -1));
     return (
       <div className='EventListPage' onClick={this.props.onHandleHam}>
         <div className='event-list-event-banner'>
@@ -45,7 +45,7 @@ export default class EventListPage extends Component {
                   <div className='event-list-text'>
                     <div className='event-header-top'>
                       <div className='event-user-side'>
-                        <img id='event-user-icon' src={guy1} alt='guy' />
+                        <img id='event-user-icon' src={profilePic} alt='guy' />
                         <div className='event-user'>
                           <p>Host</p>
                           <p>

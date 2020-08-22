@@ -7,10 +7,33 @@
   width: 100%;
   max-width: 1000px;
 }
+.group-photo-background {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: #00000075;
+  z-index: 2;
+}
 .add-group-container {
   height: 100%;
   margin-bottom: 20px;
   overflow: scroll;
+}
+.group-photo-model-x {
+  cursor: pointer;
+  font-size: 24px;
+  margin: 5px;
+  color: rgb(238, 133, 133);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.group-photo-model-x:hover {
+  transition: 500ms;
+  color: rgb(208, 43, 98);
+}
+.browse-group-div {
+  text-align: center;
 }
 .add-group-form {
   display: flex;
@@ -67,6 +90,51 @@
   margin: 0 auto;
   padding: 15px;
   border-radius: 7px;
+}
+.group-photo-message {
+  text-align: center;
+  font-weight: bold;
+  color: rgb(172, 40, 216);
+}
+.group-browse-button {
+  border: 1px solid rgba(0, 0, 0, 0.39);
+  padding: 0.3em 1em;
+  border-radius: 7px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  color: rgb(2, 2, 250);
+  width: 200px;
+}
+.group-drag-p {
+  text-align: center;
+}
+.group-photo-model {
+  position: absolute;
+  height: 70%;
+  width: 85%;
+  background: white;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background-color: white;
+  border-radius: 7px;
+  z-index: 3;
+}
+#group-drop-area {
+  width: 80%;
+  height: 150px;
+  border: 2px dashed #013af5a7;
+  margin: 0 auto;
+  padding: 15px;
+  border-radius: 7px;
+  margin-top: 70px;
+}
+#group-drop-area:hover {
+  border: 2.5px dashed #0337e4;
+}
+.group-browse-button:hover {
+  font-weight: bold;
+  text-transform: uppercase;
 }
 #handle-group-photo {
 }

@@ -7,43 +7,36 @@ import woman1 from '../../Images/woman1.jpg';
 import './PrivateChatSelect.css';
 
 export default class PrivateChatSelect extends Component {
+  state = {
+    groups: [],
+  }
+
   render() {
+    const { users = [], userId,  profilePic } = this.props;
+    // const { groups = [] } = this.props;
+    const groupUsers = []
+      .concat(this.state.groups)
+      .sort((a, b) => (a.id > b.id ? 1 : -1));
+    const sortUsers = [].concat(users).sort((a, b) => (a.id > b.id ? 1 : -1));
+    console.log(groupUsers, this.state)
+    console.log(sortUsers)
     return (
       <div className='Private-Chat-Select'>
         <div className='chat-people'>
           {/* <div className='chat-person'>
             <img className='person-image' src={guy1} alt='guy' />
           </div> */}
-          <div className='chat-person'>
-            <img className='person-image' src={thinker} alt='thinker statue' />
-          </div>
-          <div className='chat-person'>
-            <img className='person-image' src={girl1} alt='girl' />
-          </div>
-          <div className='chat-person'>
-            <img className='person-image' src={guy2} alt='guy' />
-          </div>
-          <div className='chat-person'>
-            <img className='person-image' src={woman1} alt='woman' />
-          </div>
-          <div className='chat-person'>
-            <img className='person-image' src={woman1} alt='woman' />
-          </div>
-          <div className='chat-person'>
-            <img className='person-image' src={woman1} alt='woman' />
-          </div>
-          {/* <div className="chat-person">
-            <div>P-6</div>
-          </div>
-          <div className="chat-person">
-            <div>P-7</div>
-          </div>
-          <div className="chat-person">
-            <div>P-8</div>
-          </div>
-          <div className="chat-person">
-            <div>P-9</div>
-          </div> */}
+          {users.map((u) => {
+            console.log(u)
+            // if(u.user_ids == userId){
+            //   console.log(u)
+              return (
+                <div key={u.id} className='chat-person'>
+                <img className='person-image' src={u.profile_pic} alt='girl' />
+              </div>)
+            // }
+            
+          })}
         </div>
       </div>
     );

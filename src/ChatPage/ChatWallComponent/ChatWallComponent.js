@@ -7,6 +7,8 @@ import {
   faCommentAlt,
   faEllipsisH,
   faCamera,
+  faPaperPlane,
+  faThList
 } from '@fortawesome/free-solid-svg-icons';
 import guy1 from '../../Images/guy1.jpg';
 import friends1 from '../../Images/friends1.jpg';
@@ -14,6 +16,8 @@ import './ChatWallComponent.css';
 
 export default class ChatWallComponent extends Component {
   state={
+    message_type:'',
+    message_body:'',
     showChatAddPhoto: false,
   }
   toggleChatAddPhoto = () => {
@@ -26,7 +30,20 @@ export default class ChatWallComponent extends Component {
     e.preventDefault();
     console.log(e.target.value)
   }
+  submitHandler = (e) => {
+    e.preventDefault();
+this.props.onCreateMessage(this.state)
+  }
+  changeHandler = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+      message_type: e.target.type,
+      user_id: this.props.userId,
+      group_chat: this.props.groupId
+    });
+  };
   render() {
+    const { profilePic } = this.props
     return (
       <>
       {this.state.showChatAddPhoto ? <div className='chat-add-photo-background'>
@@ -46,7 +63,7 @@ export default class ChatWallComponent extends Component {
           <div className='chat-header'>
             <div className='chat-header-top'>
               <div>
-                <img id='chat-user-icon' src={guy1} alt='guy' />
+                <img id='chat-user-icon' src={profilePic} alt='guy' />
               </div>
               <div>
                 <img id='chat-users-icon' src={friends1} alt='Friends' />
@@ -54,7 +71,14 @@ export default class ChatWallComponent extends Component {
             </div>
           </div>
           <div className='chat-main'>
-            <ComponentChatBubble />
+            <ComponentChatBubble 
+            groups={this.props.groups}
+            groupId={this.props.groupId}
+            users={this.props.users}
+            userId={this.props.userId}
+            profilePic={this.props.profilePic}
+            messages={this.props.messages}
+            />
           </div>
 
           <div className='chat-footer'>
@@ -65,16 +89,21 @@ export default class ChatWallComponent extends Component {
             </div>
             <FontAwesomeIcon id='chat-dots-icon' icon={faEllipsisH} />
           </div>
-          <div className='chat-input-container'>
-            <div className='chat-input-option'>
+          <form className='chat-input-container' onSubmit={this.submitHandler}>
+            <div name='message_type' className='chat-input-option' onChange={this.changeHandler} type='image'>
               <FontAwesomeIcon id='chat-camera-icon' onClick={this.toggleChatAddPhoto} icon={faCamera} />
             </div>
             <input
+              name='message_body'
               className='chat-input-text'
               type='text'
               placeholder='Message'
+              onChange={this.changeHandler}
             ></input>
-          </div>
+            <button className='message-submit-button' type='submit'>
+              <FontAwesomeIcon className='chat-wall-submit' icon={faPaperPlane}/>
+            </button>
+          </form>
         </div>
       </div>
       </>

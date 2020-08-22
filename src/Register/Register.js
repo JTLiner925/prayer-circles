@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import config from '../config';
 import './Register.css';
 
@@ -40,6 +40,11 @@ export default class Register extends Component {
           let file = e.dataTransfer.items[i].getAsFile();
           this.setState({
             profilePic: file,
+            photoMessage: '✅ Photo uploaded successfully!',
+          });
+        } else {
+          this.setState({
+            photoMessage: '❌ Try again or pick different photo.',
           });
         }
       }
@@ -49,7 +54,8 @@ export default class Register extends Component {
   handleUserPhoto = (e) => {
     this.setState({
       profilePic: e,
-    })
+      photoMessage: '✅ Photo uploaded successfully!',
+    });
   };
   changeHandler = (e) => {
     this.setState({
@@ -57,12 +63,13 @@ export default class Register extends Component {
     });
   };
   render() {
+    // console.log(this.state.profilePic);
     return (
       <>
         {this.state.showUserPhoto ? (
           <div className='user-photo-background'>
             <div className='user-photo-model'>
-              <p onClick={this.toggleUserPhoto}>X</p>
+              <p onClick={this.toggleUserPhoto}> <FontAwesomeIcon className='photo-model-x' icon={faTimesCircle} /></p>
               <form>
                 <div
                   name='drop-area'
@@ -85,15 +92,27 @@ export default class Register extends Component {
                   <input
                     id='handle-user-photo'
                     type='file'
-                    onChange={(e) => {e.preventDefault(); this.handleUserPhoto(document.getElementById('handle-user-photo')['files'][0])}}
+                    onChange={(e) => {
+                      e.preventDefault();
+                      this.handleUserPhoto(
+                        document.getElementById('handle-user-photo')['files'][0]
+                      );
+                    }}
                     style={{ display: 'none' }}
                   ></input>
-                  <p>
-                    Drag and Drop, or{' '}
-                    <span style={{ color: 'blue' }} onClick={() => {
-                      document.getElementById('handle-user-photo').click()
-                    }}>Browse</span> your files
+                  <p className='browse-div'>
+                    <span
+                      className='register-browse-button'
+                      onClick={() => {
+                        document.getElementById('handle-user-photo').click();
+                      }}
+                    >
+                      Browse
+                    </span>
+                    <br></br>
                   </p>
+                  <p className='drag-p'>or Drag and Drop</p>
+                  <p className='photo-message'>{this.state.photoMessage}</p>
                 </div>
               </form>
             </div>
@@ -180,6 +199,7 @@ export default class Register extends Component {
                 required
               ></input>
             </label>
+            <p className="error-alert">{this.state.error}</p>
             <button type='submit' className='register-button'>
               Create Account
             </button>

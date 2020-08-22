@@ -13,23 +13,18 @@ import AddEventPage from '../AddEventPage/AddEventPage';
 import AddPrayerPage from '../AddPrayerPage/AddPrayerPage';
 import SettingsPage from '../SettingsPage/SettingsPage';
 import Footer from '../Footer/Footer';
-import guy1 from '../Images/guy1.jpg'
+import guy1 from '../Images/guy1.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
   faUserCog,
   faSignOutAlt,
-  faCircle
+  faCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
 import './Dashboard.css';
 
 export default class Dashboard extends Component {
-  // static defaultProps = {
-  //   userId: '',
-  //   groupId: '',
-  //   eventId: '',
-  // };
   state = {
     passage: '',
     users: [],
@@ -49,7 +44,6 @@ export default class Dashboard extends Component {
     });
   };
   HamNav = (e) => {
-    console.log(e);
     //event handler for hamburger menu
     let elem = document.querySelector('.UserSideNav');
     if (elem.style.display === 'block') {
@@ -116,27 +110,39 @@ export default class Dashboard extends Component {
         method: 'GET',
         // body: JSON.stringify({ event_id: eventId }),
       }),
+      fetch(`${config.HOST}/api/messages`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+        },
+        method: 'GET',
+      }),
     ])
-      .then(([userRes, groupRes, eventRes, needRes]) => {
+      .then(([userRes, groupRes, eventRes, needRes, messagesRes]) => {
         return Promise.all([
           userRes.json(),
           groupRes.json(),
           eventRes.json(),
           needRes.json(),
+          messagesRes.json(),
         ]);
       })
-      .then(([users, groups, events, needed]) => {
+      .then(([users, groups, events, needed, messages]) => {
         let userId = users.find(
           (user) => user.first_name === window.localStorage.getItem('userName')
         );
-
+        
+        this.handleProfilePic(users);
+        // this.handleGroupPic(groups)
         this.setState({
           users: users,
           groups: groups,
           events: events,
+        
           userId: userId.id,
           needed: needed,
           eventId: eventId,
+          messages: messages,
         });
         //maintain bible passage even if page refreshes
         this.handleBiblePassage(this.state.eventId);
@@ -145,6 +151,96 @@ export default class Dashboard extends Component {
         this.setState({ error });
       });
   }
+  handleGroupPic = (groups) => {
+    // let userName = window.localStorage.getItem('userName');
+    
+    let group = groups.find((g) => {
+      if (g.user_ids.includes(this.props.userId)) {
+        return g.group_name;
+      }
+    });
+    let fileName = `${group.id}_${group.group_pic}`
+    let url;
+    fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
+      headers: {
+        'Content-Type': 'application/json',
+        // Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+      },
+      method: 'POST',
+      body: JSON.stringify({fileName, location: 'group-photo'}),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((resData) => {
+        let groupPic = `${resData.group.id}_${group.group_pic}`;
+
+        let trimmedGroupUrl = resData.url.split('?')[0]
+        url = trimmedGroupUrl;
+        this.setState({
+          group_Pic: trimmedGroupUrl
+        })
+      })
+      .catch((error) => {});
+  };
+  handleProfilePic = (users) => {
+    let userName = window.localStorage.getItem('userName');
+    let user = users.find((u) => {
+      return u.first_name === userName;
+    });
+    
+    let fileName = `${user.id}_${user.profile_pic}`
+    let url;
+    fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
+      headers: {
+        'Content-Type': 'application/json',
+        // Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+      },
+      method: 'POST',
+      body: JSON.stringify({fileName, location: 'user-photo'}),
+    })
+      .then((res) => {
+
+        return res.json();
+      })
+      .then((resData) => {
+        
+        let trimmedUrl = resData.url.split('?')[0]
+        url = trimmedUrl;
+        this.setState({
+          profilePic: trimmedUrl,
+        })
+      })
+      .catch((error) => {});
+  };
+  handleGroupUsersPic = (users) => {
+    let userName = window.localStorage.getItem('userName');
+    console.log(userName)
+    let user = users.find((u) => {
+      return u.first_name === userName;
+    });
+    let fileName = `${user.id}_${user.profile_pic}`
+    let url;
+    fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
+      headers: {
+        'Content-Type': 'application/json',
+        // Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+      },
+      method: 'POST',
+      body: JSON.stringify({fileName, location: 'user-photo'}),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((resData) => {
+        let trimmedUrl = resData.url.split('?')[0]
+        url = trimmedUrl;
+        this.setState({
+          profilePic: trimmedUrl
+        })
+      })
+      .catch((error) => {});
+  };
   handleBiblePassage = (eventId) => {
     //bible api call
     let selectedEvent = this.state.events.find((event) => {
@@ -192,8 +288,39 @@ export default class Dashboard extends Component {
       eventMessage: '',
     });
   };
+  uploadDashFile = (file, newFileName) => {
+    let url;
+    fetch(`${config.HOST}/api/getUrl`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({ name: newFileName, type: file.type, location: 'groups-photo' }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((resData) => {
+        url = resData.url;
+        let reader = new FileReader();
+        reader.addEventListener('loadend', (event) => {
+          fetch(url, {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Credentials': '*',
+            },
+            method: 'PUT',
+            body: new Blob([reader.result], { type: file.type }),
+          });
+        });
+        reader.readAsArrayBuffer(file);
+      })
+      .catch();
+  };
   createGroup = (formData) => {
     //add group to api
+    formData.GroupFileName = formData.groupProfilePic.name;
+
     fetch(`${config.HOST}/api/groups/creategroup`, {
       headers: {
         'Content-Type': 'application/json',
@@ -202,16 +329,13 @@ export default class Dashboard extends Component {
       method: 'POST',
       body: JSON.stringify(formData),
     })
-      .then((res) => {
-        if (!res.ok) {
-          return res.json().then((data) => {
-            return Promise.reject(new Error(data.error.message));
-          });
-        } else {
-          return res.json();
-        }
-      })
+    .then((res) => {
+      return res.json();
+    })
       .then((resData) => {
+        let groupPic = `${resData.group.id}_${formData.groupProfilePic.name}`;
+
+        this.uploadDashFile(formData.groupProfilePic, groupPic);
         this.props.history.push('/dashboard');
       })
       .catch((error) => {
@@ -291,6 +415,31 @@ export default class Dashboard extends Component {
         this.setState({ eventMessage: error.message });
       });
   };
+  createMessage = (formData) => {
+    console.log(formData);
+    fetch(`${config.HOST}/api/messages/send-message`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+      },
+      method: 'POST',
+      body: JSON.stringify(formData),
+    })
+    .then((res) => {
+      return res.json();
+    })    
+      .then((resData) => {
+        console.log(resData)
+        this.setState({
+          message_body: resData.message_body,
+          meesage_type: resData.message_type,
+          group_chat: this.state.groupId
+        })
+      })
+      .catch((error) => {
+        this.setState({ error });
+      });
+  };
   handleEvent = (eventId) => {
     this.setState({
       eventId: eventId,
@@ -317,18 +466,22 @@ export default class Dashboard extends Component {
         }
       }
     }
+    console.log(this.state)
+     
     return (
       <main className='Dashboard'>
         <nav className='DashHeader'>
           <div className='header-user-icon'>
             <div onClick={this.HamNav}>
-              {/* <img
+              {this.state.profilePic ?
+              <><img
                 id='header-user-icon'
-                src='https://user-photo.s3.us-east-2.amazonaws.com/14_IMG_2314.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJKON4ODYPQTLBE2A%2F20200815%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20200815T144547Z&X-Amz-Expires=900&X-Amz-Signature=d62fb050087858393b1207ddc9503bc76f84cce7472956a77d2a837e098252a5&X-Amz-SignedHeaders=host'
+                src={this.state.profilePic}
                 alt='user avatar'
-              /> */}
-              <img id='header-user-icon' src={guy1} alt='guy' />
-              <FontAwesomeIcon className='notification-alert'icon={faCircle}/>
+              />
+              <FontAwesomeIcon className='notification-alert' icon={faCircle} /></>:''}
+              {/* <img id='header-user-icon' src={guy1} alt='guy' /> */}
+              
             </div>
           </div>
           <div className='header-nav-icons' onClick={this.HamNavPage}>
@@ -427,6 +580,7 @@ export default class Dashboard extends Component {
                 onHandleHam={this.HamNavPage}
                 handleEvent={this.handleEvent}
                 handleBiblePassage={this.handleBiblePassage}
+                profilePic={this.state.profilePic}
               ></EventListPage>
             );
           }}
@@ -443,7 +597,11 @@ export default class Dashboard extends Component {
                 users={this.state.users}
                 userId={this.state.userId}
                 needed={this.state.needed}
+                messages={this.state.messages}
                 onHandleHam={this.HamNavPage}
+                onCreateMessage={this.createMessage}
+                profilePic={this.state.profilePic}
+                handleProfilePic={this.handleProfilePic}
               ></ChatPage>
             );
           }}

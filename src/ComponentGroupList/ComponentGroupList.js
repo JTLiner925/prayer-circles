@@ -6,9 +6,6 @@ import family1 from '../Images/family1.jpg';
 import friends1 from '../Images/friends1.jpg';
 import friends2 from '../Images/friends2.jpg';
 import './ComponentGroupList.css';
-// const App = withRouter(props => <ComponentGroupList {...props}/>);
-
-// import src from '*.bmp';
 
 export default class ComponentGroupList extends Component {
   state = {
@@ -16,12 +13,20 @@ export default class ComponentGroupList extends Component {
     event:'',
     user:'',
     selectedGroup: '',
+    groups: '',
+    users: '',
   };
   static defaultProps = {
     match: {
       params: {},
     },
   };
+  componentDidMount(groups){
+    this.setState({
+      groups: groups,
+      users: this.props.users,
+    })
+  }
   changeHandler = (e) => {
     // this.props.resetError();
     if (e.target.name === "group_name") {
@@ -34,12 +39,14 @@ export default class ComponentGroupList extends Component {
       this.setState({
         [e.target.name]: e.target.value,
         groupid: groupid,
+        groups: this.props.groups,
       });
     } else {
       this.setState({
         [e.target.name]: e.target.value,
       });
     }
+    this.props.handleProfilePic(this.state)
   };
   render() {
     let BackgroundImage = {
