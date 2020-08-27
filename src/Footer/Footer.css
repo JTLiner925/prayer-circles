@@ -19,6 +19,9 @@
 
   width: 100%;
 }
+.footer-chat-icon {
+  position: relative;
+}
 #home-icon,
 #group-icon,
 #plus-icon,
@@ -34,4 +37,14 @@
 #invite-icon:hover,
 #chat-icon:hover {
   color: rgb(128, 128, 128);
+}
+.notification-alert {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  bottom: 24px;
+  /* right: 50%; */
+  left: 55%;
+  z-index: 5;
+  color: rgb(34, 248, 15);
 }

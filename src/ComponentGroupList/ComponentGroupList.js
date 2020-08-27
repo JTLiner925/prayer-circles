@@ -46,7 +46,7 @@ export default class ComponentGroupList extends Component {
         [e.target.name]: e.target.value,
       });
     }
-    this.props.handleProfilePic(this.state)
+    // this.props.handleProfilePic(this.state)
   };
   render() {
     let BackgroundImage = {

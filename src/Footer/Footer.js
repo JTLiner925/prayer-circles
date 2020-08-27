@@ -7,6 +7,7 @@ import {
   faPlusSquare,
   faUsers,
   faComments,
+  faCircle
 } from "@fortawesome/free-solid-svg-icons";
 import "./Footer.css";
 
@@ -26,12 +27,17 @@ export default class Footer extends Component {
           <FontAwesomeIcon id="plus-icon" icon={faPlusSquare} />
         </Link>
 
-        <Link to="/invite" className="footer-invite-icon">
+        {/* <Link to="/invite" className="footer-invite-icon">
           <FontAwesomeIcon id="invite-icon" icon={faUsers} />
-        </Link>
+        </Link> */}
         <Link to='/chat' className="footer-chat-icon">
           <FontAwesomeIcon id="chat-icon" icon={faComments} />
+          <FontAwesomeIcon
+                    className='notification-alert'
+                    icon={faCircle}
+                  />
         </Link>
+        
       </div>
     );
   }

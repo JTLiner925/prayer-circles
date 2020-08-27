@@ -28,7 +28,7 @@
   align-items: center;
   cursor: pointer;
 }
-.notification-alert{
+/* .notification-alert{
   position: absolute;
   width: 10px;
   height: 10px;
@@ -36,7 +36,7 @@
   left: 24px;
   z-index: 4;
   color: rgb(34, 248, 15);
-}
+} */
 #header-user-icon {
   display: flex;
   flex-direction: column;

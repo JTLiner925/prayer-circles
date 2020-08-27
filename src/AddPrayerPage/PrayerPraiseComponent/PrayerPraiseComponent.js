@@ -4,15 +4,22 @@ import { faPrayingHands, faChild } from "@fortawesome/free-solid-svg-icons";
 import "./PrayerPraiseComponent.css";
 
 export default class PrayerPraiseComponent extends Component {
+  changeHandler = (e) => {
+    this.props.resetError();
+      this.setState({
+        prayer_type: e.target.name,
+      });
+    
+  };
   render() {
     return (
       <div className="Prayer-Praise-Component">
-        <button className="prayer-button">
+        <button name='prayer' className="prayer-button">
           <FontAwesomeIcon id="prayer-hands-icon" icon={faPrayingHands} />
           <p>Prayer</p>
         </button>
         <h2>Or</h2>
-        <button className="praise-button">
+        <button name='praise' className="praise-button">
           <FontAwesomeIcon id="prayer-hands-icon" icon={faChild} />
           <p>Praise</p>
         </button>

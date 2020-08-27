@@ -13,6 +13,8 @@ export default class AddEventPage extends Component {
     question: [],
     question_value: '',
     selectedGroup: '',
+    groupid: this.props.groupId
+    
   };
 
   setEvent = (event, group) => {

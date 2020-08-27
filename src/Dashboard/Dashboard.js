@@ -43,6 +43,7 @@ export default class Dashboard extends Component {
       error: null,
     });
   };
+  
   HamNav = (e) => {
     //event handler for hamburger menu
     let elem = document.querySelector('.UserSideNav');
@@ -66,10 +67,13 @@ export default class Dashboard extends Component {
     let i = window.location.search;
     let x = new URLSearchParams(i);
     let eventId;
-
+    let gId;
     for (let [key, value] of x) {
       if (key === 'eventId') {
         eventId = value;
+      }
+      if (key === 'groupId') {
+        gId = value;
       }
       this.setState({
         [key]: value,
@@ -79,6 +83,7 @@ export default class Dashboard extends Component {
     //call api for data to display in dashboard
     this.setState({
       eventMessage: '',
+
     });
     Promise.all([
       fetch(`${config.HOST}/api/users`, {
@@ -117,32 +122,81 @@ export default class Dashboard extends Component {
         },
         method: 'GET',
       }),
+      fetch(`${config.HOST}/api/prayers`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+        },
+        method: 'GET',
+      }),
     ])
-      .then(([userRes, groupRes, eventRes, needRes, messagesRes]) => {
-        return Promise.all([
-          userRes.json(),
-          groupRes.json(),
-          eventRes.json(),
-          needRes.json(),
-          messagesRes.json(),
-        ]);
-      })
-      .then(([users, groups, events, needed, messages]) => {
+      .then(
+        ([userRes, groupRes, eventRes, needRes, messagesRes, prayersRes]) => {
+          return Promise.all([
+            userRes.json(),
+            groupRes.json(),
+            eventRes.json(),
+            needRes.json(),
+            messagesRes.json(),
+            prayersRes.json(),
+          ]);
+        }
+      )
+      .then(([users, groups, events, needed, messages, prayers]) => {
         let userId = users.find(
           (user) => user.first_name === window.localStorage.getItem('userName')
         );
-        
+        let testGroup = {};
+        if (gId) {
+          let matchedGroup = groups.find((g) => {
+            return g.id === parseInt(gId)
+          })
+          if(matchedGroup){
+            let userIds = matchedGroup.user_ids;
+            console.log(userIds)
+            userIds.forEach(id => {
+              users.forEach(usr => {
+                if(parseInt(id) === usr.id){
+                  fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
+                    headers: {
+                      'Content-Type': 'application/json',
+                      // Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+                    },
+                    method: 'POST',
+                    body: JSON.stringify({ fileName:`${usr.id}_${usr.profile_pic}`, location: 'user-photo' }),
+                  })
+                    .then((res) => {
+                      return res.json();
+                    })
+                    .then((resData) => {
+                      
+                      console.log(resData);
+                      let trimmedUrl = resData.url.split('?')[0];
+                      let url = trimmedUrl;
+                      testGroup[usr.first_name] = {profilePic: url}
+
+                    })
+                    .catch((error) => {});
+                }
+              })
+            })
+          }
+
+        }
+        console.log(testGroup)
+
         this.handleProfilePic(users);
         // this.handleGroupPic(groups)
         this.setState({
           users: users,
           groups: groups,
           events: events,
-        
           userId: userId.id,
           needed: needed,
           eventId: eventId,
           messages: messages,
+          prayers: prayers,
+          testGroup: testGroup,
         });
         //maintain bible passage even if page refreshes
         this.handleBiblePassage(this.state.eventId);
@@ -150,16 +204,36 @@ export default class Dashboard extends Component {
       .catch((error) => {
         this.setState({ error });
       });
+      setInterval(() => {
+        fetch(`${config.HOST}/api/messages`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+          },
+          method: 'GET',
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((resData) => {
+            this.setState({
+              messages: resData
+            })
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, 1000);
   }
   handleGroupPic = (groups) => {
     // let userName = window.localStorage.getItem('userName');
-    
+
     let group = groups.find((g) => {
       if (g.user_ids.includes(this.props.userId)) {
         return g.group_name;
       }
     });
-    let fileName = `${group.id}_${group.group_pic}`
+    let fileName = `${group.id}_${group.group_pic}`;
     let url;
     fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
       headers: {
@@ -167,7 +241,7 @@ export default class Dashboard extends Component {
         // Authorization: `Bearer ${window.localStorage.getItem('token')}`,
       },
       method: 'POST',
-      body: JSON.stringify({fileName, location: 'group-photo'}),
+      body: JSON.stringify({ fileName, location: 'group-photo' }),
     })
       .then((res) => {
         return res.json();
@@ -175,11 +249,11 @@ export default class Dashboard extends Component {
       .then((resData) => {
         let groupPic = `${resData.group.id}_${group.group_pic}`;
 
-        let trimmedGroupUrl = resData.url.split('?')[0]
+        let trimmedGroupUrl = resData.url.split('?')[0];
         url = trimmedGroupUrl;
         this.setState({
-          group_Pic: trimmedGroupUrl
-        })
+          group_Pic: trimmedGroupUrl,
+        });
       })
       .catch((error) => {});
   };
@@ -188,8 +262,8 @@ export default class Dashboard extends Component {
     let user = users.find((u) => {
       return u.first_name === userName;
     });
-    
-    let fileName = `${user.id}_${user.profile_pic}`
+
+    let fileName = `${user.id}_${user.profile_pic}`;
     let url;
     fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
       headers: {
@@ -197,29 +271,28 @@ export default class Dashboard extends Component {
         // Authorization: `Bearer ${window.localStorage.getItem('token')}`,
       },
       method: 'POST',
-      body: JSON.stringify({fileName, location: 'user-photo'}),
+      body: JSON.stringify({ fileName, location: 'user-photo' }),
     })
       .then((res) => {
-
         return res.json();
       })
       .then((resData) => {
-        
-        let trimmedUrl = resData.url.split('?')[0]
+        console.log(resData);
+        let trimmedUrl = resData.url.split('?')[0];
         url = trimmedUrl;
         this.setState({
           profilePic: trimmedUrl,
-        })
+        });
       })
       .catch((error) => {});
   };
   handleGroupUsersPic = (users) => {
     let userName = window.localStorage.getItem('userName');
-    console.log(userName)
+    console.log(userName);
     let user = users.find((u) => {
       return u.first_name === userName;
     });
-    let fileName = `${user.id}_${user.profile_pic}`
+    let fileName = `${user.id}_${user.profile_pic}`;
     let url;
     fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
       headers: {
@@ -227,17 +300,17 @@ export default class Dashboard extends Component {
         // Authorization: `Bearer ${window.localStorage.getItem('token')}`,
       },
       method: 'POST',
-      body: JSON.stringify({fileName, location: 'user-photo'}),
+      body: JSON.stringify({ fileName, location: 'user-photo' }),
     })
       .then((res) => {
         return res.json();
       })
       .then((resData) => {
-        let trimmedUrl = resData.url.split('?')[0]
+        let trimmedUrl = resData.url.split('?')[0];
         url = trimmedUrl;
         this.setState({
-          profilePic: trimmedUrl
-        })
+          profilePic: trimmedUrl,
+        });
       })
       .catch((error) => {});
   };
@@ -295,7 +368,11 @@ export default class Dashboard extends Component {
         'Content-Type': 'application/json',
       },
       method: 'POST',
-      body: JSON.stringify({ name: newFileName, type: file.type, location: 'groups-photo' }),
+      body: JSON.stringify({
+        name: newFileName,
+        type: file.type,
+        location: 'groups-photo',
+      }),
     })
       .then((res) => {
         return res.json();
@@ -329,9 +406,9 @@ export default class Dashboard extends Component {
       method: 'POST',
       body: JSON.stringify(formData),
     })
-    .then((res) => {
-      return res.json();
-    })
+      .then((res) => {
+        return res.json();
+      })
       .then((resData) => {
         let groupPic = `${resData.group.id}_${formData.groupProfilePic.name}`;
 
@@ -425,16 +502,42 @@ export default class Dashboard extends Component {
       method: 'POST',
       body: JSON.stringify(formData),
     })
-    .then((res) => {
-      return res.json();
-    })    
+      .then((res) => {
+        return res.json();
+      })
       .then((resData) => {
-        console.log(resData)
+        console.log(resData);
         this.setState({
           message_body: resData.message_body,
-          meesage_type: resData.message_type,
-          group_chat: this.state.groupId
-        })
+          message_type: resData.message_type,
+          group_chat: this.state.groupId,
+        });
+      })
+      .catch((error) => {
+        this.setState({ error });
+      });
+  };
+  createPrayer = (formData) => {
+    console.log(formData);
+    fetch(`${config.HOST}/api/prayers/send-prayer`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+      },
+      method: 'POST',
+      body: JSON.stringify(formData),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((resData) => {
+        console.log(resData);
+        this.setState({
+          prayer_body: resData.prayer_body,
+          prayer_type: this.state.prayer_type,
+          group_prayer: this.state.groupId,
+        });
+        this.props.history.push('/dashboard');
       })
       .catch((error) => {
         this.setState({ error });
@@ -466,22 +569,31 @@ export default class Dashboard extends Component {
         }
       }
     }
-    console.log(this.state)
-     
+    console.log(this.state);
+
     return (
       <main className='Dashboard'>
         <nav className='DashHeader'>
           <div className='header-user-icon'>
-            <div onClick={this.HamNav}>
-              {this.state.profilePic ?
-              <><img
-                id='header-user-icon'
-                src={this.state.profilePic}
-                alt='user avatar'
-              />
-              <FontAwesomeIcon className='notification-alert' icon={faCircle} /></>:''}
+            <div 
+            // onClick={this.HamNav}
+            >
+              {this.state.profilePic ? (
+                <>
+                  <img
+                    id='header-user-icon'
+                    src={this.state.profilePic}
+                    alt='user avatar'
+                  />
+                  {/* <FontAwesomeIcon
+                    className='notification-alert'
+                    icon={faCircle}
+                  /> */}
+                </>
+              ) : (
+                ''
+              )}
               {/* <img id='header-user-icon' src={guy1} alt='guy' /> */}
-              
             </div>
           </div>
           <div className='header-nav-icons' onClick={this.HamNavPage}>
@@ -602,6 +714,7 @@ export default class Dashboard extends Component {
                 onCreateMessage={this.createMessage}
                 profilePic={this.state.profilePic}
                 handleProfilePic={this.handleProfilePic}
+                groupUsers={this.state.testGroup}
               ></ChatPage>
             );
           }}
@@ -663,6 +776,7 @@ export default class Dashboard extends Component {
           render={() => {
             return (
               <AddPrayerPage
+                resetError={this.resetError}
                 groups={this.state.groups}
                 groupId={this.state.groupId}
                 users={this.state.users}
@@ -670,6 +784,7 @@ export default class Dashboard extends Component {
                 events={this.state.events}
                 eventId={this.state.eventId}
                 onHandleHam={this.HamNavPage}
+                onCreatePrayer={this.createPrayer}
               ></AddPrayerPage>
             );
           }}
