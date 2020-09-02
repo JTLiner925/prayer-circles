@@ -61,7 +61,7 @@
   margin: 2px 0 8px auto;
 }
 .speech-bubble-lf {
-  min-height: 25%;
+  min-height: 40px;
   background: #efefef;
   border: 1px solid #a7a7a7;
   border-radius: 10px;
