@@ -10,7 +10,7 @@
   height: 65%;
   /* overflow: auto; */
   /* white-space: nowrap; */
-  position: absolute;
+  position: relative;
   width: 100%;
   top: 27%;
   z-index: 4;
@@ -27,6 +27,7 @@
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.637);
   /* height: 100%; */
   margin-bottom: 30px;
+ 
 }
 .prayer-header {
   /* height: 10%; */
@@ -109,15 +110,12 @@
   display: flex;
   justify-content: space-between;
   /* padding-bottom: 2px; */
-  background-color: #013af5a7;
+  border-bottom: 10px solid #013af5a7;
 
-  height: 10px;
+  height: 30px;
   margin: 0;
 }
-.prayer-footer-left {
-  /* height: 100%; */
-  margin: 0;
-}
+
 
 #prayer-prayer-icon,
 #prayer-thumbs-up-icon,
