@@ -6,7 +6,6 @@ import guy2 from '../Images/guy2.jpg';
 export default class ChatBubbleComponent extends Component {
   render() {
     let element = document.getElementById('anchor')
-    console.log(element)
     if(element){
   element.scrollIntoView()
     }
@@ -23,11 +22,9 @@ export default class ChatBubbleComponent extends Component {
       .concat(messages)
       .sort((a, b) => (a.message_time > b.message_time ? 1 : -1))
       .filter((msg) => msg.group_chat === parseInt(this.props.groupId));
-    // console.log(this.props);
     return (
       <div className='Chat-Bubble-Component' id='scroller'>
         {groupId ? sortMessages.map((message) => {
-          // console.log(message, message.user_id, user.id);
           let picture;
           let usr;
           if (Object.keys(this.props.groupUsers).length > 0) {

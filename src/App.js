@@ -13,7 +13,6 @@ class App extends Component {
   };
   register = (formData) => {
     //sign up for an account - feeds into login()
-    // console.log(formData);
     formData.FileName = formData.profilePic.name;
     fetch(`${config.HOST}/api/users/register`, {
       headers: {

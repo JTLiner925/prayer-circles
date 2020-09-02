@@ -40,8 +40,6 @@ export default class AddGroupPage extends Component {
     }
   };
   handleGroupPhoto = (e) => {
-    // e.preventDefault();
-    // console.log(e.target.value);
     this.setState({
       groupProfilePic: e,
       groupPhotoMessage: '✅ Photo uploaded successfully!',

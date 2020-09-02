@@ -33,7 +33,6 @@ export default class SettingsPage extends Component {
 
   handleUpdateUserPhoto = (e) => {
     e.preventDefault();
-    console.log(e.target.value)
   }
   changeHandler = (e) => {
     this.setState({

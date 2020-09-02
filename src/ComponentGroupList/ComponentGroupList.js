@@ -47,7 +47,6 @@ export default class ComponentGroupList extends Component {
         [e.target.name]: e.target.value,
       });
     }
-    // this.props.handleProfilePic(this.state)
   };
   render() {
     let BackgroundImage = {
@@ -75,22 +74,18 @@ export default class ComponentGroupList extends Component {
       .concat(groups)
       .sort((a, b) => (a.id > b.id ? 1 : -1));
     const sortEvents = [].concat(events).sort((a, b) => (a.id > b.id ? 1 : -1));
-    // console.log(this.props);
     return (
      
       <div className='Group-List-Slider' onClick={this.props.onHandleHam}>
-        {/* <div className='group-list-slides'> */}
         <div className='group-list-div'>
         <h2>Select Group</h2>
         <ul className='group-list-slides'>
           
           {groups.map((group) => {
             let BackgroundImage = `url(${friends1})`;
-            // console.log(groups)
             if(myGroupPhotos && Object.keys(myGroupPhotos).length > 0){
               if(myGroupPhotos[group.group_name] && myGroupPhotos[group.group_name].profilePic){
                 BackgroundImage = myGroupPhotos[group.group_name].profilePic
-                // console.log(BackgroundImage)
               }
             }
             let addGroupBackgroundImage = {
@@ -116,7 +111,6 @@ export default class ComponentGroupList extends Component {
                       className='group-image'
                       to={`${pathname}?groupId=${idee}`}
                     >
-                     {/* <img className='group-image' alt={`url(${friends1})`} src={BackgroundImage ? BackgroundImage: `url(${friends1})`}></img> */}
                       <div name='group_name'>{group.group_name}</div>
                     </NavLink>
                   </li>
@@ -133,7 +127,6 @@ export default class ComponentGroupList extends Component {
               to='/add-group'
               style={addGroupBackgroundImage}
             >
-              {/* <img className='add-group-image' src={friends2} alt='Friends' /> */}
 
               <div>Add Group</div>
             </NavLink>

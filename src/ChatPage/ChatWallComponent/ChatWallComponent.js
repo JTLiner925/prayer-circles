@@ -28,7 +28,6 @@ export default class ChatWallComponent extends Component {
 
   handleChatAddPhoto = (e) => {
     e.preventDefault();
-    // console.log(e.target.value);
   };
   submitHandler = (e) => {
     e.preventDefault();
@@ -52,7 +51,6 @@ export default class ChatWallComponent extends Component {
       return group.id === parseInt(groupId);
     });
 
-    console.log(this.props, selectedGroup);
     return (
       <>
         {this.state.showChatAddPhoto ? (

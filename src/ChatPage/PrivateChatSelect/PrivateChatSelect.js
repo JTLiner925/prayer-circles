@@ -13,7 +13,6 @@ export default class PrivateChatSelect extends Component {
  
   render() {
     const { users = [], userId,  profilePic, groupId, groups } = this.props;
-    // const { groups = [] } = this.props;
     const groupUsers = []
       .concat(this.state.groups)
       .sort((a, b) => (a.id > b.id ? 1 : -1));
@@ -28,16 +27,11 @@ export default class PrivateChatSelect extends Component {
         })
       }
     
-    // console.log(selectedGroup, filteredUsers, this.props)
-    // console.log(sortUsers)
     return (
       <div className='Private-Chat-Select'>
         <div className='chat-people'>
-          {/* <div className='chat-person'>
-            <img className='person-image' src={guy1} alt='guy' />
-          </div> */}
+          
           {filteredUsers.map((u) => {
-            // console.log(u, this.props.groupUsers)
 
             let picture;
             if(Object.keys(this.props.groupUsers).length > 0){
@@ -48,13 +42,11 @@ export default class PrivateChatSelect extends Component {
               }
               
             }
-            // if(u.user_ids == userId){
-            //   console.log(u)
               return (
                 <div key={u.id} className='chat-person'>
                 <img id='userid' className='person-image' src={picture ? picture : null} alt='user' />
               </div>)
-            // }
+          
             
           })}
         </div>

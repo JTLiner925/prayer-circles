@@ -61,7 +61,6 @@ export default class AddPrayerPage extends Component {
     };
     const { events = [], userId } = this.props;
     const { groups = [], groupId } = this.props;
-    // console.log(this.props)
     return (
       <div className='AddPrayerPage' onClick={this.props.onHandleHam}>
         <div id='anchor'></div>

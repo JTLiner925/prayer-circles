@@ -12,13 +12,13 @@ export default class ChatPage extends Component {
   };
  
   sendMessage = (message) => {
-    // console.log(message);
+
 
     // socket.on('timer', timestamp => { console.log(timestamp)});
   };
 
   render() {
-    // console.log(this.state);
+
     return (
       <div className='ChatPage' onClick={this.props.onHandleHam}>
         <PrivateChatSelect

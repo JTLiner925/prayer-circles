@@ -9,6 +9,8 @@
   width: 100%;
   max-width: 1000px;
   z-index: 7;
+  position: static;
+  top: 5%;
 }
 .group-list-div {
   display: flex;

@@ -53,7 +53,6 @@ export default class EventListPage extends Component {
               let hostUser = users.find((u) => {
                 return event.event_leader === u.id;
               });
-              console.log(hostUser, profilePic);
               return (
                 <div key={event.id} className='event-list-request'>
                   <div className='event-time-date'>

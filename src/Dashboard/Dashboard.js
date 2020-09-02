@@ -82,7 +82,7 @@ componentDidMount(){
         [key]: value,
       });
     }
-    console.log(gId)
+   
     //call api for data to display in dashboard
     this.setState({
       eventMessage: '',
@@ -155,7 +155,6 @@ componentDidMount(){
         let testGroup = {};
         let myGroupPhotos = {};
         groups.forEach((group) => {
-          // console.log(group, `${group.id}_${group.group_pic}`)
           fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
             headers: {
               'Content-Type': 'application/json',
@@ -186,7 +185,6 @@ componentDidMount(){
           })
           if(matchedGroup){
             let userIds = matchedGroup.user_ids;
-            // console.log(userIds)
             userIds.forEach(id => {
               users.forEach(usr => {
                 if(parseInt(id) === usr.id){
@@ -262,28 +260,8 @@ componentDidMount(){
       return
     }
     this.refreshData()
-    console.log(JSON.stringify(prevProps,null, 2))
-    // let i = window.location.search;
-    // let x = new URLSearchParams(i);
-    // let eventId;
-    // let gId;
-    // for (let [key, value] of x) {
-    //   if (key === 'eventId') {
-    //     eventId = value;
-    //   }
-    //   if (key === 'groupId') {
-    //     gId = value;
-    //   }
-      
-    // }
-    // this.setState({
-    //   groupId: gId,
-    //   eventId: eventId
-    // })
   }
   handleGroupPic = (groups) => {
-    // let userName = window.localStorage.getItem('userName');
-
     let group = groups.find((g) => {
       if (g.user_ids.includes(this.props.userId)) {
         return g.group_name;
@@ -343,7 +321,6 @@ componentDidMount(){
   };
   handleGroupUsersPic = (users) => {
     let userName = window.localStorage.getItem('userName');
-    console.log(userName);
     let user = users.find((u) => {
       return u.first_name === userName;
     });
@@ -597,7 +574,6 @@ componentDidMount(){
         this.props.history.push('/dashboard');
       })
       .catch((error) => {
-        console.log(error.message)
         this.setState({ eventMessage: error.message });
       });
   };
@@ -627,7 +603,6 @@ componentDidMount(){
         }
       }
     }
-    // console.log(this.state);
 
     return (
       <main className='Dashboard'>

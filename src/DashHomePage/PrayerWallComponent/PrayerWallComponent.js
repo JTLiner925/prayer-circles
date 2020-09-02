@@ -27,14 +27,8 @@ export default class PrayerWallComponent extends Component {
 
   handleAddPhoto = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
   };
   render() {
-  //   let element = document.getElementById('anchor')
-  //   console.log(element)
-  //   if(element){
-  // element.scrollIntoView()
-  //   }
     let i = window.location.search;
     let x = new URLSearchParams(i);
     let id;
@@ -82,23 +76,10 @@ export default class PrayerWallComponent extends Component {
         });
       }
     }
-    console.log(this.props);
     return (
       <>
-        {/* {this.state.showAddPhoto ? <div className='add-photo-background'>
-        <div className='add-photo-model'>
-          <p onClick={this.toggleAddPhoto}>X</p>
-          <form>
-            <div id='prayer-drop-area'>
-            <input id='handle-add-photo'type='file' onChange={this.handleAddPhoto} ></input>
-            </div>
-            
-          </form>
-        </div>
-      </div>: ''} */}
 
         <div className='Prayer-Wall-Component'>
-          {/* <div className="prayer-wall-component-request"> */}
           {groupId ? (
             sortPrayers.map((prayer) => {
               let eachUserId;
@@ -124,19 +105,6 @@ export default class PrayerWallComponent extends Component {
               if (!usr) {
                 usr = {};
               }
-              // let groupImage = `url(${friends1})`;
-              // let group = groups.map((group) => {
-              //   console.log(group)
-              //   this.setState({
-              //     group:group
-              //   })
-              // })
-              // if(myGroupPhotos && Object.keys(myGroupPhotos).length > 0){
-              //   if(myGroupPhotos[group.group_name] && myGroupPhotos[group.group_name].profilePic){
-              //     groupImage = myGroupPhotos[group.group_name].profilePic
-              //     console.log(groupImage)
-              //   }
-              // }
               if (eachUserId && eachUserId === usr.id) {
                 return (
                   <div
@@ -156,23 +124,12 @@ export default class PrayerWallComponent extends Component {
                           </h3>
                         </div>
                 <h4>{selectedGroup.group_name}</h4>
-                        {/* <FontAwesomeIcon
-                          id='prayer-users-icon'
-                          icon={faUsers}
-                        /> */}
-                        {/* <img src={groupImage} alt='group'></img> */}
                       </div>
                     </div>
                     <div className='prayer-main'>
                       <p>{prayer.prayer_body}</p>
                     </div>
-                    <div className='prayer-footer'>
-                      {/* <div className='prayer-footer-left'>
-                        <FontAwesomeIcon
-                          id='prayer-thumbs-up-icon'
-                          icon={faThumbsUp}
-                        />
-                      </div> */}
+                    <div className='prayer-footer'>                  
                     </div>
                   </div>
                 );
@@ -183,7 +140,6 @@ export default class PrayerWallComponent extends Component {
               <h3 className='pre-prayer-wall-text'>Select Group<br></br>to view prayer requests</h3>
             </div>
           )}
-          {/* </div> */}
           <div id='anchor'></div>
         </div>
       </>
