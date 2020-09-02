@@ -72,7 +72,7 @@ export default class EventListPage extends Component {
                             groupUsers &&
                             groupUsers[hostUser.first_name]
                               ? groupUsers[hostUser.first_name].profilePic
-                              : ''
+                              : null
                           }
                           alt='guy'
                         />

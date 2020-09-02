@@ -125,6 +125,7 @@
 }
 .register-fontawesome {
   background-color: #ffffff;
+  display: flex;
 }
 #user-icon {
   display: flex;

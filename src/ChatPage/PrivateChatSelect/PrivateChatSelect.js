@@ -44,7 +44,7 @@ export default class PrivateChatSelect extends Component {
               if(this.props.groupUsers[u.first_name] && this.props.groupUsers[u.first_name].profilePic ){
                 picture = this.props.groupUsers[u.first_name].profilePic
               } else {
-                picture = '';
+                picture = null;
               }
               
             }
@@ -52,7 +52,7 @@ export default class PrivateChatSelect extends Component {
             //   console.log(u)
               return (
                 <div key={u.id} className='chat-person'>
-                <img id='userid' className='person-image' src={picture ? picture : null} alt='girl' />
+                <img id='userid' className='person-image' src={picture ? picture : null} alt='user' />
               </div>)
             // }
             

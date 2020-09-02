@@ -12,7 +12,7 @@
   /* white-space: nowrap; */
   position: absolute;
   width: 100%;
-  top: 23%;
+  top: 27%;
   z-index: 4;
   background-color: white ;
 }
@@ -43,7 +43,7 @@
 }
 
 .prayer-user {
-  width: 86%;
+  width: 60%;
 }
 .prayer-user h2,
 .prayer-user h3 {
@@ -94,8 +94,8 @@
   width: 100%;
   /* margin-top: 10px;
   margin-bottom: 10px; */
-  padding: 5%;
-
+  padding-left: 5%;
+  padding-right: 5%;
 }
 #prayer-image-icon,
 #prayer-images-icon {

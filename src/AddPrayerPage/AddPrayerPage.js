@@ -99,13 +99,8 @@ export default class AddPrayerPage extends Component {
               if (selectedGroup && selectedGroup == group.id) {
                 return (
                   <div key={group.id} className='add-event-header-top'>
-                    <div
-                      style={BackgroundImage}
-                      className='event-group-icon'
-                      name='group_name'
-                    >
-                      <div groupid={group.id}>{group.group_name}</div>
-                    </div>
+                    
+                    <p  groupid={group.id}>Group: {group.group_name}</p>
                   </div>
                 );
               }
