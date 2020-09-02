@@ -10,15 +10,25 @@ export default class PrivateChatSelect extends Component {
   state = {
     groups: [],
   }
-
+ 
   render() {
-    const { users = [], userId,  profilePic } = this.props;
+    const { users = [], userId,  profilePic, groupId, groups } = this.props;
     // const { groups = [] } = this.props;
     const groupUsers = []
       .concat(this.state.groups)
       .sort((a, b) => (a.id > b.id ? 1 : -1));
     const sortUsers = [].concat(users).sort((a, b) => (a.id > b.id ? 1 : -1));
-    // console.log(groupUsers, this.state)
+    let filteredUsers = []
+    let selectedGroup =  groups.find((group) => {
+      return group.id === parseInt(groupId)
+      })
+      if(selectedGroup){
+        filteredUsers = users.filter((user) => {
+          return selectedGroup.user_ids.includes(user.id.toString())
+        })
+      }
+    
+    // console.log(selectedGroup, filteredUsers, this.props)
     // console.log(sortUsers)
     return (
       <div className='Private-Chat-Select'>
@@ -26,17 +36,23 @@ export default class PrivateChatSelect extends Component {
           {/* <div className='chat-person'>
             <img className='person-image' src={guy1} alt='guy' />
           </div> */}
-          {users.map((u) => {
-            console.log(u, this.props.groupUsers)
+          {filteredUsers.map((u) => {
+            // console.log(u, this.props.groupUsers)
+
             let picture;
             if(Object.keys(this.props.groupUsers).length > 0){
-              picture = this.props.groupUsers[u.first_name].profilePic
+              if(this.props.groupUsers[u.first_name] && this.props.groupUsers[u.first_name].profilePic ){
+                picture = this.props.groupUsers[u.first_name].profilePic
+              } else {
+                picture = '';
+              }
+              
             }
             // if(u.user_ids == userId){
             //   console.log(u)
               return (
                 <div key={u.id} className='chat-person'>
-                <img className='person-image' src={picture ? picture : null} alt='girl' />
+                <img id='userid' className='person-image' src={picture ? picture : null} alt='girl' />
               </div>)
             // }
             

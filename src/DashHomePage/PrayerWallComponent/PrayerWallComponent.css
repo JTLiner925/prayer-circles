@@ -7,26 +7,34 @@
   margin: 15px auto;
   width: 100%;
   max-width: 1000px;
-  /* height: 65%; */
+  height: 65%;
   /* overflow: auto; */
   /* white-space: nowrap; */
+  position: absolute;
+  width: 100%;
+  top: 23%;
+  z-index: 4;
+  background-color: white ;
 }
 .prayer-wall-component-request {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  /* padding: 10px; */
   width: 100%;
-  margin: 10px auto;
-  padding: 5%;
+  margin: 0 auto;
+  /* padding: 5%; */
   /* border-radius: 10px; */
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.637);
   /* height: 100%; */
+  margin-bottom: 30px;
 }
 .prayer-header {
   /* height: 10%; */
-  margin-bottom: 10px;
-  padding-bottom: 10px;
+  /* margin-bottom: 10px; */
+  padding: 10px;
+  padding-bottom: 2px;
   border-bottom: 1px solid #cecece61;
+
 }
 .prayer-header-top {
   margin-top: 0;
@@ -84,8 +92,10 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  /* margin-top: 10px;
+  margin-bottom: 10px; */
+  padding: 5%;
+
 }
 #prayer-image-icon,
 #prayer-images-icon {
@@ -98,17 +108,22 @@
   /* height: 5%; */
   display: flex;
   justify-content: space-between;
-  padding-bottom: 2px;
+  /* padding-bottom: 2px; */
+  background-color: #013af5a7;
+
+  height: 10px;
+  margin: 0;
 }
 .prayer-footer-left {
   /* height: 100%; */
+  margin: 0;
 }
 
 #prayer-prayer-icon,
 #prayer-thumbs-up-icon,
 #prayer-comment-icon,
 #prayer-dots-icon {
-  color: #83aca2;
+  color: #c7c7c7;
   font-size: 20px;
   margin-right: 20px;
 }
@@ -179,4 +194,16 @@ color: rgb(216, 169, 250);
 .prayer-input-text:hover {
   background-color: rgb(240, 240, 240);
   transition: 500ms;
+}
+.pre-prayer-wall{
+  height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.pre-prayer-wall-text{
+  text-align: center;
+  line-height: 1.5;
+  font-size: 26px;
+  color: #828282;
 }

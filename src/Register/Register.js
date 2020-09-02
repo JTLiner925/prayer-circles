@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import config from '../config';
 import './Register.css';
 
@@ -135,7 +135,7 @@ export default class Register extends Component {
               <FontAwesomeIcon
                 id='user-icon'
                 className='register-avatar'
-                icon={faUser}
+                icon={faUserPlus}
               />
             </div>
             <div className='register-name-div'>

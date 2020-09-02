@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserPlus, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { default as NumberFormat } from 'react-number-format';
 import './AddGroupPage.css';
 
@@ -185,16 +185,16 @@ export default class AddGroupPage extends Component {
                 <FontAwesomeIcon
                   id='user-icon'
                   className='add-group-avatar'
-                  icon={faUser}
+                  icon={faUserPlus}
                 />
               </div>
-              <select id='group-public-private' onChange={this.accessHandler}>
+              {/* <select id='group-public-private' onChange={this.accessHandler}>
                 <option selected disabled hidden>
                   Chooses Access Setting
                 </option>
                 <option value='public'>Public Group</option>
                 <option value='private'>Private Group</option>
-              </select>
+              </select> */}
               <label
                 name='group_names'
                 htmlFor='group-name-input'

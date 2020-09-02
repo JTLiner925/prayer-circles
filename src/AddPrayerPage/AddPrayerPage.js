@@ -15,43 +15,43 @@ export default class AddPrayerPage extends Component {
     prayer_type: '',
   };
   submitHandler = (e) => {
+    // this.props.resetError();
     e.preventDefault();
     this.props.onCreatePrayer(this.state);
   };
   changeHandler = (e, prayer_type) => {
-  console.log(e.target)
-    this.props.resetError();
+    // this.props.resetError();
     if (e.target.name === 'group_name') {
       let element = document.querySelector(
         `#${e.target.value.split(' ').join('_')}`
       );
       let groupid;
       groupid = element.getAttribute('groupid');
-        
+
       this.setState({
         [e.target.name]: e.target.value,
         groupid: groupid,
       });
     } else {
-      if(e.target.name){
+      if (e.target.name) {
         this.setState({
           [e.target.name]: e.target.value,
           user_id: this.props.userId,
           group_prayer: this.props.groupId,
         });
       }
-      
-    } if(prayer_type){
+    }
+    if (prayer_type) {
       this.setState({
         prayer_type: prayer_type,
-      })
+      });
     }
   };
   onChangePrayerType = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
   static getDerivedStateFromProps(props) {
     return { groupid: props.groupId };
   }
@@ -61,35 +61,39 @@ export default class AddPrayerPage extends Component {
     };
     const { events = [], userId } = this.props;
     const { groups = [], groupId } = this.props;
-    console.log(this.state)
+    // console.log(this.props)
     return (
       <div className='AddPrayerPage' onClick={this.props.onHandleHam}>
-        
+        <div id='anchor'></div>
         <div className='add-prayer-form'>
           <form className='add-prayer-form' onSubmit={this.submitHandler}>
-          <div className='Prayer-Praise-Component'>
-          <button
-          type='button'
-            name='prayer_type'
-            value='Prayer'
-            className='prayer-button'
-            onClick={(e) => {this.changeHandler(e, 'Prayer')}}
-            >
-            <FontAwesomeIcon id='prayer-hands-icon' icon={faPrayingHands} />
-            <p>Prayer</p>
-          </button>
-          <h2>Or</h2>
-          <button
-            name='prayer_type'
-            type='button'
-            value='Praise'
-            className='praise-button prayertype'
-            onClick={(e) => {this.changeHandler(e, 'Praise')}}
-            >
-            <FontAwesomeIcon id='prayer-hands-icon' icon={faChild} />
-            <p>Praise</p>
-          </button>
-        </div>
+            <div className='Prayer-Praise-Component'>
+              <button
+                type='button'
+                name='prayer_type'
+                value='Prayer'
+                className='prayer-button'
+                onClick={(e) => {
+                  this.changeHandler(e, 'Prayer');
+                }}
+              >
+                <FontAwesomeIcon id='prayer-hands-icon' icon={faPrayingHands} />
+                <p>Prayer</p>
+              </button>
+              <h2>Or</h2>
+              <button
+                name='prayer_type'
+                type='button'
+                value='Praise'
+                className='praise-button prayertype'
+                onClick={(e) => {
+                  this.changeHandler(e, 'Praise');
+                }}
+              >
+                <FontAwesomeIcon id='prayer-hands-icon' icon={faChild} />
+                <p>Praise</p>
+              </button>
+            </div>
             {groups.map((group) => {
               let selectedGroup = this.props.groupId;
               if (selectedGroup && selectedGroup == group.id) {
@@ -121,6 +125,8 @@ export default class AddPrayerPage extends Component {
                 ></textarea>
               </label>
             </div>
+            <p className='error-alert'>{this.props.eventMessage}</p>
+
             <button type='submit' className='add-prayer-button'>
               Submit
             </button>

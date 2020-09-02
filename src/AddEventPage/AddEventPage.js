@@ -13,8 +13,7 @@ export default class AddEventPage extends Component {
     question: [],
     question_value: '',
     selectedGroup: '',
-    groupid: this.props.groupId
-    
+    groupid: this.props.groupId,
   };
 
   setEvent = (event, group) => {
@@ -41,7 +40,6 @@ export default class AddEventPage extends Component {
       .then((event) => {
         this.setState({
           event: event,
-       
         });
         this.setEvent(event);
       })
@@ -155,8 +153,8 @@ export default class AddEventPage extends Component {
       question: this.state.question.filter((question, j) => i !== j),
     });
   };
-  static getDerivedStateFromProps(props){
-    return {groupid : props.groupId}
+  static getDerivedStateFromProps(props) {
+    return { groupid: props.groupId };
   }
   render() {
     let BackgroundImage = {
@@ -164,7 +162,6 @@ export default class AddEventPage extends Component {
     };
     const { events = [], userId } = this.props;
     const { groups = [], groupId } = this.props;
-
     
     return (
       <div className='AddEventPage' onClick={this.props.onHandleHam}>
@@ -173,21 +170,23 @@ export default class AddEventPage extends Component {
           <h2>Or</h2>
           <Link className='add-event-event' to='/add-event'>Add Event</Link>
         </div> */}
+        <div id='anchor'></div>
         <form className='add-event-form' onSubmit={this.submitHandler}>
           <h2>Create New Event</h2>
           {groups.map((group) => {
             let selectedGroup = this.props.groupId;
             if (selectedGroup && selectedGroup == group.id) {
-
               return (
                 <div key={group.id} className='add-event-header-top'>
-                  <div
+                  {/* <div
                     style={BackgroundImage}
                     className='event-group-icon'
                     name='group_name'
                   >
+                    
                     <div groupid={group.id}>{group.group_name}</div>
-                  </div>
+                  </div> */}
+                  <p>Group: {group.group_name}</p>
                 </div>
               );
             }

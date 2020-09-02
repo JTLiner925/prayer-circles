@@ -32,10 +32,7 @@ export default class Footer extends Component {
         </Link> */}
         <Link to='/chat' className="footer-chat-icon">
           <FontAwesomeIcon id="chat-icon" icon={faComments} />
-          <FontAwesomeIcon
-                    className='notification-alert'
-                    icon={faCircle}
-                  />
+          
         </Link>
         
       </div>

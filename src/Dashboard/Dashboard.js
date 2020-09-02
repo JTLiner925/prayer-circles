@@ -62,8 +62,11 @@ export default class Dashboard extends Component {
       elem.style.display = 'none';
     }
   };
-
-  componentDidMount() {
+componentDidMount(){
+  this.refreshData()
+}
+  refreshData() {
+  
     let i = window.location.search;
     let x = new URLSearchParams(i);
     let eventId;
@@ -79,7 +82,7 @@ export default class Dashboard extends Component {
         [key]: value,
       });
     }
-
+    console.log(gId)
     //call api for data to display in dashboard
     this.setState({
       eventMessage: '',
@@ -146,14 +149,44 @@ export default class Dashboard extends Component {
         let userId = users.find(
           (user) => user.first_name === window.localStorage.getItem('userName')
         );
+
+
+
         let testGroup = {};
+        let myGroupPhotos = {};
+        groups.forEach((group) => {
+          // console.log(group, `${group.id}_${group.group_pic}`)
+          fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
+            headers: {
+              'Content-Type': 'application/json',
+              // Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+            },
+            method: 'POST',
+            body: JSON.stringify({ fileName:`${group.id}_${group.group_pic}`, location: 'groups-photo' }),
+          })
+            .then((res) => {
+              return res.json();
+            })
+            .then((resData) => {
+              
+              let trimmedUrl = resData.url.split('?')[0];
+              let url = trimmedUrl;
+              myGroupPhotos[group.group_name] = {profilePic: url}
+              this.setState({
+                myGroupPhotos
+              })
+            })
+            .catch((error) => {});
+        
+        })
         if (gId) {
           let matchedGroup = groups.find((g) => {
+           
             return g.id === parseInt(gId)
           })
           if(matchedGroup){
             let userIds = matchedGroup.user_ids;
-            console.log(userIds)
+            // console.log(userIds)
             userIds.forEach(id => {
               users.forEach(usr => {
                 if(parseInt(id) === usr.id){
@@ -170,7 +203,6 @@ export default class Dashboard extends Component {
                     })
                     .then((resData) => {
                       
-                      console.log(resData);
                       let trimmedUrl = resData.url.split('?')[0];
                       let url = trimmedUrl;
                       testGroup[usr.first_name] = {profilePic: url}
@@ -183,7 +215,6 @@ export default class Dashboard extends Component {
           }
 
         }
-        console.log(testGroup)
 
         this.handleProfilePic(users);
         // this.handleGroupPic(groups)
@@ -197,6 +228,7 @@ export default class Dashboard extends Component {
           messages: messages,
           prayers: prayers,
           testGroup: testGroup,
+
         });
         //maintain bible passage even if page refreshes
         this.handleBiblePassage(this.state.eventId);
@@ -225,6 +257,30 @@ export default class Dashboard extends Component {
           });
       }, 1000);
   }
+  componentDidUpdate(prevProps){
+    if(this.props.location.search === prevProps.location.search){
+      return
+    }
+    this.refreshData()
+    console.log(JSON.stringify(prevProps,null, 2))
+    // let i = window.location.search;
+    // let x = new URLSearchParams(i);
+    // let eventId;
+    // let gId;
+    // for (let [key, value] of x) {
+    //   if (key === 'eventId') {
+    //     eventId = value;
+    //   }
+    //   if (key === 'groupId') {
+    //     gId = value;
+    //   }
+      
+    // }
+    // this.setState({
+    //   groupId: gId,
+    //   eventId: eventId
+    // })
+  }
   handleGroupPic = (groups) => {
     // let userName = window.localStorage.getItem('userName');
 
@@ -241,7 +297,7 @@ export default class Dashboard extends Component {
         // Authorization: `Bearer ${window.localStorage.getItem('token')}`,
       },
       method: 'POST',
-      body: JSON.stringify({ fileName, location: 'group-photo' }),
+      body: JSON.stringify({ fileName, location: 'groups-photo' }),
     })
       .then((res) => {
         return res.json();
@@ -277,7 +333,6 @@ export default class Dashboard extends Component {
         return res.json();
       })
       .then((resData) => {
-        console.log(resData);
         let trimmedUrl = resData.url.split('?')[0];
         url = trimmedUrl;
         this.setState({
@@ -493,7 +548,6 @@ export default class Dashboard extends Component {
       });
   };
   createMessage = (formData) => {
-    console.log(formData);
     fetch(`${config.HOST}/api/messages/send-message`, {
       headers: {
         'Content-Type': 'application/json',
@@ -506,7 +560,6 @@ export default class Dashboard extends Component {
         return res.json();
       })
       .then((resData) => {
-        console.log(resData);
         this.setState({
           message_body: resData.message_body,
           message_type: resData.message_type,
@@ -518,7 +571,6 @@ export default class Dashboard extends Component {
       });
   };
   createPrayer = (formData) => {
-    console.log(formData);
     fetch(`${config.HOST}/api/prayers/send-prayer`, {
       headers: {
         'Content-Type': 'application/json',
@@ -527,11 +579,16 @@ export default class Dashboard extends Component {
       method: 'POST',
       body: JSON.stringify(formData),
     })
-      .then((res) => {
+    .then((res) => {
+      if (!res.ok) {
+        return res.json().then((data) => {
+          return Promise.reject(new Error(data.error.message));
+        });
+      } else {
         return res.json();
-      })
+      }
+    })
       .then((resData) => {
-        console.log(resData);
         this.setState({
           prayer_body: resData.prayer_body,
           prayer_type: this.state.prayer_type,
@@ -540,7 +597,8 @@ export default class Dashboard extends Component {
         this.props.history.push('/dashboard');
       })
       .catch((error) => {
-        this.setState({ error });
+        console.log(error.message)
+        this.setState({ eventMessage: error.message });
       });
   };
   handleEvent = (eventId) => {
@@ -569,7 +627,7 @@ export default class Dashboard extends Component {
         }
       }
     }
-    console.log(this.state);
+    // console.log(this.state);
 
     return (
       <main className='Dashboard'>
@@ -597,9 +655,9 @@ export default class Dashboard extends Component {
             </div>
           </div>
           <div className='header-nav-icons' onClick={this.HamNavPage}>
-            <Link to='/settings' className='header-settings-icon'>
+            {/* <Link to='/settings' className='header-settings-icon'>
               <FontAwesomeIcon id='head-settings-icon' icon={faUserCog} />
-            </Link>
+            </Link> */}
             <Link to='/' className='header-sign-out-icon'>
               <FontAwesomeIcon id='head-sign-out-icon' icon={faSignOutAlt} />
             </Link>
@@ -634,7 +692,6 @@ export default class Dashboard extends Component {
           '/events',
           '/chat',
           '/invite',
-          '/add-group',
           '/add-event',
           '/add-prayer',
         ].map((path) => (
@@ -651,6 +708,9 @@ export default class Dashboard extends Component {
                   users={this.state.users}
                   userId={this.state.userId}
                   onHandleHam={this.HamNavPage}
+                  handleGroupPic={this.handleGroupPic}
+                  myGroupPhotos={this.state.myGroupPhotos}
+                  groupUsers={this.state.testGroup}
                 ></ComponentGroupList>
               );
             }}
@@ -669,9 +729,12 @@ export default class Dashboard extends Component {
                 users={this.state.users}
                 userId={this.state.userId}
                 needed={this.state.needed}
+                prayers={this.state.prayers}
                 onHandleHam={this.HamNavPage}
                 handleEvent={this.handleEvent}
                 handleBiblePassage={this.handleBiblePassage}
+                groupUsers={this.state.testGroup}
+                myGroupPhotos={this.state.myGroupPhotos}
               ></DashHomePage>
             );
           }}
@@ -693,6 +756,9 @@ export default class Dashboard extends Component {
                 handleEvent={this.handleEvent}
                 handleBiblePassage={this.handleBiblePassage}
                 profilePic={this.state.profilePic}
+                groupUsers={this.state.testGroup}
+                myGroupPhotos={this.state.myGroupPhotos}
+
               ></EventListPage>
             );
           }}
@@ -715,6 +781,8 @@ export default class Dashboard extends Component {
                 profilePic={this.state.profilePic}
                 handleProfilePic={this.handleProfilePic}
                 groupUsers={this.state.testGroup}
+                myGroupPhotos={this.state.myGroupPhotos}
+
               ></ChatPage>
             );
           }}
@@ -767,6 +835,8 @@ export default class Dashboard extends Component {
                 onHandleHam={this.HamNavPage}
                 onCreateEvent={this.createEvent}
                 handleEvent={this.handleEvent}
+                myGroupPhotos={this.state.myGroupPhotos}
+
               ></AddEventPage>
             );
           }}
@@ -777,6 +847,7 @@ export default class Dashboard extends Component {
             return (
               <AddPrayerPage
                 resetError={this.resetError}
+                eventMessage={this.state.eventMessage}
                 groups={this.state.groups}
                 groupId={this.state.groupId}
                 users={this.state.users}
@@ -785,11 +856,12 @@ export default class Dashboard extends Component {
                 eventId={this.state.eventId}
                 onHandleHam={this.HamNavPage}
                 onCreatePrayer={this.createPrayer}
+                myGroupPhotos={this.state.myGroupPhotos}
               ></AddPrayerPage>
             );
           }}
         />
-        <Route
+        {/* <Route
           path='/settings'
           render={() => {
             return (
@@ -804,7 +876,7 @@ export default class Dashboard extends Component {
               ></SettingsPage>
             );
           }}
-        />
+        /> */}
         {[
           '/dashboard',
           '/events',

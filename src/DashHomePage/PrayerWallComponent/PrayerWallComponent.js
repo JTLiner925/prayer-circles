@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
   faUsers,
@@ -10,14 +10,15 @@ import {
   faEllipsisH,
   faCamera,
   faPray,
-  faPrayingHands
-} from "@fortawesome/free-solid-svg-icons";
-import "./PrayerWallComponent.css";
+  faPrayingHands,
+} from '@fortawesome/free-solid-svg-icons';
+import friends1 from '../../Images/friends1.jpg';
+import './PrayerWallComponent.css';
 
 export default class PrayerWallComponent extends Component {
-  state={
+  state = {
     showAddPhoto: false,
-  }
+  };
   toggleAddPhoto = () => {
     this.setState({
       showAddPhoto: !this.state.showAddPhoto,
@@ -26,12 +27,65 @@ export default class PrayerWallComponent extends Component {
 
   handleAddPhoto = (e) => {
     e.preventDefault();
-    console.log(e.target.value)
-  }
+    console.log(e.target.value);
+  };
   render() {
+  //   let element = document.getElementById('anchor')
+  //   console.log(element)
+  //   if(element){
+  // element.scrollIntoView()
+  //   }
+    let i = window.location.search;
+    let x = new URLSearchParams(i);
+    let id;
+    let y;
+    for (let [key, value] of x) {
+      if (key === 'groupId') {
+        y = `?groupId=${value}`;
+        id = value;
+      }
+    }
+    const {
+      groupId,
+      groups = [],
+      prayers,
+      userId,
+      users,
+      myGroupPhotos = {},
+    } = this.props;
+    let sortPrayers = []
+      .concat(prayers)
+      .sort((a, b) => (a.prayer_time > b.prayer_time ? 1 : -1));
+    let filteredUsers = [];
+    let selectedGroup = groups.find((group) => {
+      return group.id === parseInt(groupId);
+    });
+    if (selectedGroup) {
+      filteredUsers = users.filter((user) => {
+        return selectedGroup.user_ids.includes(user.id.toString());
+      });
+    }
+    if (filteredUsers) {
+      if (prayers) {
+        sortPrayers = prayers.filter((prayer) => {
+          let match = filteredUsers.find((usr) => {
+            if (
+              prayer.user_id === usr.id &&
+              prayer.group_prayer === parseInt(groupId)
+            ) {
+              return prayer;
+            }
+          });
+          if (match) {
+            return match;
+          }
+        });
+      }
+    }
+    console.log(this.props);
     return (
       <>
-      {this.state.showAddPhoto ? <div className='add-photo-background'>
+        {/* {this.state.showAddPhoto ? <div className='add-photo-background'>
         <div className='add-photo-model'>
           <p onClick={this.toggleAddPhoto}>X</p>
           <form>
@@ -41,119 +95,97 @@ export default class PrayerWallComponent extends Component {
             
           </form>
         </div>
-      </div>: ''}
+      </div>: ''} */}
 
-      <div className="Prayer-Wall-Component">
-        <div className="prayer-wall-component-request">
-          <div className="prayer-header">
-            <div className="prayer-header-top">
-              <FontAwesomeIcon id="prayer-user-icon" icon={faUser} />
-              <div className="prayer-user">
-                <h2>JT Liner</h2>
-                <h3>
-                  Prayer <span className="prayer-days-ago">5 Days Ago</span>
-                </h3>
-              </div>
-              <FontAwesomeIcon id="prayer-users-icon" icon={faUsers} />
-            </div>
-            <div className="prayer-header-bottom">
-              <div>&#9734; Answered &#9734;</div>
-              <p>3 Days Ago</p>
-            </div>
-          </div>
-          <div className="prayer-main">
-            <p>Pray for this app!</p>
-            <FontAwesomeIcon id="prayer-image-icon" icon={faImage} />
-          </div>
-          <div className="prayer-footer">
-            <div className="prayer-footer-left">
-              <FontAwesomeIcon id="prayer-prayer-icon" icon={faPrayingHands} />
-              <FontAwesomeIcon id="prayer-thumbs-up-icon" icon={faThumbsUp} />
-              <FontAwesomeIcon id="prayer-comment-icon" icon={faCommentAlt} />
-            </div>
-            <FontAwesomeIcon id="prayer-dots-icon" icon={faEllipsisH} />
-          </div>
-          <div className='prayer-input-container'>
-            <div className='prayer-input-option'>
-            <FontAwesomeIcon id="prayer-camera-icon" onClick={this.toggleAddPhoto} icon={faCamera} />
-            </div>
-            <input className='prayer-input-text'type='text' placeholder='Message'></input>
-          </div>
-        </div>
-        <div className="prayer-wall-component-request">
-          <div className="prayer-header">
-            <div className="prayer-header-top">
-              <FontAwesomeIcon id="prayer-user-icon" icon={faUser} />
-              <div className="prayer-user">
-                <h2>JT Liner</h2>
-                <h3>
-                  Prayer <span className="prayer-days-ago">5 Days Ago</span>
-                </h3>
-              </div>
-              <FontAwesomeIcon id="prayer-users-icon" icon={faUsers} />
-            </div>
-            <div className="prayer-header-bottom">
-              <div>&#9734; Answered &#9734;</div>
-              <p>3 Days Ago</p>
-            </div>
-          </div>
-          <div className="prayer-main">
-            <p>Pray for this app!</p>
-            <FontAwesomeIcon id="prayer-image-icon" icon={faImage} />
-          </div>
-          <div className="prayer-footer">
-            <div className="prayer-footer-left">
-              <FontAwesomeIcon id="prayer-heart-icon" icon={faHeart} />
-              <FontAwesomeIcon id="prayer-thumbs-up-icon" icon={faThumbsUp} />
-              <FontAwesomeIcon id="prayer-comment-icon" icon={faCommentAlt} />
-            </div>
-            <FontAwesomeIcon id="prayer-heart-icon" icon={faEllipsisH} />
-          </div>
-          <div className='prayer-input-container'>
-            <div className='prayer-input-option'>
-            <FontAwesomeIcon id="prayer-camera-icon" onClick={this.toggleAddPhoto} icon={faCamera} />
-            </div>
-            <input className='prayer-input-text'type='text' placeholder='Message'></input>
-          </div>
-        </div>
-        <div className="prayer-wall-component-request">
-          <div className="prayer-header">
-            <div className="prayer-header-top">
-              <FontAwesomeIcon id="prayer-user-icon" icon={faUser} />
-              <div className="prayer-user">
-                <h2>JT Liner</h2>
-                <h3>
-                  Prayer <span className="prayer-days-ago">5 Days Ago</span>
-                </h3>
-              </div>
-              <FontAwesomeIcon id="prayer-users-icon" icon={faUsers} />
-            </div>
-            <div className="prayer-header-bottom">
-              <div>&#9734; Answered &#9734;</div>
-              <p>3 Days Ago</p>
-            </div>
-          </div>
-          <div className="prayer-main">
-            <p>Pray for this app!</p>
-            <FontAwesomeIcon id="prayer-image-icon" icon={faImage} />
-          </div>
-          <div className="prayer-footer">
-            <div className="prayer-footer-left">
-              <FontAwesomeIcon id="prayer-heart-icon" icon={faHeart} />
-              <FontAwesomeIcon id="prayer-thumbs-up-icon" icon={faThumbsUp} />
-              <FontAwesomeIcon id="prayer-comment-icon" icon={faCommentAlt} />
-            </div>
-            <FontAwesomeIcon id="prayer-heart-icon" icon={faEllipsisH} />
-          </div>
-          <div className='prayer-input-container'>
-            <div className='prayer-input-option'>
-            <FontAwesomeIcon id="prayer-camera-icon" onClick={this.toggleAddPhoto} icon={faCamera} />
-            </div>
-            <input className='prayer-input-text'type='text' placeholder='Message'></input>
-          </div>
-        </div>
+        <div className='Prayer-Wall-Component'>
+          {/* <div className="prayer-wall-component-request"> */}
+          {groupId ? (
+            sortPrayers.map((prayer) => {
+              let eachUserId;
+              let picture;
+              let usr;
 
-      </div>
+              if (prayer && prayer.user_id) {
+                eachUserId = prayer.user_id;
+              }
+              if (
+                this.props.groupUsers &&
+                Object.keys(this.props.groupUsers).length > 0
+              ) {
+                usr = users.find((u) => {
+                  if (eachUserId) {
+                    return u.id == parseInt(eachUserId);
+                  }
+                });
+                if (usr) {
+                  picture = this.props.groupUsers[usr.first_name].profilePic;
+                }
+              }
+              if (!usr) {
+                usr = {};
+              }
+              // let groupImage = `url(${friends1})`;
+              // let group = groups.map((group) => {
+              //   console.log(group)
+              //   this.setState({
+              //     group:group
+              //   })
+              // })
+              // if(myGroupPhotos && Object.keys(myGroupPhotos).length > 0){
+              //   if(myGroupPhotos[group.group_name] && myGroupPhotos[group.group_name].profilePic){
+              //     groupImage = myGroupPhotos[group.group_name].profilePic
+              //     console.log(groupImage)
+              //   }
+              // }
+              if (eachUserId && eachUserId === usr.id) {
+                return (
+                  <div
+                    key={prayer.id}
+                    className='prayer-wall-component-request'
+                  >
+                    <div className='prayer-header'>
+                      <div className='prayer-header-top'>
+                        <img id='header-user-icon' src={picture}></img>
+                        <div className='prayer-user'>
+                          <h2>{usr.first_name}</h2>
+                          <h3>
+                            {prayer.prayer_type}
+                            <span className='prayer-days-ago'>
+                              {new Date(prayer.prayer_time).toDateString()}
+                            </span>
+                          </h3>
+                        </div>
+                <h4>{selectedGroup.group_name}</h4>
+                        {/* <FontAwesomeIcon
+                          id='prayer-users-icon'
+                          icon={faUsers}
+                        /> */}
+                        {/* <img src={groupImage} alt='group'></img> */}
+                      </div>
+                    </div>
+                    <div className='prayer-main'>
+                      <p>{prayer.prayer_body}</p>
+                    </div>
+                    <div className='prayer-footer'>
+                      {/* <div className='prayer-footer-left'>
+                        <FontAwesomeIcon
+                          id='prayer-thumbs-up-icon'
+                          icon={faThumbsUp}
+                        />
+                      </div> */}
+                    </div>
+                  </div>
+                );
+              }
+            })
+          ) : (
+            <div className='pre-prayer-wall'>
+              <h3 className='pre-prayer-wall-text'>Select Group<br></br>to view prayer requests</h3>
+            </div>
+          )}
+          {/* </div> */}
+          <div id='anchor'></div>
+        </div>
       </>
     );
   }

@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   margin: 15px 0 15px 0;
+  height: 60%;
 }
 .chat-component-container {
   display: flex;
@@ -16,7 +17,7 @@
   padding-top: 0;
   margin: 10px auto;
   /* border-radius: 10px; */
-  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.637);
+  /* box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.637); */
 }
 .chat-header {
   border-bottom: 1px solid rgba(154, 154, 154, 0.447);
@@ -36,13 +37,14 @@
   top: 34%;
   z-index: 2;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.434);
   background-color: white;
   padding-left: 10px;
   padding-right: 0;
-
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.637);
+  
 }
-.chat-header-top div {
+.selected-group-name-chat{
+margin-bottom: 0;
 }
 .chat-add-photo-background {
   position: fixed;
@@ -90,7 +92,7 @@
   border-radius: 5px;
   height: 25px;
 }
-.chat-header-top div,
+
 #chat-user-icons {
   width: 7%;
 }

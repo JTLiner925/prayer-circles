@@ -1,9 +1,16 @@
 .Event-Select-Component {
+  
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
   height: 15%;
+  position: fixed;
+  width: 100%;
+  top: 25%;
+  z-index: 6;
+  background-color: white ;
+  
 }
 .event-select-container{
   height: 100%;
@@ -38,7 +45,8 @@
   height: auto;
   margin: 0;
   padding: 0;
-  color: #839df5;
+  color: rgb(107, 194, 188);
+
 }
 .event-select-add p,
 .event-select-view p {
@@ -48,6 +56,7 @@
 #add-event-icon:hover, 
 .event-select-add p:hover,
 .event-select-view p:hover {
- color: #8dfae1;
+  color: rgb(64, 170, 163);
+
  transition: 500ms;
 }

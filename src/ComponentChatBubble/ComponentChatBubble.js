@@ -5,11 +5,17 @@ import guy2 from '../Images/guy2.jpg';
 
 export default class ChatBubbleComponent extends Component {
   render() {
+    let element = document.getElementById('anchor')
+    console.log(element)
+    if(element){
+  element.scrollIntoView()
+    }
+  
     const { users = [], userId, messages = [], profilePic } = this.props;
     const user = users.find(
       (user) => user.first_name === window.localStorage.getItem('userName')
     );
-    const { groups = [] } = this.props;
+    const { groups = [], groupId } = this.props;
     const groupMessages = []
       .concat(groups)
       .sort((a, b) => (a.message_time > b.message_time ? 1 : -1));
@@ -17,10 +23,10 @@ export default class ChatBubbleComponent extends Component {
       .concat(messages)
       .sort((a, b) => (a.message_time > b.message_time ? 1 : -1))
       .filter((msg) => msg.group_chat === parseInt(this.props.groupId));
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className='Chat-Bubble-Component' id='scroller'>
-        {sortMessages.map((message) => {
+        {groupId ? sortMessages.map((message) => {
           // console.log(message, message.user_id, user.id);
           let picture;
           let usr;
@@ -28,7 +34,7 @@ export default class ChatBubbleComponent extends Component {
             usr = this.props.users.find(
               (u) => u.id == parseInt(message.user_id)
             );
-            if (usr) {
+            if (usr && this.props.groupUsers[usr.first_name]) {
               picture = this.props.groupUsers[usr.first_name].profilePic;
             }
           }
@@ -81,7 +87,7 @@ export default class ChatBubbleComponent extends Component {
               </div>
             );
           }
-        })}
+        }): (<div className='pre-chat-wall'><h3 className='pre-chat-wall-p'>Select Group<br></br> and start a chat</h3></div>)}
         <div id='anchor'></div>
       </div>
     );

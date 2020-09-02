@@ -15,7 +15,7 @@
   padding-left: 20px;
   position: fixed;
   top: 25%;
-  z-index: 1;
+  z-index: 3;
   background-color: white ;
 }
 .chat-people {
@@ -49,6 +49,3 @@
 
 }
 
-.person-image:hover {
-  box-shadow: 0 0 10px 1px rgba(8, 235, 212, 0.863);
-}

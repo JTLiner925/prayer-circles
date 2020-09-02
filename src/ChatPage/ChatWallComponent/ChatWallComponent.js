@@ -28,11 +28,13 @@ export default class ChatWallComponent extends Component {
 
   handleChatAddPhoto = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
   submitHandler = (e) => {
     e.preventDefault();
     e.persist();
+    let element = document.getElementById('reset')
+    element.click()
     this.props.onCreateMessage(this.state);
     this.props.sendMessage(this.state.message_body);
   };
@@ -45,7 +47,12 @@ export default class ChatWallComponent extends Component {
     });
   };
   render() {
-    const { profilePic } = this.props;
+    const { profilePic, groups = [], groupId } = this.props;
+    let selectedGroup = groups.find((group) => {
+      return group.id === parseInt(groupId);
+    });
+
+    console.log(this.props, selectedGroup);
     return (
       <>
         {this.state.showChatAddPhoto ? (
@@ -73,13 +80,13 @@ export default class ChatWallComponent extends Component {
             <div className='chat-header'>
               <div className='chat-header-top'>
                 <div>
-                  <img id='chat-users-icon' src={friends1} alt='Friends' />
+                  <p className='selected-group-name-chat'>{selectedGroup ? selectedGroup.group_name : ''}</p>
                 </div>
               </div>
             </div>
             <div className='chat-main'>
               <ComponentChatBubble
-              className='chat-bubble'
+                className='chat-bubble'
                 groups={this.props.groups}
                 groupId={this.props.groupId}
                 users={this.props.users}
@@ -109,12 +116,12 @@ export default class ChatWallComponent extends Component {
                 onChange={this.changeHandler}
                 type='image'
               > */}
-                {/* <FontAwesomeIcon
+              {/* <FontAwesomeIcon
                   id='chat-camera-icon'
                   onClick={this.toggleChatAddPhoto}
                   icon={faCamera}
                 /> */}
-                {/* <FontAwesomeIcon id='chat-thumbs-up-icon' icon={faThumbsUp} /> */}
+              {/* <FontAwesomeIcon id='chat-thumbs-up-icon' icon={faThumbsUp} /> */}
               {/* </div> */}
               <input
                 name='message_body'
@@ -123,6 +130,7 @@ export default class ChatWallComponent extends Component {
                 placeholder='Message'
                 onChange={this.changeHandler}
               ></input>
+              <input type='reset' id='reset' style={{display:'none'}}></input>
               <button className='message-submit-button' type='submit'>
                 <FontAwesomeIcon
                   className='chat-wall-submit'

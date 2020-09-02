@@ -12,13 +12,13 @@ export default class ChatPage extends Component {
   };
  
   sendMessage = (message) => {
-    console.log(message);
+    // console.log(message);
 
     // socket.on('timer', timestamp => { console.log(timestamp)});
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className='ChatPage' onClick={this.props.onHandleHam}>
         <PrivateChatSelect
@@ -30,6 +30,8 @@ export default class ChatPage extends Component {
           profilePic={this.props.profilePic}
           handleProfilePic={this.props.handleProfilePic}
           groupUsers={this.props.groupUsers}
+          myGroupPhotos={this.props.myGroupPhotos}
+
         />
         <div className='chat-page-component'>
           <ChatWallComponent
@@ -43,6 +45,7 @@ export default class ChatPage extends Component {
             handleProfilePic={this.handleProfilePic}
             sendMessage={this.sendMessage}
             groupUsers={this.props.groupUsers}
+            myGroupPhotos={this.props.myGroupPhotos}
 
           />
         </div>
