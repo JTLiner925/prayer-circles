@@ -17,7 +17,7 @@ HTML/CSS/ReactJS
 
 The goal of Prayer Circles is to create a platform that the church can use to prayer for each other during the week, live life together, and encourage each other as we grow in Christ. The Prayer Circles app is meant to be a discipleship tool to keep followers of Christ growing in their faith.
 
-![](/Dashboard.png)
+![](/dashboard.png)
 screenshot of the dashboard page in desktop and mobile version
 
 ## Prayer Circles small group app features:
@@ -33,7 +33,7 @@ screenshot of the dashboard page in desktop and mobile version
 - Write announcements right into your events
 
 ![](/group-event-chat.png)
-screenshot on the add group, add event, and chat with group members
+screenshot on the add group, event list, add event, and chat with group members
 
 ### COMING SOON:
 
