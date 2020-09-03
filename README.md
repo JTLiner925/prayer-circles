@@ -6,7 +6,7 @@ demo user:
    email: demoemail@gmail.com
 password: password123
 
-![](/Homepage.png)
+![](/new-homepage.png)
 screenshot of the homepage in desktop and mobile version
 
 ### Prayer Circles API Repo: https://github.com/JTLiner925/prayer-circles-api
