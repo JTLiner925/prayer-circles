@@ -1,68 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Prayer Circles
 
-## Available Scripts
+## https://prayer-circles.vercel.app/
 
-In the project directory, you can run:
+demo user:
+   email: demoemail@gmail.com
+password: password123
 
-### `npm start`
+![](/homepage.png)
+screenshot of the homepage in desktop and mobile version
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prayer Circles API Repo: https://github.com/JTLiner925/prayer-circles-api
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### ESV API Documentation: https://api.esv.org/docs/
 
-### `npm test`
+HTML/CSS/ReactJS
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The goal of Prayer Circles is to create a platform that the church can use to prayer for each other during the week, live life together, and encourage each other as we grow in Christ. The Prayer Circles app is meant to be a discipleship tool to keep followers of Christ growing in their faith.
 
-### `npm run build`
+![](/Dashboard.png)
+screenshot of the dashboard page in desktop and mobile version
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Prayer Circles small group app features:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Create a group & allow others to join.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Create events for the group
 
-### `npm run eject`
+- List needed items so everyone in the group can help out with food.(or any other items i.e. frisbee, paper plates)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Read and search the Bible right on the app
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Write announcements right into your events
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![](/group-event-chat.png)
+screenshot on the add group, add event, and chat with group members
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### COMING SOON:
 
-## Learn More
+- Connect Prayer Circles with OneAnother app to integrate all features!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Once connected everyone will be able to:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Create/join group, add events, sign up to bring items, read bible together, submit and respond
+  to prayer requests, and chat with your group all in one location!
