@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'
-import 'mutationobserver-shim'
-import App from './App';
+import Login from './Login';
 
 test('renders learn react link', () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <BrowserRouter>
-  <App />
+  <Login />
   </BrowserRouter>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

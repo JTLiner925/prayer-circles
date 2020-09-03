@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import guy1 from '../Images/guy1.jpg';
-import friends1 from '../Images/friends1.jpg';
 import './EventListPage.css';
-import UserSideNav from '../UserSideNav/UserSideNav';
+// import UserSideNav from '../UserSideNav/UserSideNav';
 
 export default class EventListPage extends Component {
   render() {

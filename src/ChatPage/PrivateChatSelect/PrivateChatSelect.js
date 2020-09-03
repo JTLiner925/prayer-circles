@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import girl1 from '../../Images/girl1.jpg';
-import thinker from '../../Images/thinker.jpg';
-import guy1 from '../../Images/guy1.jpg';
-import guy2 from '../../Images/guy2.jpg';
-import woman1 from '../../Images/woman1.jpg';
 import './PrivateChatSelect.css';
 
 export default class PrivateChatSelect extends Component {

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './ComponentChatBubble.css';
-import guy1 from '../Images/guy1.jpg';
-import guy2 from '../Images/guy2.jpg';
 
 export default class ChatBubbleComponent extends Component {
   render() {

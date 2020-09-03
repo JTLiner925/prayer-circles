@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
-import church from '../Images/church.jpg';
-import communion from '../Images/communion.jpg';
-import family1 from '../Images/family1.jpg';
+import { NavLink } from 'react-router-dom';
 import friends1 from '../Images/friends1.jpg';
 import friends2 from '../Images/friends2.jpg';
 import './ComponentGroupList.css';

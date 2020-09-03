@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import config from '../config';
-import Header from '../Header/Header';
-import UserSideNav from '../UserSideNav/UserSideNav';
+// import Header from '../Header/Header';
+// import UserSideNav from '../UserSideNav/UserSideNav';
 import ComponentGroupList from '../ComponentGroupList/ComponentGroupList';
 import DashHomePage from '../DashHomePage/DashHomePage';
 import EventListPage from '../EventListPage/EventListPage';
 import ChatPage from '../ChatPage/ChatPage';
-import InvitePage from '../InvitePage/InvitePage';
+// import InvitePage from '../InvitePage/InvitePage';
 import AddGroupPage from '../AddGroupPage/AddGroupPage';
 import AddEventPage from '../AddEventPage/AddEventPage';
 import AddPrayerPage from '../AddPrayerPage/AddPrayerPage';
-import SettingsPage from '../SettingsPage/SettingsPage';
+// import SettingsPage from '../SettingsPage/SettingsPage';
 import Footer from '../Footer/Footer';
-import guy1 from '../Images/guy1.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
@@ -626,7 +625,6 @@ componentDidMount(){
               ) : (
                 ''
               )}
-              {/* <img id='header-user-icon' src={guy1} alt='guy' /> */}
             </div>
           </div>
           <div className='header-nav-icons' onClick={this.HamNavPage}>
@@ -639,7 +637,7 @@ componentDidMount(){
           </div>
         </nav>
 
-        {[
+        {/* {[
           '/dashboard',
           '/events',
           '/chat',
@@ -661,7 +659,7 @@ componentDidMount(){
               );
             }}
           />
-        ))}
+        ))} */}
         {[
           '/dashboard',
           '/events',
@@ -762,7 +760,7 @@ componentDidMount(){
             );
           }}
         />
-        <Route
+        {/* <Route
           path='/invite'
           render={() => {
             return (
@@ -778,7 +776,7 @@ componentDidMount(){
               ></InvitePage>
             );
           }}
-        />
+        /> */}
         <Route
           path='/add-group'
           render={() => {

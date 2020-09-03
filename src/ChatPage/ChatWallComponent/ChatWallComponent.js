@@ -10,8 +10,6 @@ import {
   faPaperPlane,
   faThList,
 } from '@fortawesome/free-solid-svg-icons';
-import guy1 from '../../Images/guy1.jpg';
-import friends1 from '../../Images/friends1.jpg';
 import './ChatWallComponent.css';
 
 export default class ChatWallComponent extends Component {

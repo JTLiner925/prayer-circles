@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import PrayerPraiseComponent from './PrayerPraiseComponent/PrayerPraiseComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faUser,
   faPrayingHands,
   faChild,
 } from '@fortawesome/free-solid-svg-icons';
