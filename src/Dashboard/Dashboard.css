@@ -25,6 +25,7 @@
 }
 .header-sign-out-icon span{
   color: #04010100;
+  width: 0;
 }
 .header-user-icon {
   position: absolute;
@@ -63,6 +64,8 @@
   align-items: center;
   justify-content: left;
   width: 50px;
+  cursor: pointer;
+  z-index: 5;
 }
 
 .header-nav-icons {
