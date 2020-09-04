@@ -108,7 +108,7 @@
   margin: 0;
   padding: 0;
   font-size: 2rem;
-  color: #ffffff;
+  color: #000000;
 }
 .register-form {
   display: flex;
@@ -233,4 +233,5 @@
   margin: 0 auto;
   color: rgb(208, 2, 2);
   margin-bottom: 10px;
+  text-align: center;
 }

@@ -165,3 +165,7 @@
   margin-left: 5px;
   transform: rotate(20deg);
 }
+.message-submit-button span{
+  width: 0;
+  color: rgba(159, 27, 27, 0);
+}

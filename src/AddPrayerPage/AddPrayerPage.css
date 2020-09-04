@@ -7,12 +7,16 @@
   width: 100%;
   max-width: 1000px;
 }
-
+.Prayer-Praise-Component {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+}
 .add-prayer-form {
   display: flex;
   flex-direction: column;
   align-content: center;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
   height: 85%;
   overflow: auto;
@@ -28,7 +32,7 @@
   width: 100%;
   margin: 20px auto;
 }
-.add-prayer-request-input{
+.add-prayer-request-input {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
@@ -40,7 +44,7 @@
 }
 .add-prayer-request-label {
   height: 100%;
-width: 100%;
+  width: 100%;
 }
 .add-prayer-button {
   display: flex;
@@ -53,6 +57,33 @@ width: 100%;
   color: #ffffff;
   font-weight: bold;
   padding: 1em;
+  letter-spacing: 0.15em;
+
+  border-radius: 30px;
+  border-width: 0px;
+  text-transform: uppercase;
+}
+.prayer-button p,
+.praise-button p {
+  margin: 5px;
+}
+.prayer-button:hover:focus:active, .praise-button:hover:focus:active{
+  background: linear-gradient(45deg, #51fcd4, #1247f5);
+
+}
+.prayer-button,
+.praise-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin: 0 auto;
+  background: linear-gradient(45deg, #01ffc4, #013af5a7);
+  font-size: 0.9em;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 0;
   letter-spacing: 0.15em;
 
   border-radius: 30px;

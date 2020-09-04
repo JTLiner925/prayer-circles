@@ -17,14 +17,17 @@ export default class Footer extends Component {
       <div className="Footer">
         <Link to="/dashboard" type='text' className="footer-home-icon">
           <FontAwesomeIcon id="home-icon" icon={faHome} />
+          <span>home</span>
         </Link>
 
         <Link to="/add-group" className="footer-group-icon">
           <FontAwesomeIcon id="group-icon" icon={faClone} />
+          <span>add group</span>
         </Link>
 
         <Link to="/add-prayer" className="footer-plus-icon">
           <FontAwesomeIcon id="plus-icon" icon={faPlusSquare} />
+          <span>add prayer</span>
         </Link>
 
         {/* <Link to="/invite" className="footer-invite-icon">
@@ -32,7 +35,7 @@ export default class Footer extends Component {
         </Link> */}
         <Link to='/chat' className="footer-chat-icon">
           <FontAwesomeIcon id="chat-icon" icon={faComments} />
-          
+          <span>chat</span>
         </Link>
         
       </div>

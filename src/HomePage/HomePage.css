@@ -31,7 +31,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #01ffc4, #013af5a7);
+  background: linear-gradient(45deg, #01ffc4, #073ff7d7);
   border-radius: 0 0 50% 50%/0 0 100% 100%;
   transform: scaleX(1.5);
 }
@@ -39,7 +39,7 @@
   margin: 0;
   padding: 0;
   font-size: 2rem;
-  color: #ffffff;
+  color: #000000;
 }
 .home-hero-content p {
   margin: 0;

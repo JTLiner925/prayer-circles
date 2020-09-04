@@ -110,7 +110,7 @@ export default class Register extends Component {
                     </span>
                     <br></br>
                   </p>
-                  <p className='drag-p'>or Drag and Drop</p>
+                  <p className='drag-p'>or Drag and Drop<br></br>JPG or PNG files only</p>
                   <p className='photo-message'>{this.state.photoMessage}</p>
                 </div>
               </form>
@@ -141,17 +141,18 @@ export default class Register extends Component {
               <label
                 htmlFor='first-name-input'
                 className='register-first-label'
-              >
+              >first name
                 <input
                   id='first-name-input'
                   name='first_name'
                   className='register-first'
                   placeholder='First Name'
                   onChange={this.changeHandler}
-                  required
+                  // required
                 ></input>
               </label>
               <label htmlFor='last-name-input' className='register-last-label'>
+                last name
                 <input
                   className='register-last'
                   placeholder='Last Name'
@@ -163,6 +164,7 @@ export default class Register extends Component {
             </div>
 
             <label htmlFor='email-input' className='register-user-label'>
+              email
               <input
                 className='register-user'
                 placeholder='Email'
@@ -174,6 +176,7 @@ export default class Register extends Component {
               ></input>
             </label>
             <label htmlFor='password-input' className='register-password-label'>
+              password
               <input
                 className='register-password'
                 placeholder='Password'
@@ -187,7 +190,7 @@ export default class Register extends Component {
             <label
               htmlFor='password-confirm'
               className='register-password-label'
-            >
+            >confirm password
               <input
                 className='register-password'
                 placeholder='Confirm Password'
@@ -198,7 +201,7 @@ export default class Register extends Component {
                 required
               ></input>
             </label>
-            <p className="error-alert">{this.state.error}</p>
+            <p className="error-alert">{this.props.message}</p>
             <button type='submit' className='register-button'>
               Create Account
             </button>

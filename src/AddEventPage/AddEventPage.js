@@ -107,7 +107,7 @@ export default class AddEventPage extends Component {
 
       this.setState({
         [e.target.name]: e.target.value,
-        groupid: groupid,
+        GroupFileName: groupid,
       });
     } else {
       this.setState({
@@ -154,7 +154,7 @@ export default class AddEventPage extends Component {
     });
   };
   static getDerivedStateFromProps(props) {
-    return { groupid: props.groupId };
+    return { GroupFileName: props.groupId };
   }
   render() {
     let BackgroundImage = {
@@ -193,8 +193,8 @@ export default class AddEventPage extends Component {
           })}
           <label
             htmlFor='announcements'
-            className='add-event-announcements-label'
-          >
+            className='add-event-announcements-label label'
+          ><span>announcements</span>
             <textarea
               placeholder='Announcements'
               id='announcements'
@@ -205,8 +205,8 @@ export default class AddEventPage extends Component {
           </label>
           <label
             htmlFor='needed-items'
-            className='add-event-needed-items-label'
-          >
+            className='add-event-needed-items-label label'
+          ><span>needed items</span>
             <input
               placeholder='Needed Items'
               id='needed-items'
@@ -241,7 +241,7 @@ export default class AddEventPage extends Component {
             })}
           </ul>
           <div className='add-event-date-time-div'>
-            <label htmlFor='date-input' className='add-event-date-label'>
+            <label htmlFor='date-input' className='add-event-date-label label'><span>date</span>
               <input
                 id='date-input'
                 name='event_date'
@@ -252,7 +252,7 @@ export default class AddEventPage extends Component {
                 required
               ></input>
             </label>
-            <label htmlFor='time-input' className='add-event-time-label'>
+            <label htmlFor='time-input' className='add-event-time-label label'><span>time</span>
               <input
                 className='add-event-time'
                 placeholder='Time'
@@ -266,12 +266,11 @@ export default class AddEventPage extends Component {
 
           <label
             htmlFor='lesson-title-input'
-            className='add-event-lesson-label'
-          >
+            className='add-event-lesson-label label'><span>lesson title</span>
             <input
               className='add-event-lesson'
               placeholder='Lesson Title'
-              id='lesson-title'
+              id='lesson-title-input'
               name='lesson_title'
               onChange={this.changeHandler}
               required
@@ -279,18 +278,17 @@ export default class AddEventPage extends Component {
           </label>
           <label
             htmlFor='bible-passage-input'
-            className='add-event-bible-passage-label'
-          >
+            className='add-event-bible-passage-label label'><span>bible passage</span>
             <input
               className='add-event-bible-passage'
               placeholder='Bible Passage'
-              id='bible-passage'
+              id='bible-passage-input'
               name='bible_passage'
               onChange={this.changeHandler}
               required
             ></input>
           </label>
-          <label htmlFor='question' className='add-event-question-label'>
+          <label htmlFor='question' className='add-event-question-label label'><span>questions</span>
             <input
               className='add-event-question'
               placeholder='Questions for passage'

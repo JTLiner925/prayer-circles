@@ -439,9 +439,15 @@ componentDidMount(e){
       method: 'POST',
       body: JSON.stringify(formData),
     })
-      .then((res) => {
+    .then((res) => {
+      if (!res.ok) {
+        return res.json().then((data) => {
+          return Promise.reject(new Error(data.error.message));
+        });
+      } else {
         return res.json();
-      })
+      }
+    })
       .then((resData) => {
         let groupPic = `${resData.group.id}_${formData.groupProfilePic.name}`;
 
@@ -449,7 +455,7 @@ componentDidMount(e){
         this.props.history.push('/dashboard');
       })
       .catch((error) => {
-        this.setState({ createMessage: error.message });
+        this.setState({ eventMessage: error.message });
       });
   };
   joinGroup = (formData) => {
@@ -621,11 +627,12 @@ componentDidMount(e){
                   
             </div>
           </div>
+          <h1 className='header-h1'>Prayer Circles</h1>
           <div className='header-nav-icons' onClick={this.HamNavPage}>
             {/* <Link to='/settings' className='header-settings-icon'>
               <FontAwesomeIcon id='head-settings-icon' icon={faUserCog} />
             </Link> */}
-            <Link to='/' className='header-sign-out-icon'>
+            <Link to='/' className='header-sign-out-icon'><span>sign out</span>
               <FontAwesomeIcon id='head-sign-out-icon' icon={faSignOutAlt} />
             </Link>
           </div>
@@ -776,7 +783,7 @@ componentDidMount(e){
           render={() => {
             return (
               <AddGroupPage
-                createMessage={this.state.createMessage}
+                eventMessage={this.state.eventMessage}
                 message={this.state.message}
                 groups={this.state.groups}
                 onHandleHam={this.HamNavPage}

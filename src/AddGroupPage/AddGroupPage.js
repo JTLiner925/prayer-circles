@@ -128,7 +128,7 @@ export default class AddGroupPage extends Component {
                     </span>
                     <br></br>
                   </p>
-                  <p className='group-drag-p'>or Drag and Drop</p>
+                  <p className='group-drag-p'>or Drag and Drop<br></br>JPG or PNG files only</p>
                   <p className='group-photo-message'>{this.state.groupPhotoMessage}</p>
                 </div>
               </form>
@@ -144,7 +144,7 @@ export default class AddGroupPage extends Component {
               <h2>Join Group</h2>
               <div className='join-div'>
                 <p className='error-alert'>{this.props.message}</p>
-                <label htmlFor='group-names'></label>
+                <label htmlFor='group-names' className='label'>group names</label>
                 <select
                   id='group-names'
                   name='group_names'
@@ -196,8 +196,8 @@ export default class AddGroupPage extends Component {
               <label
                 name='group_names'
                 htmlFor='group-name-input'
-                className='add-group-name-label'
-              >
+                className='label add-group-name-label'
+              >group name
                 <input
                   className='add-group-name'
                   placeholder='Group Name'
@@ -210,8 +210,8 @@ export default class AddGroupPage extends Component {
               </label>
               <label
                 htmlFor='pitch-textarea'
-                className='add-group-pitch-textarea-label'
-              >
+                className='label add-group-pitch-textarea-label'
+              > pitch
                 <textarea
                   className='add-group-pitch-textarea'
                   placeholder='Tell us about your group!'
@@ -222,7 +222,8 @@ export default class AddGroupPage extends Component {
                 ></textarea>
               </label>
               <div className='add-group-phone-location-div'>
-                <label htmlFor='phone-input' className='add-group-phone-label'>
+                <label htmlFor='phone-input' className='label add-group-phone-label'>
+                  phone
                   <NumberFormat
                     id='phone-input'
                     name='leader_phone'
@@ -236,8 +237,8 @@ export default class AddGroupPage extends Component {
                 </label>
                 <label
                   htmlFor='location-input'
-                  className='add-group-location-label'
-                >
+                  className='label add-group-location-label'
+                > location
                   <input
                     className='add-group-location'
                     placeholder='Location'
@@ -249,8 +250,8 @@ export default class AddGroupPage extends Component {
               </div>
               <label
                 htmlFor='time-date-input'
-                className='add-group-time-date-label'
-              >
+                className='label add-group-time-date-label'
+              > time and date
                 <input
                   className='add-group-time-date'
                   placeholder='Time and Day i.e. 6pm Fridays'
@@ -259,7 +260,7 @@ export default class AddGroupPage extends Component {
                   onChange={this.changeHandler}
                 ></input>
               </label>
-              <label htmlFor='more-info' className='add-group-more-info-label'>
+              <label htmlFor='more-info' className='label add-group-more-info-label'>more info
                 <textarea
                   className='add-group-more-info'
                   placeholder='More Info'
@@ -269,7 +270,7 @@ export default class AddGroupPage extends Component {
                   required
                 ></textarea>
               </label>
-              <p className='error-alert'>{this.props.createMessage}</p>
+              <p className='error-alert'>{this.props.eventMessage}</p>
               <button type='submit' className='add-group-button'>
                 Create New Group
               </button>

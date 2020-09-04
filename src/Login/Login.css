@@ -49,7 +49,10 @@
   margin: 0;
   padding: 0;
   font-size: 2rem;
-  color: #ffffff;
+  color: #000000;
+}
+label{
+  color: #04010100;
 }
 .login-form {
   margin: 0;

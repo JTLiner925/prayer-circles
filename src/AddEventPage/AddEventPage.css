@@ -38,6 +38,9 @@
   border-bottom-right-radius: 10px;
   z-index: 1;
 }
+.label span{
+  width: 0px;
+}
 .add-event-header-top {
   margin-top: 0;
   display: flex;

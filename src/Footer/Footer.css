@@ -7,6 +7,7 @@
   z-index: 1;
   position: fixed;
   bottom: 0;
+  width: 100%;
 }
 .footer-home-icon,
 .footer-group-icon,
@@ -18,11 +19,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  color: #04010100;
   width: 100%;
+
 }
 .footer-chat-icon {
   position: relative;
+  color: #04010100;
+}
+.footer-home-icon span,
+.footer-group-icon span,
+.footer-plus-icon span,
+.footer-chat-icon span{
+  width: 0px;
 }
 #home-icon,
 #group-icon,
@@ -33,6 +42,7 @@
   width: 100%;
   color: rgb(169, 169, 169);
 }
+
 #home-icon:hover,
 #group-icon:hover,
 #plus-icon:hover,

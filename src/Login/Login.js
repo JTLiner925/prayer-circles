@@ -23,7 +23,7 @@ export default class Login extends Component {
         </div>
         <label className='login-user-label' htmlFor="email-input">
           {/* Demo Email: demoemail@gmail.com */}
-         
+         email
         <input
         className='login-user'
           id="email-input"
@@ -31,12 +31,12 @@ export default class Login extends Component {
           name="user_email"
           placeholder="Email"
           onChange={this.changeHandler}
-          required
+          // required
         />
          </label>
         <label className='login-password-label' htmlFor="password-input">
           {/* Demo Password: password123 */}
-         
+         password
         <input
           id="password-input"
           type="password"
@@ -44,7 +44,7 @@ export default class Login extends Component {
           className="login-password" 
           placeholder="Password"
           onChange={this.changeHandler}
-          required      
+          // required      
         />
          </label>
         <p className="error-alert">{this.props.message}</p>

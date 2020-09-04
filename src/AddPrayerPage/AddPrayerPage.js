@@ -69,7 +69,7 @@ export default class AddPrayerPage extends Component {
                 type='button'
                 name='prayer_type'
                 value='Prayer'
-                className='prayer-button'
+                className='btn active  prayer-button'
                 onClick={(e) => {
                   this.changeHandler(e, 'Prayer');
                 }}
@@ -82,7 +82,7 @@ export default class AddPrayerPage extends Component {
                 name='prayer_type'
                 type='button'
                 value='Praise'
-                className='praise-button prayertype'
+                className='btn active praise-button prayertype'
                 onClick={(e) => {
                   this.changeHandler(e, 'Praise');
                 }}
@@ -106,7 +106,7 @@ export default class AddPrayerPage extends Component {
               <label
                 htmlFor='prayer-input'
                 className='add-prayer-request-label'
-              >
+              ><span>prayer input</span>
                 <textarea
                   id='prayer-input'
                   name='prayer_body'

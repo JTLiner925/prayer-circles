@@ -22,15 +22,15 @@ export default class HomePage extends Component {
         <Carousel className="carousel">
           <div className="slide slide1">
             <FontAwesomeIcon id="home-user-icon" icon={faUser} />
-            <h3>Join Prayer Circles and pray for your small group</h3>
+            <h2>Join Prayer Circles and pray for your small group</h2>
           </div>
           <div className="slide slide2">
             <FontAwesomeIcon id="home-user-friends-icon" icon={faUserFriends} />
-            <h3>Create Groups and Events in Prayer Circles</h3>
+            <h2>Create Groups and Events in Prayer Circles</h2>
           </div>
           <div className="slide slide3">
             <FontAwesomeIcon id="home-users-icon" icon={faUsers} />
-            <h3>Chat in Prayer Circles</h3>
+            <h2>Chat in Prayer Circles</h2>
           </div>
         </Carousel>
         <div className="home-buttons" id="wave">

@@ -46,6 +46,7 @@ export default class PrayerWallComponent extends Component {
       prayers,
       userId,
       users,
+      groupUsers,
       myGroupPhotos = {},
     } = this.props;
     let sortPrayers = []
@@ -90,16 +91,17 @@ export default class PrayerWallComponent extends Component {
                 eachUserId = prayer.user_id;
               }
               if (
-                this.props.groupUsers &&
-                Object.keys(this.props.groupUsers).length > 0
+                groupUsers &&
+                Object.keys(groupUsers).length > 0
               ) {
                 usr = users.find((u) => {
                   if (eachUserId) {
                     return u.id == parseInt(eachUserId);
                   }
                 });
-                if (usr) {
-                  picture = this.props.groupUsers[usr.first_name].profilePic;
+                if (usr && groupUsers[usr.first_name]) {
+                  console.log(usr)
+                  picture = groupUsers[usr.first_name].profilePic;
                 }
               }
               if (!usr) {
@@ -113,7 +115,7 @@ export default class PrayerWallComponent extends Component {
                   >
                     <div className='prayer-header'>
                       <div className='prayer-header-top'>
-                        <img id='header-user-icon' src={picture}></img>
+                        <img id='header-user-icon' src={picture ? picture : `url(${userphoto})`} alt={`${usr.first_name} user`}></img>
                         <div className='prayer-user'>
                           <h2>{usr.first_name}</h2>
                           <h3>

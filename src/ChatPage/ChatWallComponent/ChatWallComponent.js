@@ -30,8 +30,8 @@ export default class ChatWallComponent extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     e.persist();
-    let element = document.getElementById('reset')
-    element.click()
+    let element = document.getElementById('reset');
+    element.click();
     this.props.onCreateMessage(this.state);
     this.props.sendMessage(this.state.message_body);
   };
@@ -76,7 +76,9 @@ export default class ChatWallComponent extends Component {
             <div className='chat-header'>
               <div className='chat-header-top'>
                 <div>
-                  <p className='selected-group-name-chat'>{selectedGroup ? selectedGroup.group_name : ''}</p>
+                  <p className='selected-group-name-chat'>
+                    {selectedGroup ? selectedGroup.group_name : ''}
+                  </p>
                 </div>
               </div>
             </div>
@@ -119,19 +121,33 @@ export default class ChatWallComponent extends Component {
                 /> */}
               {/* <FontAwesomeIcon id='chat-thumbs-up-icon' icon={faThumbsUp} /> */}
               {/* </div> */}
+              <label htmlFor='message-text' className='label'>
+                <span>message</span>
+              </label>
               <input
                 name='message_body'
                 className='chat-input-text'
                 type='text'
+                id='message-text'
                 placeholder='Message'
                 onChange={this.changeHandler}
               ></input>
-              <input type='reset' id='reset' style={{display:'none'}}></input>
+              <label htmlFor='reset-input' className='label'>
+                <span>reset</span>
+              
+
+              <input
+                type='reset'
+                id='reset-input'
+                style={{ display: 'none' }}
+                value='reset'
+              ></input>
+              </label>
               <button className='message-submit-button' type='submit'>
                 <FontAwesomeIcon
                   className='chat-wall-submit'
                   icon={faPaperPlane}
-                />
+                /><span>submit</span>
               </button>
             </form>
           </div>

@@ -21,9 +21,15 @@ class App extends Component {
       method: 'POST',
       body: JSON.stringify(formData),
     })
-      .then((res) => {
+    .then((res) => {
+      if (!res.ok) {
+        return res.json().then((data) => {
+          return Promise.reject(new Error(data.error.message));
+        });
+      } else {
         return res.json();
-      })
+      }
+    })
       .then((resData) => {
         console.log(resData, formData)
         let userPic = `${resData.user.id}_${formData.profilePic.name}`;
@@ -32,7 +38,7 @@ class App extends Component {
         this.logIn(formData);
       })
       .catch((error) => {
-        this.setState({ error });
+        this.setState({ message: error.message });
       });
   };
   uploadFile = (file, newFileName) => {
@@ -126,6 +132,7 @@ class App extends Component {
           render={() => {
             return (
               <Register
+              message={this.state.message}
                 resetError={this.resetError}
                 onRegister={this.register}
               ></Register>
