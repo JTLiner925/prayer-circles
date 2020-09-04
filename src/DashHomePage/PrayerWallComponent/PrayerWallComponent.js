@@ -100,7 +100,6 @@ export default class PrayerWallComponent extends Component {
                   }
                 });
                 if (usr && groupUsers[usr.first_name]) {
-                  console.log(usr)
                   picture = groupUsers[usr.first_name].profilePic;
                 }
               }

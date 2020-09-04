@@ -12,9 +12,6 @@ export default class ChatPage extends Component {
   };
  
   sendMessage = (message) => {
-
-
-    // socket.on('timer', timestamp => { console.log(timestamp)});
   };
 
   render() {

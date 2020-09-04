@@ -610,7 +610,6 @@ componentDidMount(e){
         }
       }
     }
-    console.log(this.state)
     return (
       <main className='Dashboard'>
         <nav className='DashHeader'>
