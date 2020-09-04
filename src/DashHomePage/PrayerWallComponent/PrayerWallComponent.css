@@ -74,6 +74,9 @@
 .prayer-header-bottom div {
   margin: 0 auto;
 }
+#header-user-icon{
+  background-image: url('../../Images/user-photo.png');
+}
 .prayer-header-bottom div {
   background: linear-gradient(45deg, #8dfae1, #839df5);
   border-radius: 25px;

@@ -12,12 +12,13 @@ import {
   faPray,
   faPrayingHands,
 } from '@fortawesome/free-solid-svg-icons';
-import friends1 from '../../Images/friends1.jpg';
+import userphoto from '../../Images/user-photo.png';
 import './PrayerWallComponent.css';
 
 export default class PrayerWallComponent extends Component {
   state = {
     showAddPhoto: false,
+    picture: '',
   };
   toggleAddPhoto = () => {
     this.setState({
@@ -78,12 +79,11 @@ export default class PrayerWallComponent extends Component {
     }
     return (
       <>
-
         <div className='Prayer-Wall-Component'>
           {groupId ? (
             sortPrayers.map((prayer) => {
               let eachUserId;
-              let picture;
+              let picture = `url(${userphoto})`;
               let usr;
 
               if (prayer && prayer.user_id) {
@@ -123,21 +123,22 @@ export default class PrayerWallComponent extends Component {
                             </span>
                           </h3>
                         </div>
-                <h4>{selectedGroup.group_name}</h4>
+                        <h4>{selectedGroup.group_name}</h4>
                       </div>
                     </div>
                     <div className='prayer-main'>
                       <p>{prayer.prayer_body}</p>
                     </div>
-                    <div className='prayer-footer'>                  
-                    </div>
+                    <div className='prayer-footer'></div>
                   </div>
                 );
               }
             })
           ) : (
             <div className='pre-prayer-wall'>
-              <h3 className='pre-prayer-wall-text'>Select Group<br></br>to view prayer requests</h3>
+              <h3 className='pre-prayer-wall-text'>
+                Select Group<br></br>to view prayer requests
+              </h3>
             </div>
           )}
           <div id='anchor'></div>

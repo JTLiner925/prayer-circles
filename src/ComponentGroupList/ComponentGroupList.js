@@ -26,6 +26,7 @@ export default class ComponentGroupList extends Component {
   }
   changeHandler = (e) => {
     // this.props.resetError();
+    
     this.reload();
     if (e.target.name === 'group_name') {
       let element = document.querySelector(
@@ -81,9 +82,11 @@ export default class ComponentGroupList extends Component {
           {groups.map((group) => {
             let BackgroundImage = `url(${friends1})`;
             if(myGroupPhotos && Object.keys(myGroupPhotos).length > 0){
+              
               if(myGroupPhotos[group.group_name] && myGroupPhotos[group.group_name].profilePic){
                 BackgroundImage = myGroupPhotos[group.group_name].profilePic
               }
+              
             }
             let addGroupBackgroundImage = {
               backgroundImage: `url(${friends2})`,

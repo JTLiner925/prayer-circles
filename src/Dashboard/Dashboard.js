@@ -13,6 +13,7 @@ import AddEventPage from '../AddEventPage/AddEventPage';
 import AddPrayerPage from '../AddPrayerPage/AddPrayerPage';
 // import SettingsPage from '../SettingsPage/SettingsPage';
 import Footer from '../Footer/Footer';
+import userphoto from '../Images/user-photo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
@@ -43,26 +44,26 @@ export default class Dashboard extends Component {
     });
   };
   
-  HamNav = (e) => {
-    //event handler for hamburger menu
-    let elem = document.querySelector('.UserSideNav');
-    if (elem.style.display === 'block') {
-      elem.style.display = 'none';
-    } else {
-      elem.style.display = 'block';
-    }
-  };
-  HamNavPage = () => {
-    //event handler for menu to collapse by clicking in other places other than hamburger icon
-    let elem = document.querySelector('.UserSideNav');
-    if (elem.style.display === 'none') {
-      elem.style.display = 'none';
-    } else {
-      elem.style.display = 'none';
-    }
-  };
-componentDidMount(){
-  this.refreshData()
+  // HamNav = (e) => {
+  //   //event handler for hamburger menu
+  //   let elem = document.querySelector('.UserSideNav');
+  //   if (elem.style.display === 'block') {
+  //     elem.style.display = 'none';
+  //   } else {
+  //     elem.style.display = 'block';
+  //   }
+  // };
+  // HamNavPage = () => {
+  //   //event handler for menu to collapse by clicking in other places other than hamburger icon
+  //   let elem = document.querySelector('.UserSideNav');
+  //   if (elem.style.display === 'none') {
+  //     elem.style.display = 'none';
+  //   } else {
+  //     elem.style.display = 'none';
+  //   }
+  // };
+componentDidMount(e){
+  this.refreshData(e)
 }
   refreshData() {
   
@@ -170,9 +171,9 @@ componentDidMount(){
               let trimmedUrl = resData.url.split('?')[0];
               let url = trimmedUrl;
               myGroupPhotos[group.group_name] = {profilePic: url}
-              this.setState({
-                myGroupPhotos
-              })
+              // this.setState({
+              //   myGroupPhotos
+              // })
             })
             .catch((error) => {});
         
@@ -225,6 +226,7 @@ componentDidMount(){
           messages: messages,
           prayers: prayers,
           testGroup: testGroup,
+          myGroupPhotos: myGroupPhotos
 
         });
         //maintain bible passage even if page refreshes
@@ -252,11 +254,11 @@ componentDidMount(){
           .catch((error) => {
             console.log(error);
           });
-      }, 1000);
+      }, 3000);
   }
   componentDidUpdate(prevProps){
     if(this.props.location.search === prevProps.location.search){
-      return
+      return 
     }
     this.refreshData()
   }
@@ -602,7 +604,7 @@ componentDidMount(){
         }
       }
     }
-
+    console.log(this.state)
     return (
       <main className='Dashboard'>
         <nav className='DashHeader'>
@@ -610,21 +612,13 @@ componentDidMount(){
             <div 
             // onClick={this.HamNav}
             >
-              {this.state.profilePic ? (
-                <>
+              
                   <img
                     id='header-user-icon'
-                    src={this.state.profilePic}
+                    src={ this.state.profilePic ? this.state.profilePic : userphoto}
                     alt='user avatar'
                   />
-                  {/* <FontAwesomeIcon
-                    className='notification-alert'
-                    icon={faCircle}
-                  /> */}
-                </>
-              ) : (
-                ''
-              )}
+                  
             </div>
           </div>
           <div className='header-nav-icons' onClick={this.HamNavPage}>

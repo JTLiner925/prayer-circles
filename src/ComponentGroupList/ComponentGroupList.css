@@ -74,7 +74,8 @@
 }
 .group-list-slide a:hover,
 .add-group-slide a:hover {
-  background-color: #747474;
+  box-shadow: 0 2px 5px 0 #013af5a7;
+
 }
 
 .group-list-slide,
@@ -95,6 +96,13 @@
   background-color: rgb(223, 223, 223);
   border-radius: 10px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.637);
+}
+.group-list-slide{
+  background-color: rgba(223, 223, 223, 0);
+  background-image: url(../Images/friends1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .group-list-slide:before {
 }

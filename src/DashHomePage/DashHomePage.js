@@ -11,12 +11,13 @@ export default class DashHomePage extends Component {
         <div className='dash-prayer-container'>
         <PrayerWallComponent 
         prayers = {this.props.prayers}
-        groupUsers = {this.props.groupUsers}
+       
         userId = {this.props.userId}
         users = {this.props.users}
         groups = {this.props.groups}
         groupId = {this.props.groupId}
         myGroupPhotos={this.props.myGroupPhotos}
+        groupUsers = {this.props.groupUsers}
         />
         
         </div>
