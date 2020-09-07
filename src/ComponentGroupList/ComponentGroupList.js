@@ -80,6 +80,7 @@ export default class ComponentGroupList extends Component {
         <ul className='group-list-slides'>
           
           {groups.map((group) => {
+            //display group photo
             let BackgroundImage = `url(${friends1})`;
             if(myGroupPhotos && Object.keys(myGroupPhotos).length > 0){
               
@@ -96,6 +97,7 @@ export default class ComponentGroupList extends Component {
             let userIds = group.user_ids;
 
             for (let i = 0; i < userIds.length; i++) {
+              //display group if userId is in the ids of the group
               let idsArray = userIds[i];
               if (idsArray && idsArray == userId) {
                 return (

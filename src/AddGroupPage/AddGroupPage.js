@@ -22,6 +22,7 @@ export default class AddGroupPage extends Component {
     this.props.onCreateGroup(this.state);
   };
   dropHandler = (e) => {
+    //model to select group photo from local files
     e.preventDefault();
     if (e.dataTransfer.items) {
       for (let i = 0; i < e.dataTransfer.items.length; i++) {
@@ -40,6 +41,7 @@ export default class AddGroupPage extends Component {
     }
   };
   handleGroupPhoto = (e) => {
+    //set group photo in state
     this.setState({
       groupProfilePic: e,
       groupPhotoMessage: '✅ Photo uploaded successfully!',
@@ -66,6 +68,7 @@ export default class AddGroupPage extends Component {
     }
   };
   submitJoinHandler = (e) => {
+    //api call to join group
     e.preventDefault();
     let group = this.props.groups.find((g) => {
       return g.group_name === this.state.group_name;

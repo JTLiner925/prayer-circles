@@ -26,12 +26,14 @@ export default class EventListPage extends Component {
       users,
     } = this.props;
     let selectedGroup = groups.find((group) => {
+      //group that is selected from ComponentGroupList
       return group.id === parseInt(groupId);
     });
     const groupEvents = []
       .concat(groups)
       .sort((a, b) => (a.event_date > b.event_date ? 1 : -1));
     const sortEvents = []
+    //sort events by date
       .concat(events)
       .sort((a, b) => (a.event_date > b.event_date ? 1 : -1));
     return (
@@ -44,7 +46,9 @@ export default class EventListPage extends Component {
         <div className='event-list-form'>
           {sortEvents.map((event) => {
             if (event.group_event && event.group_event == groupId) {
+              //only get events that match the selected groupId
               let hostUser = users.find((u) => {
+                //hostUser is the creator of the event
                 return event.event_leader === u.id;
               });
               return (

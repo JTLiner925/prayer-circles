@@ -24,6 +24,7 @@ export default class AddEventPage extends Component {
     });
   };
   componentDidMount() {
+    //call to get all events
     fetch(`${config.HOST}/api/events`, {
       headers: {
         'Content-Type': 'application/json',
@@ -81,6 +82,7 @@ export default class AddEventPage extends Component {
             'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
           );
         }
+        //create new event
         this.props.onCreateEvent(this.state);
       })
       .catch((error) => {

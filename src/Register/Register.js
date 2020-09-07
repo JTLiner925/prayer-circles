@@ -35,6 +35,7 @@ export default class Register extends Component {
   dropHandler = (e) => {
     e.preventDefault();
     if (e.dataTransfer.items) {
+      //grabs photo from local folder
       for (let i = 0; i < e.dataTransfer.items.length; i++) {
         if (e.dataTransfer.items[i].kind === 'file') {
           let file = e.dataTransfer.items[i].getAsFile();
@@ -52,6 +53,7 @@ export default class Register extends Component {
   };
 
   handleUserPhoto = (e) => {
+    //sets profilePic in state
     this.setState({
       profilePic: e,
       photoMessage: '✅ Photo uploaded successfully!',
@@ -66,6 +68,7 @@ export default class Register extends Component {
     return (
       <>
         {this.state.showUserPhoto ? (
+          //model to handle setting up user photo
           <div className='user-photo-background'>
             <div className='user-photo-model'>
               <p onClick={this.toggleUserPhoto}> <FontAwesomeIcon className='photo-model-x' icon={faTimesCircle} /></p>

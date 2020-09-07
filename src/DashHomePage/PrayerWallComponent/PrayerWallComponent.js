@@ -44,7 +44,9 @@ export default class PrayerWallComponent extends Component {
       return group.id === parseInt(groupId);
     });
     if (selectedGroup) {
+      //group selected group
       filteredUsers = users.filter((user) => {
+        //only display user for group
         return selectedGroup.user_ids.includes(user.id.toString());
       });
     }
@@ -70,6 +72,7 @@ export default class PrayerWallComponent extends Component {
         <div className='Prayer-Wall-Component'>
           {groupId ? (
             sortPrayers.map((prayer) => {
+              //after group is selected display only prayers for specific group
               let eachUserId;
               let picture = `url(${userphoto})`;
               let usr;

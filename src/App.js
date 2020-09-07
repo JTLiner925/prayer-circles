@@ -41,6 +41,7 @@ class App extends Component {
       });
   };
   uploadFile = (file, newFileName) => {
+    //POST call to api that send to AWS
     let url;
     fetch(`${config.HOST}/api/getUrl`, {
       headers: {
@@ -93,6 +94,7 @@ class App extends Component {
         }
       })
       .then((userData) => {
+        //sets up the userName and a token in local storage
         window.localStorage.setItem('token', userData.token);
         window.localStorage.setItem('userName', userData.userName);
         this.props.history.push('/dashboard');

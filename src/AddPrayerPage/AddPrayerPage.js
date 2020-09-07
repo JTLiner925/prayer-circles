@@ -15,6 +15,7 @@ export default class AddPrayerPage extends Component {
   submitHandler = (e) => {
     // this.props.resetError();
     e.preventDefault();
+    //api call to create prayer
     this.props.onCreatePrayer(this.state);
   };
   changeHandler = (e, prayer_type) => {
@@ -40,15 +41,11 @@ export default class AddPrayerPage extends Component {
       }
     }
     if (prayer_type) {
+      //identify if prayer request or praise
       this.setState({
         prayer_type: prayer_type,
       });
     }
-  };
-  onChangePrayerType = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
   };
   static getDerivedStateFromProps(props) {
     return { groupid: props.groupId };

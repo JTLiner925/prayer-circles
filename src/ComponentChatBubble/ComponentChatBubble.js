@@ -23,6 +23,7 @@ export default class ChatBubbleComponent extends Component {
     return (
       <div className='Chat-Bubble-Component' id='scroller'>
         {groupId ? sortMessages.map((message) => {
+          //match group and then get messages for group, post message
           let picture;
           let usr;
           if (Object.keys(this.props.groupUsers).length > 0) {

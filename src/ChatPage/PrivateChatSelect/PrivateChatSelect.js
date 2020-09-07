@@ -27,7 +27,8 @@ export default class PrivateChatSelect extends Component {
         <div className='chat-people'>
           
           {filteredUsers.map((u) => {
-
+            //get selected group, then display users for that group
+            //get picture for user
             let picture;
             if(Object.keys(this.props.groupUsers).length > 0){
               if(this.props.groupUsers[u.first_name] && this.props.groupUsers[u.first_name].profilePic ){

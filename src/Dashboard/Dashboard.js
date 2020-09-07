@@ -36,6 +36,7 @@ export default class Dashboard extends Component {
   };
 
   componentDidMount(e) {
+    //batch api calls to set state for user
     this.refreshData(e);
   }
   refreshData() {
@@ -117,12 +118,14 @@ export default class Dashboard extends Component {
       )
       .then(([users, groups, events, needed, messages, prayers]) => {
         let userId = users.find(
+          //set userId in state
           (user) => user.first_name === window.localStorage.getItem('userName')
         );
 
         let testGroup = {};
         let myGroupPhotos = {};
         groups.forEach((group) => {
+          //get photo for each group
           fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
             headers: {
               'Content-Type': 'application/json',
@@ -199,6 +202,7 @@ export default class Dashboard extends Component {
         this.setState({ error });
       });
     setInterval(() => {
+      //api call to messages uses setInterval to get new messages
       fetch(`${config.HOST}/api/messages`, {
         headers: {
           'Content-Type': 'application/json',
@@ -220,12 +224,14 @@ export default class Dashboard extends Component {
     }, 3000);
   }
   componentDidUpdate(prevProps) {
+    //update page with new data in state
     if (this.props.location.search === prevProps.location.search) {
       return;
     }
     this.refreshData();
   }
   handleGroupPic = (groups) => {
+    //api call to get group photo
     let group = groups.find((g) => {
       if (g.user_ids.includes(this.props.userId)) {
         return g.group_name;
@@ -256,6 +262,7 @@ export default class Dashboard extends Component {
       .catch((error) => {});
   };
   handleProfilePic = (users) => {
+    //get user photo
     let userName = window.localStorage.getItem('userName');
     let user = users.find((u) => {
       return u.first_name === userName;
@@ -284,6 +291,7 @@ export default class Dashboard extends Component {
       .catch((error) => {});
   };
   handleGroupUsersPic = (users) => {
+    //get user pics for specific group
     let userName = window.localStorage.getItem('userName');
     let user = users.find((u) => {
       return u.first_name === userName;
@@ -448,6 +456,7 @@ export default class Dashboard extends Component {
       });
   };
   pushNeededItems = (id, neededItems) => {
+    //set needed items for specific event
     fetch(`${config.HOST}/api/needed/add-item`, {
       headers: {
         'Content-Type': 'application/json',
@@ -495,6 +504,7 @@ export default class Dashboard extends Component {
       });
   };
   createMessage = (formData) => {
+    //add new message
     fetch(`${config.HOST}/api/messages/send-message`, {
       headers: {
         'Content-Type': 'application/json',
@@ -518,6 +528,7 @@ export default class Dashboard extends Component {
       });
   };
   createPrayer = (formData) => {
+    //add new prayer
     fetch(`${config.HOST}/api/prayers/send-prayer`, {
       headers: {
         'Content-Type': 'application/json',
@@ -582,6 +593,7 @@ export default class Dashboard extends Component {
               <img
                 id='header-user-icon'
                 src={this.state.profilePic ? this.state.profilePic : userphoto}
+                //user photo on header or use default photo - so it doesn't break
                 alt='user avatar'
               />
             </div>
