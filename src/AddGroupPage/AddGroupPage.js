@@ -186,13 +186,6 @@ export default class AddGroupPage extends Component {
                   icon={faUserPlus}
                 />
               </div>
-              {/* <select id='group-public-private' onChange={this.accessHandler}>
-                <option selected disabled hidden>
-                  Chooses Access Setting
-                </option>
-                <option value='public'>Public Group</option>
-                <option value='private'>Private Group</option>
-              </select> */}
               <label
                 name='group_names'
                 htmlFor='group-name-input'
@@ -218,7 +211,6 @@ export default class AddGroupPage extends Component {
                   id='pitch-textarea'
                   name='pitch'
                   onChange={this.changeHandler}
-                  // required
                 ></textarea>
               </label>
               <div className='add-group-phone-location-div'>
@@ -232,7 +224,6 @@ export default class AddGroupPage extends Component {
                     onChange={this.changeHandler}
                     format=' (###) ###-####'
                     mask='_'
-                    // required
                   />
                 </label>
                 <label

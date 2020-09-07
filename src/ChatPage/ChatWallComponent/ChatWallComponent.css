@@ -10,14 +10,10 @@
 .chat-component-container {
   display: flex;
   flex-direction: column;
-  /* padding: 10px; */
   width: 100%;
-  /* padding: 5%; */
   padding-bottom: 0;
   padding-top: 0;
   margin: 10px auto;
-  /* border-radius: 10px; */
-  /* box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.637); */
 }
 .chat-header {
   border-bottom: 1px solid rgba(154, 154, 154, 0.447);
@@ -73,8 +69,6 @@
   padding: 15px;
   border-radius: 7px;
 }
-#handle-chat-add-photo {
-}
 .chat-user {
   width: 86%;
 }
@@ -109,10 +103,6 @@
   justify-content: space-between;
   margin-bottom: 2px;
 }
-/* #chat-heart-icon,
-#chat-thumbs-up-icon,
-#chat-comment-icon,
-#chat-dots-icon  */
 #chat-thumbs-up-icon {
   margin-left: 10px;
 }
@@ -126,14 +116,12 @@
   position: fixed;
   bottom: 6%;
   background-color: white;
-  /* align-items: center; */
   max-width: 1000px;
 }
 .bubble-container {
   position: absolute;
   top: 60px;
   width: 100%;
-  /* padding: 10px; */
 }
 .chat-input-option {
   display: flex;

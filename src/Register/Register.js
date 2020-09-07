@@ -148,7 +148,6 @@ export default class Register extends Component {
                   className='register-first'
                   placeholder='First Name'
                   onChange={this.changeHandler}
-                  // required
                 ></input>
               </label>
               <label htmlFor='last-name-input' className='register-last-label'>

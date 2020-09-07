@@ -13,7 +13,6 @@
   flex-direction: column;
   justify-content: space-around;
   background-color: #ffffff;
-  /* height: 80%; */
   justify-content: center;
 }
 .add-event-form h2 {
@@ -98,7 +97,6 @@
 .add-event-date {
   padding-left: 1em;
   display: flex;
-  /* flex-direction: column; */
   background-color: #ffffff;
   width: 100%;
   align-items: center;
@@ -115,7 +113,6 @@
   padding-left: 1em;
 
   display: flex;
-  /* flex-direction: column; */
   background-color: #ffffff;
   width: 80%;
   align-items: center;
@@ -136,7 +133,6 @@
 .add-event-lesson {
   padding-left: 1em;
   display: flex;
-  /* flex-direction: column; */
   background-color: #ffffff;
   width: 80%;
   align-items: center;
@@ -151,7 +147,6 @@
   display: flex;
   height: 11%;
   background-color: #ffffff;
-  /* margin-bottom: 20px; */
   width: 100%;
   justify-content: center;
 }
@@ -160,13 +155,11 @@
 .add-event-question {
   padding-left: 1em;
   display: flex;
-  /* flex-direction: column; */
   background-color: #ffffff;
   width: 80%;
   align-items: center;
   align-content: center;
   height: 95%;
-  /* margin: 0 auto; */
   border: none;
   border-bottom: 1px solid #5b5b5b;
 }

@@ -28,15 +28,12 @@
   width: 90%;
 }
 .chat-person {
-  /* position: relative; */
   height: 100%;
   width: 100%;
-  /* margin-right: 5px; */
   margin: 0 auto;
 }
 
 .person-image {
-  /* position: relative; */
   display: flex;
   align-items: center;
   align-content: center;

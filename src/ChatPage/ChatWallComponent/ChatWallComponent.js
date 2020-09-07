@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import ComponentChatBubble from '../../ComponentChatBubble/ComponentChatBubble';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faHeart,
-  faThumbsUp,
-  faCommentAlt,
-  faEllipsisH,
-  faCamera,
-  faPaperPlane,
-  faThList,
-} from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import './ChatWallComponent.css';
 
 export default class ChatWallComponent extends Component {
@@ -72,7 +64,6 @@ export default class ChatWallComponent extends Component {
 
         <div className='Chat-Wall-Component'>
           <div className='chat-component-container'>
-            {/* <div className='bubble-container'> */}
             <div className='chat-header'>
               <div className='chat-header-top'>
                 <div>
@@ -94,33 +85,10 @@ export default class ChatWallComponent extends Component {
                 groupUsers={this.props.groupUsers}
               />
             </div>
-
-            {/* <div className='chat-footer'>
-              <div className='chat-footer-left'>
-                <FontAwesomeIcon id='chat-heart-icon' icon={faHeart} />
-                <FontAwesomeIcon id='chat-thumbs-up-icon' icon={faThumbsUp} />
-                <FontAwesomeIcon id='chat-comment-icon' icon={faCommentAlt} />
-              </div>
-              <FontAwesomeIcon id='chat-dots-icon' icon={faEllipsisH} />
-            </div> */}
-            {/* </div> */}
             <form
               className='chat-input-container'
               onSubmit={this.submitHandler}
             >
-              {/* <div
-                name='message_type'
-                className='chat-input-option'
-                onChange={this.changeHandler}
-                type='image'
-              > */}
-              {/* <FontAwesomeIcon
-                  id='chat-camera-icon'
-                  onClick={this.toggleChatAddPhoto}
-                  icon={faCamera}
-                /> */}
-              {/* <FontAwesomeIcon id='chat-thumbs-up-icon' icon={faThumbsUp} /> */}
-              {/* </div> */}
               <label htmlFor='message-text' className='label'>
                 <span>message</span>
               </label>
@@ -134,20 +102,20 @@ export default class ChatWallComponent extends Component {
               ></input>
               <label htmlFor='reset-input' className='label'>
                 <span>reset</span>
-              
 
-              <input
-                type='reset'
-                id='reset-input'
-                style={{ display: 'none' }}
-                value='reset'
-              ></input>
+                <input
+                  type='reset'
+                  id='reset-input'
+                  style={{ display: 'none' }}
+                  value='reset'
+                ></input>
               </label>
               <button className='message-submit-button' type='submit'>
                 <FontAwesomeIcon
                   className='chat-wall-submit'
                   icon={faPaperPlane}
-                /><span>submit</span>
+                />
+                <span>submit</span>
               </button>
             </form>
           </div>

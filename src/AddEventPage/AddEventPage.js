@@ -81,13 +81,6 @@ export default class AddEventPage extends Component {
             'Please check Bible passage, write out in long form. i.e. "Matthew 28:18-20"'
           );
         }
-        // if (
-        //   //select group before submitting
-        //   this.state.group_name === 'Select Group' ||
-        //   this.state.group_name === undefined
-        // ) {
-        //   throw new Error('Must Select Group');
-        // }
         this.props.onCreateEvent(this.state);
       })
       .catch((error) => {
@@ -165,11 +158,6 @@ export default class AddEventPage extends Component {
     
     return (
       <div className='AddEventPage' onClick={this.props.onHandleHam}>
-        {/* <div className="add-event-event-banner">
-          <Link className='add-event-event' to='/events'>View Events</Link>
-          <h2>Or</h2>
-          <Link className='add-event-event' to='/add-event'>Add Event</Link>
-        </div> */}
         <div id='anchor'></div>
         <form className='add-event-form' onSubmit={this.submitHandler}>
           <h2>Create New Event</h2>
@@ -178,14 +166,6 @@ export default class AddEventPage extends Component {
             if (selectedGroup && selectedGroup == group.id) {
               return (
                 <div key={group.id} className='add-event-header-top'>
-                  {/* <div
-                    style={BackgroundImage}
-                    className='event-group-icon'
-                    name='group_name'
-                  >
-                    
-                    <div groupid={group.id}>{group.group_name}</div>
-                  </div> */}
                   <p>Group: {group.group_name}</p>
                 </div>
               );
@@ -325,9 +305,6 @@ export default class AddEventPage extends Component {
           <div className='create-button'>
             <p className='error-alert'>{this.props.eventMessage}</p>
             <p className='error-alert'>{this.state.error}</p>
-            {/* <button type="submit" className="create-event">
-              Create Event
-            </button> */}
             <button type='submit' className='add-event-button'>
               Add Event
             </button>

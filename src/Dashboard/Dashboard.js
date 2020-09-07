@@ -1,26 +1,17 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import config from '../config';
-// import Header from '../Header/Header';
-// import UserSideNav from '../UserSideNav/UserSideNav';
 import ComponentGroupList from '../ComponentGroupList/ComponentGroupList';
 import DashHomePage from '../DashHomePage/DashHomePage';
 import EventListPage from '../EventListPage/EventListPage';
 import ChatPage from '../ChatPage/ChatPage';
-// import InvitePage from '../InvitePage/InvitePage';
 import AddGroupPage from '../AddGroupPage/AddGroupPage';
 import AddEventPage from '../AddEventPage/AddEventPage';
 import AddPrayerPage from '../AddPrayerPage/AddPrayerPage';
-// import SettingsPage from '../SettingsPage/SettingsPage';
 import Footer from '../Footer/Footer';
 import userphoto from '../Images/user-photo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUser,
-  faUserCog,
-  faSignOutAlt,
-  faCircle,
-} from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import './Dashboard.css';
 
@@ -43,30 +34,11 @@ export default class Dashboard extends Component {
       error: null,
     });
   };
-  
-  // HamNav = (e) => {
-  //   //event handler for hamburger menu
-  //   let elem = document.querySelector('.UserSideNav');
-  //   if (elem.style.display === 'block') {
-  //     elem.style.display = 'none';
-  //   } else {
-  //     elem.style.display = 'block';
-  //   }
-  // };
-  // HamNavPage = () => {
-  //   //event handler for menu to collapse by clicking in other places other than hamburger icon
-  //   let elem = document.querySelector('.UserSideNav');
-  //   if (elem.style.display === 'none') {
-  //     elem.style.display = 'none';
-  //   } else {
-  //     elem.style.display = 'none';
-  //   }
-  // };
-componentDidMount(e){
-  this.refreshData(e)
-}
+
+  componentDidMount(e) {
+    this.refreshData(e);
+  }
   refreshData() {
-  
     let i = window.location.search;
     let x = new URLSearchParams(i);
     let eventId;
@@ -82,11 +54,10 @@ componentDidMount(e){
         [key]: value,
       });
     }
-   
+
     //call api for data to display in dashboard
     this.setState({
       eventMessage: '',
-
     });
     Promise.all([
       fetch(`${config.HOST}/api/users`, {
@@ -116,7 +87,6 @@ componentDidMount(e){
           Authorization: `Bearer ${window.localStorage.getItem('token')}`,
         },
         method: 'GET',
-        // body: JSON.stringify({ event_id: eventId }),
       }),
       fetch(`${config.HOST}/api/messages`, {
         headers: {
@@ -150,8 +120,6 @@ componentDidMount(e){
           (user) => user.first_name === window.localStorage.getItem('userName')
         );
 
-
-
         let testGroup = {};
         let myGroupPhotos = {};
         groups.forEach((group) => {
@@ -161,61 +129,57 @@ componentDidMount(e){
               // Authorization: `Bearer ${window.localStorage.getItem('token')}`,
             },
             method: 'POST',
-            body: JSON.stringify({ fileName:`${group.id}_${group.group_pic}`, location: 'groups-photo' }),
+            body: JSON.stringify({
+              fileName: `${group.id}_${group.group_pic}`,
+              location: 'groups-photo',
+            }),
           })
             .then((res) => {
               return res.json();
             })
             .then((resData) => {
-              
               let trimmedUrl = resData.url.split('?')[0];
               let url = trimmedUrl;
-              myGroupPhotos[group.group_name] = {profilePic: url}
-              // this.setState({
-              //   myGroupPhotos
-              // })
+              myGroupPhotos[group.group_name] = { profilePic: url };
             })
             .catch((error) => {});
-        
-        })
+        });
         if (gId) {
           let matchedGroup = groups.find((g) => {
-           
-            return g.id === parseInt(gId)
-          })
-          if(matchedGroup){
+            return g.id === parseInt(gId);
+          });
+          if (matchedGroup) {
             let userIds = matchedGroup.user_ids;
-            userIds.forEach(id => {
-              users.forEach(usr => {
-                if(parseInt(id) === usr.id){
+            userIds.forEach((id) => {
+              users.forEach((usr) => {
+                if (parseInt(id) === usr.id) {
                   fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
                     headers: {
                       'Content-Type': 'application/json',
                       // Authorization: `Bearer ${window.localStorage.getItem('token')}`,
                     },
                     method: 'POST',
-                    body: JSON.stringify({ fileName:`${usr.id}_${usr.profile_pic}`, location: 'user-photo' }),
+                    body: JSON.stringify({
+                      fileName: `${usr.id}_${usr.profile_pic}`,
+                      location: 'user-photo',
+                    }),
                   })
                     .then((res) => {
                       return res.json();
                     })
                     .then((resData) => {
-                      
                       let trimmedUrl = resData.url.split('?')[0];
                       let url = trimmedUrl;
-                      testGroup[usr.first_name] = {profilePic: url}
-
+                      testGroup[usr.first_name] = { profilePic: url };
                     })
                     .catch((error) => {});
                 }
-              })
-            })
+              });
+            });
           }
-
         }
 
         this.handleProfilePic(users);
-        // this.handleGroupPic(groups)
         this.setState({
           users: users,
           groups: groups,
@@ -226,8 +190,7 @@ componentDidMount(e){
           messages: messages,
           prayers: prayers,
           testGroup: testGroup,
-          myGroupPhotos: myGroupPhotos
-
+          myGroupPhotos: myGroupPhotos,
         });
         //maintain bible passage even if page refreshes
         this.handleBiblePassage(this.state.eventId);
@@ -235,32 +198,32 @@ componentDidMount(e){
       .catch((error) => {
         this.setState({ error });
       });
-      setInterval(() => {
-        fetch(`${config.HOST}/api/messages`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${window.localStorage.getItem('token')}`,
-          },
-          method: 'GET',
+    setInterval(() => {
+      fetch(`${config.HOST}/api/messages`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+        },
+        method: 'GET',
+      })
+        .then((res) => {
+          return res.json();
         })
-          .then((res) => {
-            return res.json();
-          })
-          .then((resData) => {
-            this.setState({
-              messages: resData
-            })
-          })
-          .catch((error) => {
-            console.log(error);
+        .then((resData) => {
+          this.setState({
+            messages: resData,
           });
-      }, 3000);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 3000);
   }
-  componentDidUpdate(prevProps){
-    if(this.props.location.search === prevProps.location.search){
-      return 
+  componentDidUpdate(prevProps) {
+    if (this.props.location.search === prevProps.location.search) {
+      return;
     }
-    this.refreshData()
+    this.refreshData();
   }
   handleGroupPic = (groups) => {
     let group = groups.find((g) => {
@@ -439,15 +402,15 @@ componentDidMount(e){
       method: 'POST',
       body: JSON.stringify(formData),
     })
-    .then((res) => {
-      if (!res.ok) {
-        return res.json().then((data) => {
-          return Promise.reject(new Error(data.error.message));
-        });
-      } else {
-        return res.json();
-      }
-    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((data) => {
+            return Promise.reject(new Error(data.error.message));
+          });
+        } else {
+          return res.json();
+        }
+      })
       .then((resData) => {
         let groupPic = `${resData.group.id}_${formData.groupProfilePic.name}`;
 
@@ -563,15 +526,15 @@ componentDidMount(e){
       method: 'POST',
       body: JSON.stringify(formData),
     })
-    .then((res) => {
-      if (!res.ok) {
-        return res.json().then((data) => {
-          return Promise.reject(new Error(data.error.message));
-        });
-      } else {
-        return res.json();
-      }
-    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((data) => {
+            return Promise.reject(new Error(data.error.message));
+          });
+        } else {
+          return res.json();
+        }
+      })
       .then((resData) => {
         this.setState({
           prayer_body: resData.prayer_body,
@@ -614,52 +577,24 @@ componentDidMount(e){
       <main className='Dashboard'>
         <nav className='DashHeader'>
           <div className='header-user-icon'>
-            <div 
-            // onClick={this.HamNav}
+            <div
             >
-              
-                  <img
-                    id='header-user-icon'
-                    src={ this.state.profilePic ? this.state.profilePic : userphoto}
-                    alt='user avatar'
-                  />
-                  
+              <img
+                id='header-user-icon'
+                src={this.state.profilePic ? this.state.profilePic : userphoto}
+                alt='user avatar'
+              />
             </div>
           </div>
           <h1 className='header-h1'>Prayer Circles</h1>
           <div className='header-nav-icons' onClick={this.HamNavPage}>
-            {/* <Link to='/settings' className='header-settings-icon'>
-              <FontAwesomeIcon id='head-settings-icon' icon={faUserCog} />
-            </Link> */}
-            <Link to='/' className='header-sign-out-icon'><span>sign out</span>
+            <Link to='/' className='header-sign-out-icon'>
+              <span>sign out</span>
               <FontAwesomeIcon id='head-sign-out-icon' icon={faSignOutAlt} />
             </Link>
           </div>
         </nav>
 
-        {/* {[
-          '/dashboard',
-          '/events',
-          '/chat',
-          '/invite',
-          '/add-group',
-          '/add-event',
-          '/add-prayer',
-          '/settings',
-        ].map((path) => (
-          <Route
-            key={path}
-            path={path}
-            render={() => {
-              return (
-                <UserSideNav
-                  users={this.state.users}
-                  // onHamNav={this.HamNav}
-                ></UserSideNav>
-              );
-            }}
-          />
-        ))} */}
         {[
           '/dashboard',
           '/events',
@@ -731,7 +666,6 @@ componentDidMount(e){
                 profilePic={this.state.profilePic}
                 groupUsers={this.state.testGroup}
                 myGroupPhotos={this.state.myGroupPhotos}
-
               ></EventListPage>
             );
           }}
@@ -755,28 +689,11 @@ componentDidMount(e){
                 handleProfilePic={this.handleProfilePic}
                 groupUsers={this.state.testGroup}
                 myGroupPhotos={this.state.myGroupPhotos}
-
               ></ChatPage>
             );
           }}
         />
-        {/* <Route
-          path='/invite'
-          render={() => {
-            return (
-              <InvitePage
-                groups={this.state.groups}
-                events={this.state.events}
-                groupId={this.state.groupId}
-                eventId={this.state.eventId}
-                users={this.state.users}
-                userId={this.state.userId}
-                needed={this.state.needed}
-                onHandleHam={this.HamNavPage}
-              ></InvitePage>
-            );
-          }}
-        /> */}
+       
         <Route
           path='/add-group'
           render={() => {
@@ -809,7 +726,6 @@ componentDidMount(e){
                 onCreateEvent={this.createEvent}
                 handleEvent={this.handleEvent}
                 myGroupPhotos={this.state.myGroupPhotos}
-
               ></AddEventPage>
             );
           }}
@@ -834,22 +750,7 @@ componentDidMount(e){
             );
           }}
         />
-        {/* <Route
-          path='/settings'
-          render={() => {
-            return (
-              <SettingsPage
-                groups={this.state.groups}
-                groupId={this.state.groupId}
-                users={this.state.users}
-                userId={this.state.userId}
-                events={this.state.events}
-                eventId={this.state.eventId}
-                onHandleHam={this.HamNavPage}
-              ></SettingsPage>
-            );
-          }}
-        /> */}
+     
         {[
           '/dashboard',
           '/events',

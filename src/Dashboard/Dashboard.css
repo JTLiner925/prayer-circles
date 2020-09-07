@@ -37,15 +37,6 @@
   align-items: center;
   cursor: pointer;
 }
-/* .notification-alert{
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  top: 10px;
-  left: 24px;
-  z-index: 4;
-  color: rgb(34, 248, 15);
-} */
 #header-user-icon {
   display: flex;
   flex-direction: column;
@@ -57,7 +48,6 @@
 }
 .header-settings-icon,
 .header-sign-out-icon {
-  /* height: 8%; */
   padding: 0;
   height: 50px;
   display: flex;

@@ -37,10 +37,6 @@ export default class EventListPage extends Component {
     return (
       <div className='EventListPage' onClick={this.props.onHandleHam}>
         <div className='event-list-event-banner'>
-          {/* <Link className='event-list-event' to='/events'>
-            View Events
-          </Link>
-          <h2>Or</h2> */}
           <Link className='event-list-event' to='/add-event'>
             Add Event
           </Link>
@@ -83,11 +79,6 @@ export default class EventListPage extends Component {
                         </div>
                         <div>
                           <p classname='select-group-name'>{selectedGroup.group_name}</p>
-                          {/* <img
-                            id='event-users-icon'
-                            src={friends1}
-                            alt='Friends'
-                          /> */}
                         </div>
                       </div>
 
@@ -100,9 +91,6 @@ export default class EventListPage extends Component {
                           <p>{event.bible_passage}</p>
                         </div>
                       </div>
-                      {/* <div className='event-question-section'>
-                        <p>{event.question}</p>
-                      </div> */}
                     </div>
                   </div>
                 </div>

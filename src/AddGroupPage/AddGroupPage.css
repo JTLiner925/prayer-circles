@@ -18,8 +18,6 @@
 .add-group-container {
   display: flex;
   height: 100%;
-  /* margin-bottom: 20px; */
-  /* overflow: scroll; */
   flex-direction: column;
   justify-content: center;
 }
@@ -42,7 +40,6 @@
 .add-group-form {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   background-color: #ffffff;
   justify-content: center;
   text-align: center;
@@ -52,26 +49,20 @@
 .join-form {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   background-color: #ffffff;
   height: fit-content;
   justify-content: flex-start;
   text-align: center;
-  /* margin-bottom: 50px; */
   overflow: auto;
 }
 .add-group-avatar {
   background-color: #ffffff;
-  /* height: 35%; */
 }
 .add-group-fontawesome {
-  /* height: 100px;
-  width: 100%; */
   background-color: #ffffff;
 }
 .group-photo-background {
   position: fixed;
-  /* height: 100vh; */
   width: 100vw;
   background: #00000075;
   z-index: 2;
@@ -151,7 +142,6 @@
   height: 100px;
   border-radius: 50%;
   border: 1px solid #5b5b5b;
-  /* overflow: hidden; */
   margin: 10px auto;
   background-color: #c7c7c7;
   color: #3e3e3e;
@@ -226,7 +216,6 @@
 .add-group-time-date-label {
   height: 11%;
   background-color: #ffffff;
-  /* margin-bottom: 20px; */
 }
 
 .add-group-name,
@@ -237,7 +226,6 @@
   background-color: #ffffff;
   width: 80%;
   align-items: center;
-  /* height: 95%; */
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
@@ -268,7 +256,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 60%; */
   margin: 0 auto;
   background: linear-gradient(45deg, #01ffc4, #013af5a7);
   font-size: 1.2em;

@@ -66,7 +66,6 @@
   font-size: 24px;
   padding-top: 10px;
   width: 60%;
-  /* background-color: #daecfa; */
   color: rgb(2, 39, 245);
 }
 .slide1,
@@ -79,16 +78,11 @@
   text-align: center;
   width: 100%;
   height: 100%;
-  /* padding-top: 40px; */
-  /* padding-bottom: -40px; */
-  /* background-color: #daecfa; */
   color: rgb(40, 69, 233);
 }
 .slide h3 {
   margin: 0 auto;
-  /* padding-bottom: 30px; */
   color: rgb(40, 69, 233);
-  /* background-color: #daecfa; */
 }
 .carousel svg:not(:root).svg-inline--fa {
   overflow: visible;
@@ -142,8 +136,6 @@
 .slider-control-bottomcenter {
   margin: 0;
   padding: 0;
-  /* position: absolute;
-  bottom: 10px; */
 }
 .home-login {
   width: 100%;

@@ -1,17 +1,4 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUser,
-  faUsers,
-  faHeart,
-  faImage,
-  faThumbsUp,
-  faCommentAlt,
-  faEllipsisH,
-  faCamera,
-  faPray,
-  faPrayingHands,
-} from '@fortawesome/free-solid-svg-icons';
 import userphoto from '../../Images/user-photo.png';
 import './PrayerWallComponent.css';
 

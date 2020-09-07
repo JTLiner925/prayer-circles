@@ -30,9 +30,6 @@ export default class Footer extends Component {
           <span>add prayer</span>
         </Link>
 
-        {/* <Link to="/invite" className="footer-invite-icon">
-          <FontAwesomeIcon id="invite-icon" icon={faUsers} />
-        </Link> */}
         <Link to='/chat' className="footer-chat-icon">
           <FontAwesomeIcon id="chat-icon" icon={faComments} />
           <span>chat</span>
