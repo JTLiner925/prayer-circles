@@ -23,7 +23,6 @@ export default class ChatWallComponent extends Component {
     e.preventDefault();
     e.persist();
     let element = document.getElementById('reset-input');
-    console.log(element)
     if(element){element.click()};
     this.props.onCreateMessage(this.state);
     this.props.sendMessage(this.state.message_body);

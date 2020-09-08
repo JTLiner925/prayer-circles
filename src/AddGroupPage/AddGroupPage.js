@@ -58,7 +58,6 @@ export default class AddGroupPage extends Component {
     }
   };
   handleGroupPhoto = (e) => {
-    console.log(e);
     //sets profilePic in state
     let imageType = ['png', 'jpg', 'jpeg', 'heic'];
     let acceptedType = false;

@@ -292,7 +292,6 @@ export default class Dashboard extends Component {
         return res.json();
       })
       .then((resData) => {
-        console.log(resData);
         let trimmedUrl = resData.url.split('?')[0];
         url = trimmedUrl;
         if(savePhoto){

@@ -36,7 +36,7 @@ export default class EventListPage extends Component {
     //sort events by date
       .concat(events)
       .sort((a, b) => (a.event_date > b.event_date ? 1 : -1))
-      .filter((date) => {console.log(date); return new Date(date.event_date)>= new Date()})
+      .filter((date) => { return new Date(date.event_date)>= new Date()})
     return (
       <div className='EventListPage' onClick={this.props.onHandleHam}>
         <div className='event-list-event-banner'>

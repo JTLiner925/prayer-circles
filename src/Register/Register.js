@@ -39,7 +39,6 @@ export default class Register extends Component {
       for (let i = 0; i < e.dataTransfer.items.length; i++) {
         if (e.dataTransfer.items[i].kind === 'file') {
           let file = e.dataTransfer.items[i].getAsFile();
-          console.log(file);
           let imageType = ['png', 'jpg', 'jpeg', 'heic'];
           let acceptedType = false;
           imageType.forEach((type) => {
@@ -70,7 +69,6 @@ export default class Register extends Component {
   };
 
   handleUserPhoto = (e) => {
-    console.log(e);
     //sets profilePic in state
     let imageType = ['png', 'jpg', 'jpeg', 'heic'];
     let acceptedType = false;
@@ -99,7 +97,6 @@ export default class Register extends Component {
     });
   };
   render() {
-    console.log(this.state);
     return (
       <>
         {this.state.showUserPhoto ? (
