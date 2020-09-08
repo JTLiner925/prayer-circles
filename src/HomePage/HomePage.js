@@ -17,7 +17,7 @@ export default class HomePage extends Component {
             <Link to='/'><h1>Welcome to Prayer Circles</h1></Link>
           </div>
         </div>
-        <Carousel className="carousel">
+        <Carousel className="slider carousel">
           <div className="slide slide1">
             <FontAwesomeIcon id="home-user-icon" icon={faUser} />
             <h2>Join Prayer Circles and pray for your small group</h2>

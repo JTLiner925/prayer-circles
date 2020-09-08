@@ -21,7 +21,7 @@
   align-items: center;
   color: #04010100;
   width: 100%;
-
+  position: relative;
 }
 .footer-chat-icon {
   position: relative;
@@ -31,7 +31,23 @@
 .footer-group-icon span,
 .footer-plus-icon span,
 .footer-chat-icon span{
-  width: 0px;
+  /* width: 20px; */
+  display: none;
+}
+.footer-home-icon:hover span,
+.footer-group-icon:hover span,
+.footer-plus-icon:hover span,
+.footer-chat-icon:hover span{
+  width: unset;
+  /* color: black; */
+  position: absolute;
+  top: -30px;
+  /* left: 9px; */
+  display: block;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.514);
+  color: white;
+  border-radius: 10px;
 }
 #home-icon,
 #group-icon,

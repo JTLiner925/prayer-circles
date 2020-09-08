@@ -102,7 +102,7 @@ export default class AddEventPage extends Component {
 
       this.setState({
         [e.target.name]: e.target.value,
-        GroupFileName: groupid,
+        groupid: groupid,
       });
     } else {
       this.setState({
@@ -149,7 +149,7 @@ export default class AddEventPage extends Component {
     });
   };
   static getDerivedStateFromProps(props) {
-    return { GroupFileName: props.groupId };
+    return { groupid: props.groupId };
   }
   render() {
     let BackgroundImage = {

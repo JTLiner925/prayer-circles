@@ -45,6 +45,8 @@
   height: 25px;
   margin-left: 10px;
   z-index: 3;
+  border: 1px solid rgb(0, 217, 255);
+
 }
 .header-settings-icon,
 .header-sign-out-icon {

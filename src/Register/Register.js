@@ -39,13 +39,30 @@ export default class Register extends Component {
       for (let i = 0; i < e.dataTransfer.items.length; i++) {
         if (e.dataTransfer.items[i].kind === 'file') {
           let file = e.dataTransfer.items[i].getAsFile();
-          this.setState({
-            profilePic: file,
-            photoMessage: '✅ Photo uploaded successfully!',
+          console.log(file);
+          let imageType = ['png', 'jpg', 'jpeg', 'heic'];
+          let acceptedType = false;
+          imageType.forEach((type) => {
+            if (file.type.includes(type)) {
+              acceptedType = true;
+            }
           });
+          if (acceptedType) {
+            let element = document.getElementById('preview-photo');
+            element.src = URL.createObjectURL(file);
+            this.toggleUserPhoto()
+            this.setState({
+              profilePic: file,
+              photoMessage: '✅ Photo uploaded successfully!',
+            });
+          } else {
+            this.setState({
+              badPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg, heic)',
+            });
+          }
         } else {
           this.setState({
-            photoMessage: '❌ Try again or pick different photo.',
+            badPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg, heic)',
           });
         }
       }
@@ -53,11 +70,28 @@ export default class Register extends Component {
   };
 
   handleUserPhoto = (e) => {
+    console.log(e);
     //sets profilePic in state
-    this.setState({
-      profilePic: e,
-      photoMessage: '✅ Photo uploaded successfully!',
+    let imageType = ['png', 'jpg', 'jpeg', 'heic'];
+    let acceptedType = false;
+    imageType.forEach((type) => {
+      if (e.type.includes(type)) {
+        acceptedType = true;
+      }
     });
+    if (acceptedType) {
+      let element = document.getElementById('preview-photo');
+      element.src = URL.createObjectURL(e);
+      this.toggleUserPhoto()
+      this.setState({
+        profilePic: e,
+        photoMessage: '✅ Photo uploaded successfully!',
+      });
+    } else {
+      this.setState({
+        badPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg, heic)',
+      });
+    }
   };
   changeHandler = (e) => {
     this.setState({
@@ -65,13 +99,20 @@ export default class Register extends Component {
     });
   };
   render() {
+    console.log(this.state);
     return (
       <>
         {this.state.showUserPhoto ? (
           //model to handle setting up user photo
           <div className='user-photo-background'>
             <div className='user-photo-model'>
-              <p onClick={this.toggleUserPhoto}> <FontAwesomeIcon className='photo-model-x' icon={faTimesCircle} /></p>
+              <p onClick={this.toggleUserPhoto}>
+                {' '}
+                <FontAwesomeIcon
+                  className='photo-model-x'
+                  icon={faTimesCircle}
+                />
+              </p>
               <form>
                 <div
                   name='drop-area'
@@ -113,8 +154,10 @@ export default class Register extends Component {
                     </span>
                     <br></br>
                   </p>
-                  <p className='drag-p'>or Drag and Drop<br></br>JPG or PNG files only</p>
-                  <p className='photo-message'>{this.state.photoMessage}</p>
+                  <p className='drag-p'>
+                    or Drag and Drop<br></br>JPG, Jpeg, or PNG files only
+                  </p>
+                  <p className='bad-photo-message'>{this.state.badPhotoMessage}</p>
                 </div>
               </form>
             </div>
@@ -134,17 +177,27 @@ export default class Register extends Component {
               className='register-fontawesome'
               onClick={this.toggleUserPhoto}
             >
+              <div className='preview-photo-container'>
+                <img id='preview-photo' />
+
+              </div>
+              
+
               <FontAwesomeIcon
                 id='user-icon'
                 className='register-avatar'
                 icon={faUserPlus}
               />
             </div>
+            <div className='good-photo-div'>
+              <p className='photo-message'>{this.state.photoMessage}</p>
+              </div>
             <div className='register-name-div'>
               <label
                 htmlFor='first-name-input'
                 className='register-first-label'
-              >first name
+              >
+                first name
                 <input
                   id='first-name-input'
                   name='first_name'
@@ -192,7 +245,8 @@ export default class Register extends Component {
             <label
               htmlFor='password-confirm'
               className='register-password-label'
-            >confirm password
+            >
+              confirm password
               <input
                 className='register-password'
                 placeholder='Confirm Password'
@@ -203,8 +257,13 @@ export default class Register extends Component {
                 required
               ></input>
             </label>
-            <p className="error-alert">{this.props.message}</p>
-            <button type='submit' className='register-button'>
+            <p className='error-alert'>{this.state.error}</p>
+            <p className='error-alert'>{this.props.message}</p>
+            <button
+              type='submit'
+              className='register-button'
+              onClick={this.props.resetError}
+            >
               Create Account
             </button>
           </form>

@@ -12,7 +12,7 @@
   height: 100vh;
   width: 100vw;
   background: #00000075;
-  z-index: 2;
+  z-index: 3;
 }
 
 .add-group-container {
@@ -59,14 +59,20 @@
   background-color: #ffffff;
 }
 .add-group-fontawesome {
+  height: 100px;
   background-color: #ffffff;
+  display: flex;
+  width: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
 }
-.group-photo-background {
+/* .group-photo-background {
   position: fixed;
   width: 100vw;
   background: #00000075;
-  z-index: 2;
-}
+  z-index: 3;
+} */
 
 .group-photo-model {
   position: absolute;
@@ -78,11 +84,11 @@
   transform: translate3d(-50%, -50%, 0);
   background-color: white;
   border-radius: 7px;
-  z-index: 3;
+  z-index: 4;
 }
 #group-drop-area {
   width: 80%;
-  height: 100px;
+  height: 200px;
   border: 2px dashed #013af5a7;
   margin: 0 auto;
   padding: 15px;
@@ -92,6 +98,8 @@
   text-align: center;
   font-weight: bold;
   color: rgb(172, 40, 216);
+  width: 100%;
+  margin: 0;
 }
 .group-browse-button {
   border: 1px solid rgba(0, 0, 0, 0.39);
@@ -135,14 +143,31 @@
 }
 #handle-group-photo {
 }
-#user-icon {
+.good-group-photo-div{
+  width: 100%;
+  margin: 0 auto;
+}
+.bad-group-photo-message {
+  text-align: center;
+  font-weight: bold;
+  color: rgb(172, 40, 216);
+}
+.group-photo-message {
+  text-align: center;
+  font-weight: bold;
+  color: rgb(172, 40, 216);
+  width: 100%;
+  margin: 0;
+}
+#group-user-icon {
   display: flex;
   flex-direction: column;
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   border: 1px solid #5b5b5b;
-  margin: 10px auto;
+  margin: 0 auto;
+  overflow: hidden;
   background-color: #c7c7c7;
   color: #3e3e3e;
 }
@@ -166,6 +191,22 @@
   border-radius: 7px;
   width: 200px;
   margin-bottom: 10px;
+}
+.preview-group-photo-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+#preview-group-photo {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 2px solid rgb(0, 217, 255);
+  /* box-shadow: 0 3px 15px 0 rgba(1, 208, 245, 0.986); */
+
 }
 #group-public-private {
   margin: 0 auto;

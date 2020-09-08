@@ -181,8 +181,18 @@ export default class Dashboard extends Component {
             });
           }
         }
-
+       let storedPhoto = localStorage.getItem('profilePic');
+       if(storedPhoto){
         this.handleProfilePic(users);
+
+       }else{
+        setTimeout(() => {
+          this.handleProfilePic(users, true);
+        }, 3000);
+       }
+          
+        
+
         this.setState({
           users: users,
           groups: groups,
@@ -261,7 +271,7 @@ export default class Dashboard extends Component {
       })
       .catch((error) => {});
   };
-  handleProfilePic = (users) => {
+  handleProfilePic = (users, savePhoto) => {
     //get user photo
     let userName = window.localStorage.getItem('userName');
     let user = users.find((u) => {
@@ -282,8 +292,12 @@ export default class Dashboard extends Component {
         return res.json();
       })
       .then((resData) => {
+        console.log(resData);
         let trimmedUrl = resData.url.split('?')[0];
         url = trimmedUrl;
+        if(savePhoto){
+          localStorage.setItem('profilePic', url)
+        }
         this.setState({
           profilePic: trimmedUrl,
         });
@@ -588,14 +602,22 @@ export default class Dashboard extends Component {
       <main className='Dashboard'>
         <nav className='DashHeader'>
           <div className='header-user-icon'>
-            <div
-            >
-              <img
-                id='header-user-icon'
-                src={this.state.profilePic ? this.state.profilePic : userphoto}
-                //user photo on header or use default photo - so it doesn't break
-                alt='user avatar'
-              />
+            <div>
+              {this.state.profilePic ? (
+                <img
+                  id='header-user-icon'
+                  src={this.state.profilePic}
+                  //user photo on header or use default photo - so it doesn't break
+                  alt='user'
+                />
+              ) : (
+                <img
+                  id='header-user-icon'
+                  src={userphoto}
+                  //user photo on header or use default photo - so it doesn't break
+                  alt='user'
+                />
+              )}
             </div>
           </div>
           <h1 className='header-h1'>Prayer Circles</h1>
@@ -705,7 +727,7 @@ export default class Dashboard extends Component {
             );
           }}
         />
-       
+
         <Route
           path='/add-group'
           render={() => {
@@ -762,7 +784,7 @@ export default class Dashboard extends Component {
             );
           }}
         />
-     
+
         {[
           '/dashboard',
           '/events',

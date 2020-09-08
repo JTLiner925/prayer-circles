@@ -12,6 +12,9 @@
 a {
   text-decoration: none;
 }
+a, button{
+  cursor: pointer;
+}
 @media screen and (min-height: 566px) {
   .App, html {
     display: flex;
