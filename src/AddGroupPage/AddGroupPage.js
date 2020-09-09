@@ -332,10 +332,12 @@ export default class AddGroupPage extends Component {
                 ></textarea>
               </label>
               </div>
+              <div className='add-group-button-div'>
               <p className='add-group-error-alert'>{this.props.eventMessage}</p>
               <button type='submit' className='add-group-button'>
                 Create New Group
               </button>
+              </div>
             </form>
           </div>
         </div>
