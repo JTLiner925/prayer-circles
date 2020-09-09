@@ -150,7 +150,7 @@
   margin: 0 auto;
   height: 5%;
 }
-.group-inputs-div{
+.group-inputs-div {
   height: 50%;
 }
 .bad-group-photo-message {
@@ -179,7 +179,7 @@
 }
 .add-group-phone-location-div {
   display: flex;
-  height: 18%;
+  height: 10%;
 }
 .join-form h2,
 .add-group-form h2 {
@@ -187,7 +187,7 @@
   margin-top: 5px;
   font-size: 20px;
 }
-.join-form h2{
+.join-form h2 {
   height: 10%;
 }
 .add-group-form h2 {
@@ -214,7 +214,6 @@
 }
 .add-group-name-label {
   height: 0;
-
 }
 #group-names,
 #group-public-private {
@@ -225,7 +224,7 @@
   margin-bottom: 10px;
 }
 
-#group-names{
+#group-names {
   height: 20%;
 }
 .preview-group-photo-container {
@@ -265,8 +264,7 @@
   width: 50%;
   background-color: #ffffff;
   height: 100%;
-  margin-top: 15px;
-  margin-bottom: 18px;
+  margin-top: 4px;
 }
 .add-group-phone {
   display: flex;
@@ -274,7 +272,7 @@
   background-color: #ffffff;
   width: 60%;
   align-items: center;
-  height: 18%;
+  height: 60%;
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
@@ -285,8 +283,7 @@
   width: 50%;
   background-color: #ffffff;
   height: 100%;
-  margin-top: 15px;
-  margin-bottom: 18px;
+  margin-top: 4px;
 }
 .add-group-location {
   display: flex;
@@ -294,11 +291,10 @@
   background-color: #ffffff;
   width: 60%;
   align-items: center;
-  height: 18%;
+  height: 60%;
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
- 
 }
 .add-group-name-label,
 .add-group-pitch-textarea-label,
@@ -318,7 +314,7 @@
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
-  height: 18%;
+  height: 10%;
 }
 .add-group-more-info-label {
   height: 0;
@@ -335,7 +331,7 @@
   width: 80%;
   align-items: center;
   align-content: center;
-  height: 18%;
+  height: 10%;
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
@@ -362,17 +358,16 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.add-group-button{
+.add-group-button {
   position: absolute;
   bottom: 0;
-  
 }
 .add-group-button:hover,
 .join-group-button:hover {
   background: linear-gradient(45deg, #51fcd4, #1247f5);
   transition: 500ms;
 }
-.add-group-button-div{
+.add-group-button-div {
   height: 10%;
   display: flex;
   flex-direction: column;
