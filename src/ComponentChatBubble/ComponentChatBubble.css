@@ -73,7 +73,7 @@
 .speech-bubble-rt p {
   height: 95%;
   margin: 0;
-  padding: 0;
+  padding: .5em;
 }
 .speech-bubble-ds__arrow-rt {
   border-left: 21px solid transparent;
