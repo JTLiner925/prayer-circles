@@ -49,6 +49,7 @@
   padding: 5px;
   position: relative;
   min-width: 30%;
+  min-height: 30px;
   color: #ffffff;
   font-weight: bold;
   background: linear-gradient(45deg, #03ffc4, #013af572);
@@ -66,12 +67,13 @@
   padding: 5px;
   position: relative;
   min-width: 30%;
+  min-height: 30px;
   margin: 0 auto 8px 0;
   background-color: rgb(230, 230, 230);
 }
 .speech-bubble-lf p,
 .speech-bubble-rt p {
-  height: 95%;
+  /* height: 95%; */
   margin: 0;
   padding: .5em;
 }
