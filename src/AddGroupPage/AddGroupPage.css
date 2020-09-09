@@ -167,7 +167,7 @@
 #group-user-icon {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100px;
   height: 100%;
   border-radius: 50%;
   border: 1px solid #5b5b5b;
@@ -214,7 +214,8 @@
   display: none;
 }
 .add-group-name-label {
-  height: 30px;
+  height: 0;
+
 }
 #group-names,
 #group-public-private {
@@ -294,7 +295,7 @@
 .add-group-name-label,
 .add-group-pitch-textarea-label,
 .add-group-time-date-label {
-  height: 20%;
+  height: 0;
   background-color: #ffffff;
 }
 
@@ -309,9 +310,10 @@
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
+  height: 20%;
 }
 .add-group-more-info-label {
-  height: 20%;
+  height: 0;
   background-color: #ffffff;
   margin-bottom: 15px;
 }
@@ -325,7 +327,7 @@
   width: 80%;
   align-items: center;
   align-content: center;
-  height: 95%;
+  height: 20%;
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
