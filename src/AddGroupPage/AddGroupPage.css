@@ -60,10 +60,10 @@
   background-color: #ffffff;
 }
 .add-group-fontawesome {
-  height: 100px;
+  height: 25%;
   background-color: #ffffff;
   display: flex;
-  width: 100px;
+  width: 100%;
   border-radius: 50%;
   margin: 0 auto;
   position: relative;
@@ -147,6 +147,10 @@
 .good-group-photo-div {
   width: 100%;
   margin: 0 auto;
+  height: 5%;
+}
+.group-inputs-div{
+  height: 50%;
 }
 .bad-group-photo-message {
   text-align: center;
@@ -174,9 +178,9 @@
 }
 .add-group-phone-location-div {
   display: flex;
-  height: 11%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  height: 20%;
+  margin-top: 15px;
+  margin-bottom: 18px;
 }
 .join-form h2,
 .add-group-form h2 {
@@ -187,6 +191,9 @@
 .join-form h2{
   height: 10%;
 }
+.add-group-form h2 {
+  height: 5%;
+}
 .join-group-error-alert {
   margin: 0 auto;
   color: rgb(208, 2, 2);
@@ -194,6 +201,14 @@
   text-align: center;
   font-size: 13px;
   height: 10%;
+}
+.add-group-error-alert {
+  margin: 0 auto;
+  color: rgb(208, 2, 2);
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 13px;
+  height: 5%;
 }
 .group-label {
   display: none;
@@ -215,11 +230,14 @@
 }
 .preview-group-photo-container {
   height: 100px;
-  width: 100px;
+  width: 100%;
   position: absolute;
   top: 0;
   z-index: 2;
   object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 #preview-group-photo {
   object-fit: cover;
@@ -227,7 +245,7 @@
   width: 100px;
   border-radius: 50%;
   border: 2px solid rgb(0, 217, 255);
-  /* box-shadow: 0 3px 15px 0 rgba(1, 208, 245, 0.986); */
+  margin: 0 auto;
 }
 #group-public-private {
   margin: 0 auto;
@@ -238,7 +256,7 @@
   flex-direction: column;
   height: 90%;
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   justify-content: center;
   text-align: center;
   align-items: center;
@@ -276,7 +294,7 @@
 .add-group-name-label,
 .add-group-pitch-textarea-label,
 .add-group-time-date-label {
-  height: 11%;
+  height: 20%;
   background-color: #ffffff;
 }
 
@@ -293,9 +311,9 @@
   border-bottom: 1px solid #5b5b5b;
 }
 .add-group-more-info-label {
-  height: 11%;
+  height: 20%;
   background-color: #ffffff;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .add-group-pitch-textarea-label {
   margin-bottom: 0;

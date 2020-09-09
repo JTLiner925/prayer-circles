@@ -241,6 +241,7 @@ export default class AddGroupPage extends Component {
               <div className='good-group-photo-div'>
               <p className='group-photo-message'>{this.state.groupPhotoMessage}</p>
               </div>
+              <div className='group-inputs-div'>
               <label
                 name='group_names'
                 htmlFor='group-name-input'
@@ -330,7 +331,8 @@ export default class AddGroupPage extends Component {
                   required
                 ></textarea>
               </label>
-              <p className='error-alert'>{this.props.eventMessage}</p>
+              </div>
+              <p className='add-group-error-alert'>{this.props.eventMessage}</p>
               <button type='submit' className='add-group-button'>
                 Create New Group
               </button>
