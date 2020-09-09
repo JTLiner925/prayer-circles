@@ -358,10 +358,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.add-group-button {
-  position: absolute;
-  bottom: 0;
-}
+
 .add-group-button:hover,
 .join-group-button:hover {
   background: linear-gradient(45deg, #51fcd4, #1247f5);
