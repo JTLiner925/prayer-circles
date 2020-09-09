@@ -28,7 +28,7 @@ export default class AddGroupPage extends Component {
       for (let i = 0; i < e.dataTransfer.items.length; i++) {
         if (e.dataTransfer.items[i].kind === 'file') {
           let file = e.dataTransfer.items[i].getAsFile();
-          let imageType = ['png', 'jpg', 'jpeg', 'heic'];
+          let imageType = ['png', 'jpg', 'jpeg'];
           let acceptedType = false;
           imageType.forEach((type) => {
             if (file.type.includes(type)) {
@@ -46,12 +46,12 @@ export default class AddGroupPage extends Component {
           } else {
             this.setState({
               badGroupPhotoMessage:
-                ' ❌ Must be image file (png, jpg, jpeg, heic)',
+                ' ❌ Must be image file (png, jpg, jpeg)',
             });
           }
         } else {
           this.setState({
-            badGroupPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg, heic)',
+            badGroupPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg)',
           });
         }
       }
@@ -59,7 +59,7 @@ export default class AddGroupPage extends Component {
   };
   handleGroupPhoto = (e) => {
     //sets profilePic in state
-    let imageType = ['png', 'jpg', 'jpeg', 'heic'];
+    let imageType = ['png', 'jpg', 'jpeg'];
     let acceptedType = false;
     imageType.forEach((type) => {
       if (e.type.includes(type)) {
@@ -76,7 +76,7 @@ export default class AddGroupPage extends Component {
       });
     } else {
       this.setState({
-        badGroupPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg, heic)',
+        badGroupPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg)',
       });
     }
   };

@@ -45,7 +45,7 @@ export default class Login extends Component {
           onChange={this.changeHandler}
         />
          </label>
-        <p className="error-alert">{this.props.message}</p>
+        <p className="login-error-alert">{this.props.message}</p>
         <div className="buttons">
           <button
             type="submit"

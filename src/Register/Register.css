@@ -27,7 +27,7 @@
 .browse-div {
   text-align: center;
 }
-.good-photo-div{
+.good-photo-div {
   width: 100%;
   margin: 0 auto;
 }
@@ -37,6 +37,7 @@
   color: rgb(172, 40, 216);
   width: 100%;
   margin: 0;
+  margin-top: 80px;
 }
 
 .bad-photo-message {
@@ -145,20 +146,21 @@
   position: relative;
 }
 .preview-photo-container {
-  height: 100%;
-  width: 100%;
+  height: 100px;
+  width: 100px;
   position: absolute;
   top: 0;
   z-index: 2;
+  object-fit: cover;
 }
 #preview-photo {
   object-fit: cover;
-  height: 100%;
-  width: 100%;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
+
   /* border: 2px solid rgb(0, 217, 255); */
   /* box-shadow: 0 3px 15px 0 rgba(1, 208, 245, 0.986); */
-
 }
 #user-icon {
   display: flex;
@@ -174,7 +176,7 @@
   position: absolute;
   z-index: 1;
 }
-#preview-photo:hover{
+#preview-photo:hover {
   box-shadow: 0 2px 10px 0 rgba(1, 120, 247, 0.637);
   cursor: pointer;
   background-color: rgba(33, 33, 33, 0.253);
@@ -253,13 +255,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 60%;
+  width: auto;
   margin: 0 auto;
   background: linear-gradient(45deg, #01ffc4, #013af5a7);
   font-size: 1.2em;
   color: #ffffff;
   font-weight: bold;
-  padding: 1em;
+  padding: .5em;
   letter-spacing: 0.15em;
 
   border-radius: 30px;
@@ -270,7 +272,7 @@
   background: linear-gradient(45deg, #51fcd4, #1247f5);
   transition: 500ms;
 }
-.error-alert {
+.register-error-alert {
   margin: 0 auto;
   color: rgb(208, 2, 2);
   margin-bottom: 10px;

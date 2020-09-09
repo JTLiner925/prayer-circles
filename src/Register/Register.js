@@ -39,7 +39,7 @@ export default class Register extends Component {
       for (let i = 0; i < e.dataTransfer.items.length; i++) {
         if (e.dataTransfer.items[i].kind === 'file') {
           let file = e.dataTransfer.items[i].getAsFile();
-          let imageType = ['png', 'jpg', 'jpeg', 'heic'];
+          let imageType = ['png', 'jpg', 'jpeg'];
           let acceptedType = false;
           imageType.forEach((type) => {
             if (file.type.includes(type)) {
@@ -56,12 +56,12 @@ export default class Register extends Component {
             });
           } else {
             this.setState({
-              badPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg, heic)',
+              badPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg)',
             });
           }
         } else {
           this.setState({
-            badPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg, heic)',
+            badPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg)',
           });
         }
       }
@@ -70,7 +70,7 @@ export default class Register extends Component {
 
   handleUserPhoto = (e) => {
     //sets profilePic in state
-    let imageType = ['png', 'jpg', 'jpeg', 'heic'];
+    let imageType = ['png', 'jpg', 'jpeg'];
     let acceptedType = false;
     imageType.forEach((type) => {
       if (e.type.includes(type)) {
@@ -87,7 +87,7 @@ export default class Register extends Component {
       });
     } else {
       this.setState({
-        badPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg, heic)',
+        badPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg)',
       });
     }
   };
@@ -254,8 +254,8 @@ export default class Register extends Component {
                 required
               ></input>
             </label>
-            <p className='error-alert'>{this.state.error}</p>
-            <p className='error-alert'>{this.props.message}</p>
+            <p className='register-error-alert'>{this.state.error}</p>
+            <p className='register-error-alert'>{this.props.message}</p>
             <button
               type='submit'
               className='register-button'
