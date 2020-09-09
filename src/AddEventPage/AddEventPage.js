@@ -160,7 +160,7 @@ export default class AddEventPage extends Component {
     
     return (
       <div className='AddEventPage' onClick={this.props.onHandleHam}>
-        <div id='anchor'></div>
+        {/* <div id='anchor'></div> */}
         <form className='add-event-form' onSubmit={this.submitHandler}>
           <h2>Create New Event</h2>
           {groups.map((group) => {

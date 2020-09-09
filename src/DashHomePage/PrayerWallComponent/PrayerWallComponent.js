@@ -132,7 +132,7 @@ export default class PrayerWallComponent extends Component {
               </h3>
             </div>
           )}
-          <div id='anchor'></div>
+          {/* <div id='anchor'></div> */}
         </div>
       </>
     );

@@ -58,7 +58,7 @@ export default class AddPrayerPage extends Component {
     const { groups = [], groupId } = this.props;
     return (
       <div className='AddPrayerPage' onClick={this.props.onHandleHam}>
-        <div id='anchor'></div>
+        {/* <div id='anchor'></div> */}
         <div className='add-prayer-form'>
           <form className='add-prayer-form' onSubmit={this.submitHandler}>
             <div className='Prayer-Praise-Component'>

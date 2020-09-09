@@ -104,6 +104,9 @@
   border-radius: 10px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.637);
 }
+.add-group-slide::after  {
+
+}
 .group-list-slide{
   background-color: rgba(223, 223, 223, 0);
   background-image: url(../Images/friends1.jpg);
