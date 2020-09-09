@@ -179,7 +179,7 @@
 }
 .add-group-phone-location-div {
   display: flex;
-  height: 10%;
+  height: 18%;
 }
 .join-form h2,
 .add-group-form h2 {
@@ -265,6 +265,9 @@
   background-color: #ffffff;
   height: 100%;
   margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .add-group-phone {
   display: flex;
@@ -284,6 +287,9 @@
   background-color: #ffffff;
   height: 100%;
   margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .add-group-location {
   display: flex;
@@ -314,7 +320,7 @@
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
-  height: 10%;
+  height: 18%;
 }
 .add-group-more-info-label {
   height: 0;
@@ -331,7 +337,7 @@
   width: 80%;
   align-items: center;
   align-content: center;
-  height: 10%;
+  height: 18%;
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
@@ -358,14 +364,16 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
+.add-group-button{
+  width: 70%;
+}
 .add-group-button:hover,
 .join-group-button:hover {
   background: linear-gradient(45deg, #51fcd4, #1247f5);
   transition: 500ms;
 }
 .add-group-button-div {
-  height: 10%;
+  height: 18%;
   display: flex;
   flex-direction: column;
   justify-content: center;
