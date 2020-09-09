@@ -23,7 +23,9 @@ export default class ChatWallComponent extends Component {
     e.preventDefault();
     e.persist();
     let element = document.getElementById('reset-input');
-    if(element){element.click()};
+    if (element) {
+      element.click();
+    }
     this.props.onCreateMessage(this.state);
     this.props.sendMessage(this.state.message_body);
   };
@@ -100,6 +102,14 @@ export default class ChatWallComponent extends Component {
                 placeholder='Message'
                 onChange={this.changeHandler}
               ></input>
+
+              <button className='message-submit-button' type='submit'>
+                <FontAwesomeIcon
+                  className='chat-wall-submit'
+                  icon={faPaperPlane}
+                />
+                <span>submit</span>
+              </button>
               <label htmlFor='reset-input' className='label'>
                 <span>reset</span>
 
@@ -110,13 +120,6 @@ export default class ChatWallComponent extends Component {
                   value='reset'
                 ></input>
               </label>
-              <button className='message-submit-button' type='submit'>
-                <FontAwesomeIcon
-                  className='chat-wall-submit'
-                  icon={faPaperPlane}
-                />
-                <span>submit</span>
-              </button>
             </form>
           </div>
         </div>

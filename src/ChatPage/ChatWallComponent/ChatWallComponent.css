@@ -138,7 +138,7 @@
   padding-right: 5px;
   height: 20px;
   border-radius: 25px;
-  width: 90%;
+  width: 60%;
   margin: 0 auto;
 }
 .chat-input-text:hover {
@@ -157,3 +157,7 @@
   width: 0;
   color: rgba(159, 27, 27, 0);
 }
+/* .label{
+  width: 10px;
+  color: rgba(159, 27, 27, 0);
+} */
