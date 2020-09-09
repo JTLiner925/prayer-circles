@@ -3,10 +3,10 @@ import './ComponentChatBubble.css';
 
 export default class ChatBubbleComponent extends Component {
   render() {
-    let element = document.getElementById('anchor')
-    if(element){
-  element.scrollIntoView()
-    }
+  //   let element = document.getElementById('anchor')
+  //   if(element){
+  // element.scrollIntoView()
+  //   }
   
     const { users = [], userId, messages = [], profilePic } = this.props;
     const user = users.find(
@@ -84,7 +84,7 @@ export default class ChatBubbleComponent extends Component {
             );
           }
         }): (<div className='pre-chat-wall'><h3 className='pre-chat-wall-p'>Select Group<br></br> and start a chat</h3></div>)}
-        <div id='anchor'></div>
+        {/* <div id='anchor'></div> */}
       </div>
     );
   }
