@@ -350,7 +350,7 @@
   align-items: center;
   margin: 0 auto;
   background: linear-gradient(45deg, #01ffc4, #013af5a7);
-  font-size: 1.2em;
+  font-size: 1em;
   color: #ffffff;
   font-weight: bold;
   padding: 0.5em;
@@ -365,7 +365,7 @@
   margin-bottom: 10px;
 }
 .add-group-button{
-  width: 70%;
+  width: auto;
 }
 .add-group-button:hover,
 .join-group-button:hover {
