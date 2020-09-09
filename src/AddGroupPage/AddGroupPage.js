@@ -190,7 +190,7 @@ export default class AddGroupPage extends Component {
               <h2>Join Group</h2>
               <div className='join-div'>
                 <p className='join-group-error-alert'>{this.props.message}</p>
-                <label htmlFor='group-names' className='label'>
+                <label htmlFor='group-names' className='group-label'>
                   group names
                 </label>
                 <select
