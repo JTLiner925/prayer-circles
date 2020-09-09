@@ -50,7 +50,7 @@
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  height: fit-content;
+  height: 25%;
   justify-content: flex-start;
   text-align: center;
   overflow: auto;
@@ -179,7 +179,8 @@
 }
 .join-form h2,
 .add-group-form h2 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 .add-group-name-label {
   height: 30px;
@@ -193,16 +194,17 @@
   margin-bottom: 10px;
 }
 .preview-group-photo-container {
-  height: 100%;
-  width: 100%;
+  height: 100px;
+  width: 100px;
   position: absolute;
   top: 0;
   z-index: 2;
+  object-fit: cover;
 }
 #preview-group-photo {
   object-fit: cover;
-  height: 100%;
-  width: 100%;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   border: 2px solid rgb(0, 217, 255);
   /* box-shadow: 0 3px 15px 0 rgba(1, 208, 245, 0.986); */
@@ -302,7 +304,7 @@
   font-size: 1.2em;
   color: #ffffff;
   font-weight: bold;
-  padding: 1em;
+  padding: .5em;
   letter-spacing: 0.15em;
 
   border-radius: 30px;

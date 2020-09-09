@@ -160,7 +160,7 @@
   width: 100px;
   border-radius: 50%;
 
-  /* border: 2px solid rgb(0, 217, 255); */
+  border: 2px solid rgb(0, 217, 255);
   /* box-shadow: 0 3px 15px 0 rgba(1, 208, 245, 0.986); */
 }
 #user-icon {
