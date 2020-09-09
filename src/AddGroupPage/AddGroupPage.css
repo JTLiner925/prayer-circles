@@ -46,6 +46,7 @@
   margin-bottom: 10px;
   overflow: auto;
   height: 75%;
+  position: relative;
 }
 .join-form {
   display: flex;
@@ -178,7 +179,7 @@
 }
 .add-group-phone-location-div {
   display: flex;
-  height: 20%;
+  height: 0;
   margin-top: 15px;
   margin-bottom: 18px;
 }
@@ -265,6 +266,7 @@
 .add-group-phone-label {
   width: 50%;
   background-color: #ffffff;
+  height: 0;
 }
 .add-group-phone {
   display: flex;
@@ -272,7 +274,7 @@
   background-color: #ffffff;
   width: 60%;
   align-items: center;
-  height: 95%;
+  height: 20%;
   margin: 0 auto;
   border: none;
   border-bottom: 1px solid #5b5b5b;
@@ -353,6 +355,10 @@
 .join-group-button {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.add-group-button{
+  position: absolute;
+  bottom: 5%;
 }
 .add-group-button:hover,
 .join-group-button:hover {
