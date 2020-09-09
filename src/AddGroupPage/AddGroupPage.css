@@ -370,3 +370,8 @@
   flex-direction: column;
   justify-content: center;
 }
+#group-span {
+  color: #3e3e3e00;
+  width: 0%;
+  display: none;
+}

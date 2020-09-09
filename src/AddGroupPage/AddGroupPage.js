@@ -45,8 +45,7 @@ export default class AddGroupPage extends Component {
             });
           } else {
             this.setState({
-              badGroupPhotoMessage:
-                ' ❌ Must be image file (png, jpg, jpeg)',
+              badGroupPhotoMessage: ' ❌ Must be image file (png, jpg, jpeg)',
             });
           }
         } else {
@@ -69,10 +68,10 @@ export default class AddGroupPage extends Component {
     if (acceptedType) {
       let element = document.getElementById('preview-group-photo');
       element.src = URL.createObjectURL(e);
-      this.toggleGroupPhoto()
+      this.toggleGroupPhoto();
       this.setState({
         groupProfilePic: e,
-      groupPhotoMessage: '✅ Photo uploaded successfully!',
+        groupPhotoMessage: '✅ Photo uploaded successfully!',
       });
     } else {
       this.setState({
@@ -80,7 +79,7 @@ export default class AddGroupPage extends Component {
       });
     }
   };
-  
+
   changeHandler = (e) => {
     //grabs the group name to join
     if (e.target.name === 'group_names') {
@@ -229,9 +228,8 @@ export default class AddGroupPage extends Component {
                 onClick={this.toggleGroupPhoto}
               >
                 <div className='preview-group-photo-container'>
-                <img id='preview-group-photo' />
-
-              </div>
+                  <img id='preview-group-photo' />
+                </div>
                 <FontAwesomeIcon
                   id='group-user-icon'
                   className='add-group-avatar'
@@ -239,104 +237,108 @@ export default class AddGroupPage extends Component {
                 />
               </div>
               <div className='good-group-photo-div'>
-              <p className='group-photo-message'>{this.state.groupPhotoMessage}</p>
+                <p className='group-photo-message'>
+                  {this.state.groupPhotoMessage}
+                </p>
               </div>
               <div className='group-inputs-div'>
-              <label
-                name='group_names'
-                htmlFor='group-name-input'
-                className='label add-group-name-label'
-              >
-                group name
-                <input
-                  className='add-group-name'
-                  placeholder='Group Name'
-                  id='group-name-input'
-                  type='text'
-                  name='group_name'
-                  onChange={this.changeHandler}
-                  required
-                ></input>
-              </label>
-              <label
-                htmlFor='pitch-textarea'
-                className='label add-group-pitch-textarea-label'
-              >
-                {' '}
-                pitch
-                <textarea
-                  className='add-group-pitch-textarea'
-                  placeholder='Tell us about your group!'
-                  id='pitch-textarea'
-                  name='pitch'
-                  onChange={this.changeHandler}
-                ></textarea>
-              </label>
-              <div className='add-group-phone-location-div'>
                 <label
-                  htmlFor='phone-input'
-                  className='label add-group-phone-label'
+                  name='group_names'
+                  htmlFor='group-name-input'
+                  className='label add-group-name-label'
                 >
-                  phone
-                  <NumberFormat
-                    id='phone-input'
-                    name='leader_phone'
-                    className='add-group-phone'
-                    placeholder='(###) ###-####'
+                  <span id='group-span'>group name</span>
+                  <input
+                    className='add-group-name'
+                    placeholder='Group Name'
+                    id='group-name-input'
+                    type='text'
+                    name='group_name'
                     onChange={this.changeHandler}
-                    format=' (###) ###-####'
-                    mask='_'
-                  />
+                    required
+                  ></input>
                 </label>
                 <label
-                  htmlFor='location-input'
-                  className='label add-group-location-label'
+                  htmlFor='pitch-textarea'
+                  className='label add-group-pitch-textarea-label'
                 >
                   {' '}
-                  location
+                  <span id='group-span'>pitch</span>
+                  <textarea
+                    className='add-group-pitch-textarea'
+                    placeholder='Tell us about your group!'
+                    id='pitch-textarea'
+                    name='pitch'
+                    onChange={this.changeHandler}
+                  ></textarea>
+                </label>
+                <div className='add-group-phone-location-div'>
+                  <label
+                    htmlFor='phone-input'
+                    className='label add-group-phone-label'
+                  >
+                    <span id='group-span'>phone</span>
+                    <NumberFormat
+                      id='phone-input'
+                      name='leader_phone'
+                      className='add-group-phone'
+                      placeholder='(###) ###-####'
+                      onChange={this.changeHandler}
+                      format=' (###) ###-####'
+                      mask='_'
+                    />
+                  </label>
+                  <label
+                    htmlFor='location-input'
+                    className='label add-group-location-label'
+                  >
+                    {' '}
+                    <span id='group-span'>location</span>
+                    <input
+                      className='add-group-location'
+                      placeholder='Location'
+                      id='location-input'
+                      name='group_location'
+                      onChange={this.changeHandler}
+                    ></input>
+                  </label>
+                </div>
+                <label
+                  htmlFor='time-date-input'
+                  className='label add-group-time-date-label'
+                >
+                  {' '}
+                  <span id='group-span'>timedate</span>
                   <input
-                    className='add-group-location'
-                    placeholder='Location'
-                    id='location-input'
-                    name='group_location'
+                    className='add-group-time-date'
+                    placeholder='Time and Day i.e. 6pm Fridays'
+                    id='time-date-input'
+                    name='time_date'
                     onChange={this.changeHandler}
                   ></input>
                 </label>
-              </div>
-              <label
-                htmlFor='time-date-input'
-                className='label add-group-time-date-label'
-              >
-                {' '}
-                time and date
-                <input
-                  className='add-group-time-date'
-                  placeholder='Time and Day i.e. 6pm Fridays'
-                  id='time-date-input'
-                  name='time_date'
-                  onChange={this.changeHandler}
-                ></input>
-              </label>
-              <label
-                htmlFor='more-info'
-                className='label add-group-more-info-label'
-              >
-                more info
-                <textarea
-                  className='add-group-more-info'
-                  placeholder='More Info'
-                  id='more-info'
-                  name='more_info'
-                  onChange={this.changeHandler}
-                  required
-                ></textarea>
-              </label>
+                <label
+                  htmlFor='more-info'
+                  className='label add-group-more-info-label'
+                >
+                  <span id='group-span'>more info</span>
+                  <textarea
+                    className='add-group-more-info'
+                    placeholder='More Info'
+                    id='more-info'
+                    name='more_info'
+                    onChange={this.changeHandler}
+                    required
+                  ></textarea>
+                </label>
               </div>
               <div className='add-group-button-div'>
-              <p className='add-group-error-alert'>{this.props.eventMessage}</p>
-              <button type='submit' className='add-group-button'>
-                Create New Group
-              </button>
+                <p className='add-group-error-alert'>
+                  {this.props.eventMessage}
+                </p>
+                <button type='submit' className='add-group-button'>
+                  Create New Group
+                </button>
               </div>
             </form>
           </div>
