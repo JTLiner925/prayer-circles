@@ -130,6 +130,7 @@
   background-color: #ffffff;
   height: 80%;
   justify-content: center;
+  margin-top: 10px;
 }
 .register-avatar {
   background-color: #ffffff;
@@ -263,7 +264,7 @@
   font-weight: bold;
   padding: .5em;
   letter-spacing: 0.15em;
-
+  height: 50px;
   border-radius: 30px;
   border-width: 0px;
   text-transform: uppercase;

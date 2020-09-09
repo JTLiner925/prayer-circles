@@ -13,6 +13,7 @@
   width: 100%;
   text-align: center;
   position: absolute;
+  margin: 0;
 }
 .DashHeader {
   position: relative;
@@ -79,4 +80,10 @@
 #head-settings-icon:hover,
 #head-sign-out-icon:hover {
   color: rgb(128, 128, 128);
+}
+.error-alert {
+  margin: 0 auto;
+  color: rgb(208, 2, 2);
+  margin-bottom: 10px;
+  text-align: center;
 }
