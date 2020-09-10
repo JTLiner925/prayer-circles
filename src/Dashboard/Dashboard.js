@@ -183,8 +183,9 @@ export default class Dashboard extends Component {
         }
        let storedPhoto = localStorage.getItem('profilePic');
        if(storedPhoto){
-        this.handleProfilePic(users);
-
+        setTimeout(() => {
+          this.handleProfilePic(users, true);
+        }, 3000);
        }else{
         setTimeout(() => {
           this.handleProfilePic(users, true);
