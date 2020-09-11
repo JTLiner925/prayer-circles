@@ -185,14 +185,10 @@ export default class Dashboard extends Component {
             });
           }
         }
-       let storedPhoto = localStorage.getItem('profilePic');
+       let storedPhoto = localStorage.getItem('completedS3Upload');
        if(storedPhoto){
           this.handleProfilePic(users);
       
-       }else{
-        setTimeout(() => {
-          this.handleProfilePic(users, true);
-        }, 3000);
        }
           
         
@@ -239,6 +235,11 @@ export default class Dashboard extends Component {
   }
   componentDidUpdate(prevProps) {
     //update page with new data in state
+    let storedPhoto = localStorage.getItem('completedS3Upload');
+       if(storedPhoto){
+          this.handleProfilePic(this.state.users);
+      
+       }
     if (this.props.location.search === prevProps.location.search) {
       return;
     }
@@ -277,14 +278,20 @@ export default class Dashboard extends Component {
   };
   handleProfilePic = (users, savePhoto) => {
     //get user photo
-    let userName = window.localStorage.getItem('userName');
-    let user = users.find((u) => {
+    let userName;
+    let user;
+    if(users){
+      userName = window.localStorage.getItem('userName');
+    user = users.find((u) => {
       return u.first_name === userName;
     });
+    }
+    
 
-    let fileName = `${user.id}_${user.profile_pic}`;
+  
+    if(user && user.profile_pic){
+      let fileName = `${user.id}_${user.profile_pic}`;
     let url;
-    if(user.profile_pic){
     fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
       headers: {
         'Content-Type': 'application/json',

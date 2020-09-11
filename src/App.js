@@ -10,6 +10,7 @@ import './App.css';
 class App extends Component {
   state = {
     users: [],
+    // completedS3Upload: false
   };
   register = (formData) => {
     //sign up for an account - feeds into login()
@@ -64,17 +65,24 @@ class App extends Component {
         return res.json();
       })
       .then((resData) => {
+        
         url = resData.url;
         let reader = new FileReader();
         reader.addEventListener('loadend', (event) => {
           fetch(url, {
+
             headers: {
               'Access-Control-Allow-Origin': '*',
               'Access-Control-Allow-Credentials': '*',
             },
             method: 'PUT',
             body: new Blob([reader.result], { type: file.type }),
-          });
+          })
+          .then((res) => {
+           if(res.status === 200){
+             localStorage.setItem('completedS3Upload', true)
+           }
+          })
         });
         reader.readAsArrayBuffer(file);
       })
@@ -158,7 +166,14 @@ class App extends Component {
           '/add-prayer',
           '/settings',
         ].map((path) => (
-          <Route key={path} path={path} component={Dashboard} />
+          <Route key={path} path={path} 
+          render={(routeProps) => {
+            return (
+              <Dashboard
+              {...routeProps}
+              ></Dashboard>
+            );
+          }} />
         ))}
       </main>
     );
