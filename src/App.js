@@ -31,10 +31,19 @@ class App extends Component {
       }
     })
       .then((resData) => {
-        let userPic = `${resData.user.id}_${formData.profilePic.name}`;
+        let userPic;
+        if(formData && formData.profilePic && formData.profilePic.name){
+          userPic = `${resData.user.id}_${formData.profilePic.name}`;
 
-        this.uploadFile(formData.profilePic, userPic );
+        }
+        if(userPic){
+          this.uploadFile(formData.profilePic, userPic );
         this.logIn(formData);
+        } else{
+          this.logIn(formData);
+        }
+        // this.uploadFile(formData.profilePic, userPic );
+        
       })
       .catch((error) => {
         this.setState({ message: error.message });
@@ -43,6 +52,7 @@ class App extends Component {
   uploadFile = (file, newFileName) => {
     //POST call to api that send to AWS
     let url;
+  
     fetch(`${config.HOST}/api/getUrl`, {
       headers: {
         'Content-Type': 'application/json',

@@ -187,9 +187,8 @@ export default class Dashboard extends Component {
         }
        let storedPhoto = localStorage.getItem('profilePic');
        if(storedPhoto){
-        setTimeout(() => {
-          this.handleProfilePic(users, true);
-        }, 3000);
+          this.handleProfilePic(users);
+      
        }else{
         setTimeout(() => {
           this.handleProfilePic(users, true);
@@ -285,6 +284,7 @@ export default class Dashboard extends Component {
 
     let fileName = `${user.id}_${user.profile_pic}`;
     let url;
+    if(user.profile_pic){
     fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
       headers: {
         'Content-Type': 'application/json',
@@ -306,7 +306,7 @@ export default class Dashboard extends Component {
           profilePic: trimmedUrl,
         });
       })
-      .catch((error) => {});
+      .catch((error) => {});}
   };
   handleGroupUsersPic = (users) => {
     //get user pics for specific group

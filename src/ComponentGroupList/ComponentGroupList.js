@@ -87,7 +87,6 @@ export default class ComponentGroupList extends Component {
               if(myGroupPhotos[group.group_name] && myGroupPhotos[group.group_name].profilePic){
                 BackgroundImage = myGroupPhotos[group.group_name].profilePic
               }
-              console.log(BackgroundImage)
             }
             let addGroupBackgroundImage = {
               backgroundImage: `url(${friends2})`,
