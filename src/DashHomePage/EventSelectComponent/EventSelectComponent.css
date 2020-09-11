@@ -5,9 +5,9 @@
   align-content: center;
   justify-content: center;
   height: 15%;
-  position: fixed;
+  position: absolute;
   width: 100%;
-  top: 22%;
+  top: 3%;
   z-index: 6;
   background-color: white ;
   

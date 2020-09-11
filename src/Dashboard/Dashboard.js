@@ -126,6 +126,9 @@ export default class Dashboard extends Component {
         let myGroupPhotos = {};
         groups.forEach((group) => {
           //get photo for each group
+          if(group.group_pic){
+
+          
           fetch(`${config.HOST}/api/getUrl/get-photo-url`, {
             headers: {
               'Content-Type': 'application/json',
@@ -145,8 +148,9 @@ export default class Dashboard extends Component {
               let url = trimmedUrl;
               myGroupPhotos[group.group_name] = { profilePic: url };
             })
-            .catch((error) => {});
+            .catch((error) => {});}
         });
+      
         if (gId) {
           let matchedGroup = groups.find((g) => {
             return g.id === parseInt(gId);
